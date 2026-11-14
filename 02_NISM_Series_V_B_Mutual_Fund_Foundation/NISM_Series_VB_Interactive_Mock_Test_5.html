@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NISM-Series-V-B: Mutual Fund Foundation (Sep 2026) — Mock Test 5 (CBT Exam Simulator) · SHIVAM</title>
+<style>
+:root {
+    --primary: #1e40af;
+    --primary-hover: #1d4ed8;
+    --secondary: #0d9488;
+    --accent: #d97706;
+    --danger: #ef4444;
+    --success: #16a34a;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --gray: #e2e8f0;
+    --gray-border: #cbd5e1;
+    --text-main: #334155;
+    --review: #8b5cf6;
+}
+* { box-sizing: border-box; }
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    margin: 0;
+    background: #f1f5f9;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+.hidden { display: none !important; }
+.app-header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+    color: white;
+    padding: 14px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+.brand-badge { font-weight: 800; font-size: 1.15rem; letter-spacing: 0.5px; color: #93c5fd; }
+.exam-tag {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #f8fafc;
+}
+#start-page {
+    max-width: 820px;
+    margin: 32px auto;
+    background: white;
+    padding: 2.3rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid var(--gray);
+}
+.start-heading { color: #1e3a8a; font-size: 1.85rem; margin-bottom: 6px; text-align: center; font-weight: 800; }
+.start-subheading { color: #64748b; font-size: 1rem; margin-top: 0; margin-bottom: 22px; text-align: center; }
+.input-group { margin-bottom: 14px; }
+.input-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #475569; margin-bottom: 5px; }
+.input-group input {
+    width: 100%; padding: 11px 14px; border: 1.5px solid var(--gray-border);
+    border-radius: 8px; font-size: 0.98rem; outline: none;
+}
+.rules-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; margin: 18px 0; }
+.rules-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px; }
+.rule-metric { background: white; padding: 11px; border-radius: 8px; border: 1px solid var(--gray); text-align: center; }
+.rule-metric span { color: #64748b; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 600; }
+.rule-metric b { color: #0f172a; font-size: 1.05rem; }
+.syllabus-list { font-size: 0.9rem; color: #334155; line-height: 1.65; margin: 10px 0; padding-left: 20px; }
+.rand-toggles {
+    display: flex; flex-wrap: wrap; gap: 16px; background: #ecfdf5; border: 1px solid #a7f3d0;
+    padding: 12px 16px; border-radius: 8px; margin-top: 14px; font-size: 0.9rem; font-weight: 600; color: #065f46;
+}
+.rand-toggles label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+#test-container {
+    display: grid; grid-template-columns: 1fr 350px; gap: 24px; padding: 24px; max-width: 1340px; margin: auto;
+}
+.question-card {
+    background: white; padding: 2rem; border-radius: 12px; min-height: 510px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05); border: 1px solid var(--gray);
+    display: flex; flex-direction: column; justify-content: space-between;
+}
+.q-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--gray); padding-bottom: 12px; margin-bottom: 16px; }
+.q-header h3 { color: #1e3a8a; margin: 0; font-size: 1.2rem; }
+.q-category-tag { font-size: 0.8rem; background: #eff6ff; color: #1e40af; font-weight: 700; padding: 4px 11px; border-radius: 15px; margin-bottom: 10px; display: inline-block; }
+.q-marks-tag { font-size: 0.82rem; font-weight: 700; color: var(--success); background: #ecfdf5; padding: 4px 12px; border-radius: 20px; }
+.q-text { font-size: 1.12rem; font-weight: 600; line-height: 1.6; color: #0f172a; margin-bottom: 20px; }
+.options-list { list-style: none; padding: 0; margin: 14px 0; display: flex; flex-direction: column; gap: 11px; }
+.option-item {
+    border: 1.5px solid var(--gray); padding: 13px 16px; border-radius: 8px; cursor: pointer;
+    transition: all 0.18s ease; background: white; display: flex; align-items: center; gap: 13px; font-size: 0.98rem; line-height: 1.45;
+}
+.option-item:hover { background: #f8fafc; border-color: #94a3b8; }
+.option-item.selected { border-color: var(--primary); background: #eff6ff; font-weight: 600; color: #1e3a8a; }
+.opt-letter {
+    display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px;
+    border-radius: 50%; background: #f1f5f9; color: #475569; font-weight: 700; font-size: 0.85rem; flex-shrink: 0;
+}
+.option-item.selected .opt-letter { background: var(--primary); color: white; }
+.option-item.correct { background: #dcfce7 !important; border-color: var(--success) !important; color: #166534 !important; font-weight: 600; }
+.option-item.correct .opt-letter { background: var(--success) !important; color: white !important; }
+.option-item.wrong { background: #fee2e2 !important; border-color: var(--danger) !important; color: #991b1b !important; font-weight: 600; }
+.option-item.wrong .opt-letter { background: var(--danger) !important; color: white !important; }
+.explanation-card {
+    margin-top: 22px; padding: 16px 18px; background: #f0fdf4; border-left: 5px solid var(--success);
+    border-radius: 0 8px 8px 0; color: #14532d; font-size: 0.95rem; line-height: 1.6;
+}
+.nav-controls { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; border-top: 1px solid var(--gray); padding-top: 18px; }
+button { padding: 10px 20px; border: none; border-radius: 7px; cursor: pointer; font-weight: 600; font-size: 0.93rem; transition: all 0.18s; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-clear { background: #f1f5f9; color: #475569; border: 1px solid var(--gray-border); }
+.btn-review { background: #ede9fe; color: #6d28d9; border: 1px solid #ddd6fe; }
+.sidebar {
+    background: white; padding: 1.4rem; border-radius: 12px; height: fit-content;
+    position: sticky; top: 64px; box-shadow: 0 4px 14px rgba(0,0,0,0.05); border: 1px solid var(--gray);
+}
+.timer-box { background: #fef2f2; border: 1.5px solid #fecaca; border-radius: 8px; padding: 10px; margin-bottom: 16px; text-align: center; }
+.timer-label { font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: #991b1b; }
+.timer { font-size: 2rem; font-weight: 800; color: var(--danger); font-variant-numeric: tabular-nums; }
+.stats { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.88rem; font-weight: 600; background: #f8fafc; padding: 9px 12px; border-radius: 6px; border: 1px solid var(--gray); }
+.question-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; max-height: 280px; overflow-y: auto; padding: 8px; border: 1px solid #f1f5f9; background: #f8fafc; border-radius: 6px; }
+.q-num {
+    width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
+    background: white; border: 1.5px solid var(--gray-border); border-radius: 6px; cursor: pointer; font-size: 0.88rem; font-weight: 700; color: #475569;
+}
+.q-num.visited { background: #fee2e2; color: #b91c1c; border-color: #f87171; }
+.q-num.attempted { background: var(--success); color: white; border-color: #16a34a; }
+.q-num.marked { background: var(--review); color: white; border-color: #7c3aed; }
+.q-num.current { outline: 2.5px solid #0f172a; outline-offset: 1px; }
+.q-num.res-correct { background: #22c55e !important; color: white !important; border-color: #16a34a !important; }
+.q-num.res-wrong { background: #ef4444 !important; color: white !important; border-color: #dc2626 !important; }
+.q-num.res-none { background: #f1f5f9 !important; border: 1.5px solid var(--gray-border) !important; color: #64748b !important; }
+.legend { margin-top: 12px; font-size: 0.76rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; border-top: 1px solid var(--gray); padding-top: 10px; }
+.legend-item { display: flex; align-items: center; gap: 6px; color: #475569; font-weight: 500; }
+.dot { width: 12px; height: 12px; border-radius: 3px; }
+#submit-btn { width: 100%; margin-top: 14px; background: var(--dark); color: white; padding: 12px; font-size: 0.98rem; }
+#scorecard { margin-top: 16px; border-top: 2px solid var(--gray); padding-top: 16px; }
+.score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.score-box { padding: 10px; border-radius: 8px; text-align: center; background: #f8fafc; border: 1px solid var(--gray); }
+.score-box span { display: block; font-size: 0.7rem; color: #64748b; text-transform: uppercase; font-weight: 600; }
+.score-box b { font-size: 1.2rem; color: var(--dark); margin-top: 2px; display: block; }
+.final-total { grid-column: span 2; background: linear-gradient(135deg, #1e3a8a, #0f172a); color: white; border: none; padding: 14px; }
+.final-total b { color: #38bdf8; font-size: 1.65rem; }
+.pass-status { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; margin-top: 4px; }
+.pass-status.passed { background: #dcfce7; color: #15803d; }
+.pass-status.failed { background: #fee2e2; color: #b91c1c; }
+.modal-backdrop {
+    position: fixed; inset: 0; background: rgba(15,23,42,0.65); display: flex; align-items: center; justify-content: center; z-index: 10000;
+}
+.modal-box { background: #fff; border-radius: 12px; padding: 24px 28px; max-width: 440px; width: 92%; box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
+@media (max-width: 900px) {
+    #test-container { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .rules-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+<style>
+.fin-unified-nav { background: #0f172a; border-bottom: 2px solid #0284c7; padding: 10px 16px; position: sticky; top: 0; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.fin-unified-nav-inner { max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.fnav-btn { color: #cbd5e1; text-decoration: none; font-size: 12.5px; font-weight: 600; padding: 6px 11px; border-radius: 6px; background: #1e293b; border: 1px solid #334155; transition: all 0.15s ease; white-space: nowrap; cursor: pointer; }
+.fnav-btn:hover { background: #334155; color: #ffffff; border-color: #38bdf8; }
+.fnav-btn.active { background: #0284c7; color: #ffffff; border-color: #38bdf8; box-shadow: 0 0 0 2px rgba(56,189,248,0.3); }
+.fnav-home { background: #0f766e; border-color: #14b8a6; color: #f0fdfa; }
+.fnav-pdf { background: #b45309; border-color: #f59e0b; color: #fffbeb; }
+.fnav-mock { padding: 6px 9px; font-size: 12px; }
+</style><div class="fin-unified-nav"><div class="fin-unified-nav-inner"><a href="../index.html" class="fnav-btn fnav-home">🏠 All NISM Certifications</a><a href="NISM_Series_VB_Hub.html" class="fnav-btn">🏛️ Series V-B Hub</a><a href="NISM_Series_VB_Comprehensive_Master_Study_Notes.html" class="fnav-btn">📘 Detailed Notes (10 Ch)</a><a href="NISM_Series_VB_Master_Revision_and_Formula_Sheet.html" class="fnav-btn">⚡ Revision & Formula Sheet</a><a href="NISM_Series_VB_Official_Sample_and_Practice_Bank.html" class="fnav-btn">🎯 Official Sample & Practice (250 Qs)</a><a href="NISM_Series_VB_Topic_Wise_Mocks.html" class="fnav-btn">🧩 Topic-Wise Mocks (10 Ch)</a><a href="NISM_Series_VB_Interactive_Mock_Test_1.html" class="fnav-btn fnav-mock">Mock 1</a><a href="NISM_Series_VB_Interactive_Mock_Test_2.html" class="fnav-btn fnav-mock">Mock 2</a><a href="NISM_Series_VB_Interactive_Mock_Test_3.html" class="fnav-btn fnav-mock">Mock 3</a><a href="NISM_Series_VB_Interactive_Mock_Test_4.html" class="fnav-btn fnav-mock">Mock 4</a><a href="NISM_Series_VB_Interactive_Mock_Test_5.html" class="fnav-btn fnav-mock active">Mock 5</a><a href="https://drive.google.com/uc?export=download&id=1axp1tpYUFTd_JKKGj9yoe6VZXaubJJj4" target="_blank" rel="noopener" class="fnav-btn fnav-pdf">📥 Official Workbook PDF</a></div></div>
+
+<header class="app-header">
+    <div class="brand-badge">NISM-Series-V-B: Mutual Fund Foundation (Sep 2026) &#183; CBT SIMULATOR</div>
+    <div class="exam-tag">Full-Length Mock Test #5</div>
+</header>
+
+<div id="start-page">
+    <h1 class="start-heading">NISM-Series-V-B: Mutual Fund Foundation (Sep 2026) — Mock Test #5</h1>
+    <p class="start-subheading">Official Full-Length 50-Question Computer-Based Test (CBT) with Anti-Bias Option Randomizer</p>
+
+    <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid var(--gray); margin-bottom: 20px;">
+        <div class="input-group">
+            <label for="user-name">Candidate Full Name:</label>
+            <input type="text" id="user-name" value="Shivam Tiwari" />
+        </div>
+        <div class="input-group">
+            <label for="user-email">Candidate Roll / Registration ID:</label>
+            <input type="text" id="user-email" value="NISM-2026-CANDIDATE" />
+        </div>
+
+        <div class="rules-card">
+            <h4 style="margin-top: 0; color: #1e3a8a;">Syllabus Blueprint &amp; Assessment Rules:</h4>
+            <ul class="syllabus-list">
+                
+<li><strong>Ch 1: Investment Landscape (6% • 3 Qs)</strong> &amp; <strong>Ch 2: Concept &amp; Role of MF (12% • 6 Qs)</strong></li>
+<li><strong>Ch 3: Legal Structure (8% • 4 Qs)</strong> &amp; <strong>Ch 4: Products for New Cadre (6% • 3 Qs)</strong></li>
+<li><strong>Ch 5: Scheme Information (12% • 6 Qs)</strong> &amp; <strong>Ch 6: Distribution Practices (10% • 5 Qs)</strong></li>
+<li><strong>Ch 7: Performance of MFs (12% • 6 Qs)</strong> &amp; <strong>Ch 8: Taxation (6% • 3 Qs)</strong></li>
+<li><strong>Ch 9: Investor Services (20% • 10 Qs)</strong> &amp; <strong>Ch 10: Legal &amp; Regulatory (8% • 4 Qs)</strong></li>
+
+            </ul>
+
+            <div class="rules-grid">
+                <div class="rule-metric"><span>Total Questions</span><b>50 MCQs</b></div>
+                <div class="rule-metric"><span>Duration</span><b>120 Mins</b></div>
+                <div class="rule-metric"><span>Passing Score</span><b style="color: var(--success);">50% (25/50)</b></div>
+                <div class="rule-metric"><span>Negative Mark</span><b style="color: #64748b;">Nil (0.0)</b></div>
+            </div>
+
+            <div class="rand-toggles">
+                <label><input type="checkbox" id="chk-shuffle-opts" checked /> 🔀 Randomize Option Order (A/B/C/D)</label>
+                <label><input type="checkbox" id="chk-shuffle-qs" /> 🔀 Randomize Question Sequence</label>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center;">
+        <button class="btn-primary" onclick="validateAndStart()" style="padding: 15px 44px; font-size: 1.1rem; border-radius: 8px;">
+            Start CBT Examination Now &rarr;
+        </button>
+    </div>
+</div>
+
+<div id="test-interface" class="hidden">
+    <div id="test-container">
+        <main>
+            <div class="question-card">
+                <div>
+                    <div class="q-category-tag" id="q-category">Chapter</div>
+                    <div class="q-header">
+                        <h3 id="q-title">Question 1 of 50</h3>
+                        <span class="q-marks-tag">+1.0 Mark &#183; No Negative</span>
+                    </div>
+                    <div id="q-text" class="q-text"></div>
+                    <div id="options-container" class="options-list"></div>
+
+                    <div id="result-info" class="hidden">
+                        <div class="explanation-card">
+                            <strong>Detailed Rationale &amp; Regulatory Provision:</strong>
+                            <div id="explanation-text"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-controls">
+                    <button class="btn-clear" onclick="prevQuestion()">&larr; Previous</button>
+                    <button class="btn-primary" onclick="nextQuestion()">Save &amp; Next &rarr;</button>
+                    <button class="btn-clear" onclick="clearResponse()" id="clear-btn">Clear Response</button>
+                    <button class="btn-review" onclick="toggleReview()" id="review-btn">Mark for Review</button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="timer-box">
+                <div class="timer-label">Time Remaining</div>
+                <div class="timer" id="timer">120:00</div>
+            </div>
+
+            <div class="stats">
+                <span>Attempted: <b id="stat-attempted" style="color: var(--success);">0</b></span>
+                <span>Remaining: <b id="stat-left">50</b></span>
+            </div>
+
+            <div class="question-grid" id="q-grid"></div>
+
+            <div class="legend" id="live-legend">
+                <div class="legend-item"><div class="dot" style="background: white; border: 1.5px solid var(--gray-border);"></div> Not Visited</div>
+                <div class="legend-item"><div class="dot" style="background: #fee2e2; border: 1.5px solid #f87171;"></div> Not Answered</div>
+                <div class="legend-item"><div class="dot" style="background: var(--success);"></div> Answered</div>
+                <div class="legend-item"><div class="dot" style="background: var(--review);"></div> Marked</div>
+            </div>
+
+            <button class="btn-primary" id="submit-btn" onclick="openSubmitModal()">Submit Examination</button>
+
+            <div id="scorecard" class="hidden">
+                <div class="score-grid">
+                    <div class="score-box"><span>Attempted</span><b id="res-attempted">0</b></div>
+                    <div class="score-box"><span>Correct</span><b id="res-correct" style="color: var(--success);">0</b></div>
+                    <div class="score-box"><span>Incorrect</span><b id="res-incorrect" style="color: var(--danger);">0</b></div>
+                    <div class="score-box"><span>Accuracy</span><b id="res-accuracy">0%</b></div>
+                    <div class="score-box final-total">
+                        <span style="color: #cbd5e1;">Final Examination Score</span>
+                        <b id="res-score">0 / 50</b>
+                        <div id="res-status" class="pass-status">Status</div>
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="retakeWithFreshShuffle()" style="width: 100%; margin-top: 12px; background: #0d9488; color: white;">
+                    🔀 Re-Shuffle Options &amp; Retake Mock
+                </button>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<div id="submit-modal" class="modal-backdrop hidden">
+    <div class="modal-box">
+        <h3 style="margin-top:0;color:#0f172a;">Confirm CBT Exam Submission</h3>
+        <p id="submit-modal-text" style="color:#475569;font-size:0.95rem;"></p>
+        <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px;">
+            <button class="btn-clear" onclick="closeSubmitModal()">Continue Exam</button>
+            <button class="btn-primary" onclick="closeSubmitModal(); endTest();">Submit &amp; View Results</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const baseQuestions = [{"id": "VB-Q201", "num": 1, "mock_id": 5, "chapter_num": 1, "chapter": "Chapter 1: Investment Landscape", "tag": "Conceptual", "question": "Which financial goal would be classified under the 'Critically Important' priority bucket rather than 'Dreams' or 'Good-to-have'?", "options": {"A": "Taking an annual leisure cruise across European ports under prevailing SEBI mutual fund norms", "B": "Funding a child's higher education and own retirement", "C": "Upgrading from a compact sedan to a luxury SUV model", "D": "Purchasing a second holiday villa at a hill station"}, "answer": "B", "explanation": "Critically important goals are non-negotiable life responsibilities such as children's education and retirement corpus creation."}, {"id": "VB-Q202", "num": 2, "mock_id": 5, "chapter_num": 1, "chapter": "Chapter 1: Investment Landscape", "tag": "Conceptual", "question": "Why do physical real estate investments carry high liquidity risk compared to financial securities?", "options": {"A": "Mandatory daily mark-to-market settlement on exchanges", "B": "Automatic deduction of securities transaction tax on sale", "C": "High ticket size, indivisibility, and long sale cycles", "D": "Strict lock-in of three years under Section 80C rules"}, "answer": "C", "explanation": "Real estate requires a large minimum capital outlay, cannot be sold in small fractional units, and involves lengthy legal and brokerage processes."}, {"id": "VB-Q203", "num": 3, "mock_id": 5, "chapter_num": 1, "chapter": "Chapter 1: Investment Landscape", "tag": "Conceptual", "question": "When evaluating an investment option, why is 'Taxability of Income' considered distinct from 'Tax Deduction'?", "options": {"A": "Taxability lowers entry load while deduction waives exit load", "B": "Taxability is governed by SEBI while deduction is set by AMFI", "C": "Taxability applies only to equities while deduction applies to gold under prevailing SEBI mutual fund norms", "D": "Taxability affects net returns while deduction reduces taxable income"}, "answer": "D", "explanation": "Tax deduction (e.g., Sec 80C) reduces taxable income at the time of investment, whereas taxability of income determines the post-tax return on maturity/sale."}, {"id": "VB-Q204", "num": 4, "mock_id": 5, "chapter_num": 2, "chapter": "Chapter 2: Concept and Role of a Mutual Fund", "tag": "Sep 2026 Update", "question": "Under SEBI's MF Lite Framework (December 2024), which type of schemes qualify for relaxed net worth and compliance norms?", "options": {"A": "Passively managed schemes such as Index Funds, ETFs, and passive FoFs", "B": "Close-ended Real Estate Mutual Funds and Infrastructure Debt Funds under prevailing SEBI mutual fund norms", "C": "Credit Risk Debt schemes and Specialized Investment Funds (SIFs)", "D": "Actively managed Small Cap, Mid Cap, and Sectoral Equity schemes"}, "answer": "A", "explanation": "The MF Lite regulations establish a light-touch regulatory regime specifically for passive mutual fund schemes (Index Funds, ETFs, passive FoFs)."}, {"id": "VB-Q205", "num": 5, "mock_id": 5, "chapter_num": 2, "chapter": "Chapter 2: Concept and Role of a Mutual Fund", "tag": "Conceptual", "question": "What is the required Macaulay Duration for a 'Medium to Long Term' Debt Fund under normal market conditions?", "options": {"A": "Portfolio Macaulay duration between 1 year and 3 years", "B": "Portfolio Macaulay duration between 4 years and 7 years", "C": "Portfolio Macaulay duration strictly greater than 7 years", "D": "Portfolio Macaulay duration between 3 months and 6 months"}, "answer": "B", "explanation": "Medium to Long Duration Fund maintains a Macaulay duration between 4 and 7 years (and 1 to 7 years under anticipated adverse situations)."}, {"id": "VB-Q206", "num": 6, "mock_id": 5, "chapter_num": 2, "chapter": "Chapter 2: Concept and Role of a Mutual Fund", "tag": "Conceptual", "question": "In an Aggressive Hybrid Fund, what is the mandated asset allocation range between Equity and Debt instruments?", "options": {"A": "Equity between 40% and 60%; Debt between 40% and 60%", "B": "Equity between 10% and 25%; Debt between 75% and 90% under prevailing SEBI mutual fund norms", "C": "Equity between 65% and 80%; Debt between 20% and 35%", "D": "Equity minimum 80% and Debt maximum 20% at all times"}, "answer": "C", "explanation": "Aggressive Hybrid invests 65%\u201380% in equity and 20%\u201335% in debt; Conservative Hybrid invests 10%\u201325% in equity and 75%\u201390% in debt."}, {"id": "VB-Q207", "num": 7, "mock_id": 5, "chapter_num": 2, "chapter": "Chapter 2: Concept and Role of a Mutual Fund", "tag": "Sep 2026 Update", "question": "How does a Smart Beta (Factor) Fund differ from a Quant Fund?", "options": {"A": "Smart Beta is restricted to overnight debt; Quant is restricted to real estate", "B": "Smart Beta guarantees fixed returns; Quant eliminates all systematic market risk under prevailing SEBI mutual fund norms", "C": "Smart Beta uses human stock-picking; Quant invests only in sovereign gold bonds", "D": "Smart Beta passively tracks factor-tilted indices; Quant uses active math models"}, "answer": "D", "explanation": "Smart Beta is a rule-based strategy modifying index weights using factors (Value, Momentum, Low Vol, Quality), whereas Quant funds rely on quantitative models chosen by the fund manager."}, {"id": "VB-Q208", "num": 8, "mock_id": 5, "chapter_num": 2, "chapter": "Chapter 2: Concept and Role of a Mutual Fund", "tag": "Conceptual", "question": "How can an Infrastructure Debt Fund (IDF) be legally structured in India?", "options": {"A": "Either as a Trust regulated by SEBI or as an NBFC Company regulated by RBI", "B": "Exclusively as a Co-operative Society registered under state government laws", "C": "Strictly as a Section 8 non-profit company overseen by the stock exchanges", "D": "Only as a Limited Liability Partnership regulated by the Ministry of Finance"}, "answer": "A", "explanation": "IDFs can be set up either in the form of a Trust (IDF-MF regulated by SEBI) or in the form of a Company (IDF-NBFC regulated by RBI)."}, {"id": "VB-Q209", "num": 9, "mock_id": 5, "chapter_num": 2, "chapter": "Chapter 2: Concept and Role of a Mutual Fund", "tag": "Conceptual", "question": "Which limitation of mutual funds makes Portfolio Management Services (PMS) preferable for ultra-high-net-worth individuals seeking bespoke holdings?", "options": {"A": "Inability of mutual funds to invest in listed large-cap equity shares", "B": "Lack of individual portfolio customization at the unitholder level", "C": "Mandatory deduction of 30% upfront entry load on all mutual fund purchases", "D": "Absence of daily NAV calculation and statutory audit of scheme accounts"}, "answer": "B", "explanation": "A mutual fund unitholder owns a proportionate share of a common pool and cannot customize which individual securities the fund holds."}, {"id": "VB-Q210", "num": 10, "mock_id": 5, "chapter_num": 3, "chapter": "Chapter 3: Legal Structure of Mutual Funds in India", "tag": "Conceptual", "question": "Under which statute is the Trust Deed of an Indian Mutual Fund registered after being executed by the Sponsor?", "options": {"A": "The Securities Contracts (Regulation) Act, 1956 with Exchanges", "B": "The Companies Act, 2013 with the Registrar of Companies", "C": "The Indian Registration Act, 1908 in favour of the Trustees", "D": "The Depositories Act, 1996 with NSDL and CDSL depositories"}, "answer": "C", "explanation": "While the trust is governed by the Indian Trusts Act, 1882, the Trust Deed itself is registered under the Indian Registration Act, 1908."}, {"id": "VB-Q211", "num": 11, "mock_id": 5, "chapter_num": 3, "chapter": "Chapter 3: Legal Structure of Mutual Funds in India", "tag": "Conceptual", "question": "Who has the statutory authority to terminate the appointment of an Asset Management Company (AMC)?", "options": {"A": "A simple 51% majority of AMFI-registered mutual fund distributors", "B": "Any single Significant Unitholder holding 5% of the scheme corpus", "C": "The Custodian acting jointly with the Registrar and Transfer Agent under prevailing SEBI mutual fund norms", "D": "A majority of the Trustees OR 75% of the unitholders of the scheme"}, "answer": "D", "explanation": "The appointment of an AMC can be terminated by a majority of the Trustees or by 75% of the unitholders of the scheme."}, {"id": "VB-Q212", "num": 12, "mock_id": 5, "chapter_num": 3, "chapter": "Chapter 3: Legal Structure of Mutual Funds in India", "tag": "Conceptual", "question": "Which professionals within an AMC's Fund Management team are responsible for placing buy and sell orders with approved stockbrokers?", "options": {"A": "Dealers who execute trades based on the Fund Manager's instructions", "B": "Research Analysts who build financial models and industry reports", "C": "Fund Accountants who compute daily net asset values and expense ratios", "D": "Compliance Auditors who file half-yearly unaudited financial results"}, "answer": "A", "explanation": "The Fund Management team consists of Analysts (research), Fund Managers (portfolio decisions), and Dealers (order execution with brokers)."}, {"id": "VB-Q213", "num": 13, "mock_id": 5, "chapter_num": 3, "chapter": "Chapter 3: Legal Structure of Mutual Funds in India", "tag": "Conceptual", "question": "Under what ownership condition is a Custodian generally disqualified from being appointed by a Mutual Fund?", "options": {"A": "Where the Custodian is already providing custodial services to another mutual fund AMC under prevailing SEBI mutual fund norms", "B": "Where the Sponsor or its associates hold 50% or more of the Custodian's voting rights/directors", "C": "Where the Custodian is registered as a Scheduled Commercial Bank with the RBI", "D": "Where the Custodian settles trades in dematerialized form through NSDL and CDSL"}, "answer": "B", "explanation": "To ensure independence, a custodian in which the Sponsor/associates hold >=50% voting rights or directors cannot be appointed (subject to specific high-net-worth institutional exceptions)."}, {"id": "VB-Q214", "num": 14, "mock_id": 5, "chapter_num": 4, "chapter": "Chapter 4: Mutual Fund Products for the New Cadre of Distributors", "tag": "Conceptual", "question": "Which list of Permitted Schemes for the New Cadre of Distributors is published periodically so distributors know which funds meet the 3-year track record?", "options": {"A": "Income Tax Department quarterly notification of cost inflation indices", "B": "Ministry of Corporate Affairs annual register of listed shell companies", "C": "AMFI / AMC periodic list of eligible Simple and Performing Schemes", "D": "Reserve Bank of India weekly bulletin of scheduled commercial banks"}, "answer": "C", "explanation": "AMFI/AMCs publish and update the list of simple and performing schemes meeting the 3-year benchmark outperformance criterion."}, {"id": "VB-Q215", "num": 15, "mock_id": 5, "chapter_num": 4, "chapter": "Chapter 4: Mutual Fund Products for the New Cadre of Distributors", "tag": "Conceptual", "question": "If a New Cadre Distributor (holding only NISM-Series-V-B) wishes to distribute all 39+ mutual fund categories including Credit Risk and Sectoral funds, what must they do?", "options": {"A": "Collect a written waiver signed by at least 75% of their retail clients", "B": "Wait for 12 months until the NISM-Series-V-B certificate automatically upgrades", "C": "Pay an additional Rs. 50,000 security deposit to the Custodian of the fund", "D": "Pass the comprehensive NISM-Series-V-A: Mutual Fund Distributors Examination"}, "answer": "D", "explanation": "NISM-Series-V-B restricts distribution to simple and performing schemes; to distribute all MF products, one must pass NISM-Series-V-A."}, {"id": "VB-Q216", "num": 16, "mock_id": 5, "chapter_num": 4, "chapter": "Chapter 4: Mutual Fund Products for the New Cadre of Distributors", "tag": "Sep 2026 Update", "question": "In a Life Cycle Fund 2050, which underlying asset classes are permitted along the glide path under the February 2026 SEBI categorization?", "options": {"A": "Equity, Debt, InvITs, Exchange Traded Commodity Derivatives (ETCDs), and Gold/Silver ETFs", "B": "Foreign real estate properties and unrated corporate junk bonds only", "C": "Exclusively 91-day Treasury Bills and overnight tri-party repo instruments", "D": "Unlisted private equity startups, physical agricultural land, and crypto tokens under prevailing SEBI mutual fund norms"}, "answer": "A", "explanation": "Chapter 2 & Chapter 4 specify that Life Cycle Funds invest across Equity, Debt, InvITs, ETCDs, and Gold & Silver ETFs along a predetermined glide path."}, {"id": "VB-Q217", "num": 17, "mock_id": 5, "chapter_num": 5, "chapter": "Chapter 5: Scheme Related Information", "tag": "Conceptual", "question": "If an interim change occurs in the load structure or fund manager of a scheme, which document is issued by the AMC to notify investors?", "options": {"A": "A Consolidated Account Statement (CAS) issued by the Depository", "B": "An Addendum, which becomes an integral part of the SID, SAI, and KIM", "C": "A fresh Trust Deed executed by the Sponsor under the Registration Act", "D": "A Show Cause Notice issued under the AMFI Guidelines and Norms (AGNI)"}, "answer": "B", "explanation": "Any interim modification to SID/SAI/KIM is notified through an Addendum hosted on the AMC website and attached to scheme documents."}, {"id": "VB-Q218", "num": 18, "mock_id": 5, "chapter_num": 5, "chapter": "Chapter 5: Scheme Related Information", "tag": "Conceptual", "question": "By what time on the next business day must a Fund of Funds (FoF) scheme declare its daily Net Asset Value (NAV)?", "options": {"A": "By 3:00 PM on Friday of the succeeding calendar week", "B": "By 11:59 PM on the last business day of the calendar month", "C": "By 10:00 AM on the next business day (since it depends on underlying funds' NAVs)", "D": "By 9:00 AM on the same calendar day before Indian stock markets open under prevailing SEBI mutual fund norms"}, "answer": "C", "explanation": "While normal domestic schemes declare NAV by 11:00 PM on the same business day, FoFs have until 10:00 AM on the next business day."}, {"id": "VB-Q219", "num": 19, "mock_id": 5, "chapter_num": 5, "chapter": "Chapter 5: Scheme Related Information", "tag": "Conceptual", "question": "Why does the Direct Plan of a mutual fund scheme always have a lower Total Expense Ratio (TER) than its Regular Plan?", "options": {"A": "Direct Plan is exempt from GST on investment management and advisory fees", "B": "Direct Plan is exempt from Custodian safekeeping fees and RTA processing charges under prevailing SEBI mutual fund norms", "C": "Direct Plan invests only in zero-coupon treasury bills with zero brokerage", "D": "Direct Plan excludes distribution expenses and trail commissions paid to distributors"}, "answer": "D", "explanation": "Both Direct and Regular plans share the exact same portfolio, but Direct Plan pays no distributor commission, resulting in a lower TER and higher NAV."}, {"id": "VB-Q220", "num": 20, "mock_id": 5, "chapter_num": 5, "chapter": "Chapter 5: Scheme Related Information", "tag": "Conceptual", "question": "Where are the Rights of Unitholders and the Investor Grievance Redressal Mechanism detailed in the mandatory documents?", "options": {"A": "In the Statement of Additional Information (SAI) of the mutual fund", "B": "Only in the bi-annual AMFI thematic scheme overlap circular", "C": "Exclusively in the one-page NFO ASBA bank blocking form", "D": "Solely in the KRA KYC modification form for non-individuals"}, "answer": "A", "explanation": "SAI contains statutory legal information including Rights of Unitholders, Investor Grievance Redressal history, and details of Sponsors/Trustees/AMC."}, {"id": "VB-Q221", "num": 21, "mock_id": 5, "chapter_num": 5, "chapter": "Chapter 5: Scheme Related Information", "tag": "Conceptual", "question": "How many days prior to the opening of a New Fund Offer (NFO) must the final SID and KIM be hosted on the AMFI website?", "options": {"A": "At least 90 days before the draft SID is submitted to the Trustees", "B": "At least 2 days before the NFO issue opens for public subscription", "C": "On the 15th day after the NFO issue closes for public subscription", "D": "At least 30 days before the NFO issue opens for public subscription"}, "answer": "B", "explanation": "Chapter 5 states that the final SID/KIM must be hosted on the AMFI website at least 2 days before the issue opens."}, {"id": "VB-Q222", "num": 22, "mock_id": 5, "chapter_num": 5, "chapter": "Chapter 5: Scheme Related Information", "tag": "Conceptual", "question": "Which section of the Key Information Memorandum (KIM) helps an investor compare a scheme's historical returns with its benchmark over 1, 3, and 5 years?", "options": {"A": "List of designated bank branches accepting cash applications up to Rs. 50,000 under prevailing SEBI mutual fund norms", "B": "Schedule of Custodian and Registrar fees paid during the preceding quarter", "C": "Past Performance table of the scheme vis-a-vis its Total Return Index benchmark", "D": "Biographical profile and educational qualifications of independent Trustees"}, "answer": "C", "explanation": "KIM includes the scheme's investment objective, asset allocation, risk profile, plans/options, benchmark, and past performance over 1, 3, and 5 years."}, {"id": "VB-Q223", "num": 23, "mock_id": 5, "chapter_num": 6, "chapter": "Chapter 6: Fund Distribution and Channel Management Practices", "tag": "Conceptual", "question": "Under SEBI regulations, what are the ONLY two permissible customer relationship models for a Mutual Fund Distributor?", "options": {"A": "Discretionary Portfolio Manager vs. Underwriter of New Fund Offers under prevailing SEBI mutual fund norms", "B": "Sub-broker of a Stock Exchange vs. Depository Participant of NSDL", "C": "Credit Rating Analyst vs. Independent Trustee of the Mutual Fund", "D": "Advisory vs. Execution-Only (an MFD can offer only incidental product suitability, not fee-based advice)"}, "answer": "D", "explanation": "Chapter 6 explains the distinction between Investment Advisers (RIAs who charge fees) and MFDs (who execute transactions and provide only incidental scheme suitability)."}, {"id": "VB-Q224", "num": 24, "mock_id": 5, "chapter_num": 6, "chapter": "Chapter 6: Fund Distribution and Channel Management Practices", "tag": "Conceptual", "question": "Under which SEBI regulation is 'Mis-selling' of mutual fund schemes (making false statements or concealing risk) legally defined and penalized?", "options": {"A": "SEBI (Prohibition of Fraudulent and Unfair Trade Practices relating to Securities Market) Regulations, 2003", "B": "SEBI (Substantial Acquisition of Shares and Takeovers) Regulations, 2011 under prevailing SEBI mutual fund norms", "C": "SEBI (Issue of Capital and Disclosure Requirements) Regulations, 2018", "D": "SEBI (Prohibition of Insider Trading) Regulations, 2015"}, "answer": "A", "explanation": "Mis-selling of mutual fund units is explicitly covered under the SEBI (PFUTP) Regulations, 2003."}, {"id": "VB-Q225", "num": 25, "mock_id": 5, "chapter_num": 6, "chapter": "Chapter 6: Fund Distribution and Channel Management Practices", "tag": "Conceptual", "question": "What is the minimum age requirement for an individual to obtain an AMFI Registration Number (ARN) as a mutual fund distributor?", "options": {"A": "At least 16 years of age with guardian consent", "B": "At least 18 years of age at the time of application", "C": "At least 21 years of age with a postgraduate degree", "D": "At least 25 years of age with 5 years banking experience"}, "answer": "B", "explanation": "An individual must be at least 18 years old and have passed the NISM-Series-V-A (or V-B) exam to apply for an ARN."}, {"id": "VB-Q226", "num": 26, "mock_id": 5, "chapter_num": 6, "chapter": "Chapter 6: Fund Distribution and Channel Management Practices", "tag": "Conceptual", "question": "What is the validity period of the NISM Certification and the corresponding AMFI Registration Number (ARN) before renewal is required?", "options": {"A": "10 years or until the distributor attains age 60", "B": "5 years from the date of completing biometric KYD", "C": "3 years from the date of the examination / ARN issuance", "D": "1 year from the end of the financial year in which issued"}, "answer": "C", "explanation": "Both NISM-Series-V-B/V-A certification and the AMFI ARN are valid for a period of 3 years and must be renewed via CPE or re-examination."}, {"id": "VB-Q227", "num": 27, "mock_id": 5, "chapter_num": 6, "chapter": "Chapter 6: Fund Distribution and Channel Management Practices", "tag": "Conceptual", "question": "In MF Utilities (MFU), which single form allows an investor quoting their CAN to invest across multiple mutual fund schemes of different AMCs in one go?", "options": {"A": "Minor Attaining Majority (MAM) declaration form filed with KRA", "B": "Foreign Account Tax Compliance Act (FATCA) self-certification form under prevailing SEBI mutual fund norms", "C": "Key Information Memorandum (KIM) signed separately for each AMC", "D": "Common Transaction Form (CTF) supported by a single consolidated payment"}, "answer": "D", "explanation": "Once a CAN is generated on MFU, the investor can submit a single Common Transaction Form (CTF) with a single payment to invest across multiple AMCs."}, {"id": "VB-Q228", "num": 28, "mock_id": 5, "chapter_num": 7, "chapter": "Chapter 7: Performance of Mutual Funds", "tag": "Conceptual", "question": "Why is Sharpe Ratio more appropriate than Treynor Ratio for evaluating a concentrated Sectoral Equity Fund or an undiversified portfolio?", "options": {"A": "Sharpe Ratio uses Standard Deviation (Total Risk), capturing unsystematic concentration risk", "B": "Sharpe Ratio uses Macaulay Duration, capturing sovereign yield curve shifts under prevailing SEBI mutual fund norms", "C": "Sharpe Ratio assumes portfolio Beta is zero for all sectoral schemes", "D": "Sharpe Ratio excludes the risk-free rate from the numerator calculation"}, "answer": "A", "explanation": "Because a sectoral or concentrated fund holds significant unsystematic risk, Total Risk (Standard Deviation in Sharpe Ratio) is the better denominator."}, {"id": "VB-Q229", "num": 29, "mock_id": 5, "chapter_num": 7, "chapter": "Chapter 7: Performance of Mutual Funds", "tag": "Numerical", "question": "A scheme paid an IDCW (dividend) of Rs. 2.00 per unit when its ex-dividend NAV was Rs. 20.00. If Initial NAV was Rs. 18.00 and Ending NAV after 1 year is Rs. 22.00, how does Total Return with Reinvestment compare to Simple Return?", "options": {"A": "Total Return is negative because ex-dividend NAV drops below Rs. 18.00", "B": "Total Return with IDCW reinvestment is higher because the Rs. 2 payout buys 0.10 additional units at Rs. 20", "C": "Both returns are identical at 22.22% because IDCW payout vanishes from investor wealth under prevailing SEBI mutual fund norms", "D": "Total Return is lower because IDCW reinvestment attracts a 30% upfront entry load"}, "answer": "B", "explanation": "At ex-dividend NAV of Rs. 20, Rs. 2 buys 2/20 = 0.10 additional units, so the investor holds 1.10 units worth 1.10 * 22 = Rs. 24.20 (Total Return = 34.44% vs Simple Return = 33.33%)."}, {"id": "VB-Q230", "num": 30, "mock_id": 5, "chapter_num": 7, "chapter": "Chapter 7: Performance of Mutual Funds", "tag": "Conceptual", "question": "What happens to the scheme's per-unit NAV immediately after an IDCW (dividend) is paid out or a Bonus issue is allotted?", "options": {"A": "NAV remains unchanged because payouts come from the AMC's own share capital", "B": "NAV is reset to the statutory face value of Rs. 10.00 per unit", "C": "NAV drops proportionately to the extent of the IDCW payout or bonus ratio", "D": "NAV increases by the exact amount of the IDCW payout or bonus ratio"}, "answer": "C", "explanation": "Both IDCW payouts and bonus unit allotments come out of the scheme's existing net assets, causing the Ex-Dividend / Ex-Bonus NAV to fall proportionately."}, {"id": "VB-Q231", "num": 31, "mock_id": 5, "chapter_num": 7, "chapter": "Chapter 7: Performance of Mutual Funds", "tag": "Conceptual", "question": "From which effective date did SEBI make it mandatory for all mutual fund schemes to benchmark their performance against a Total Return Index (TRI) instead of a Price Return Index (PRI)?", "options": {"A": "Effective April 1, 2026 under the revised TER regulations", "B": "Effective July 23, 2024 under the Union Budget tax reforms", "C": "Effective September 13, 2012 under the New Cadre circular", "D": "Effective February 1, 2018 across all mutual fund schemes"}, "answer": "D", "explanation": "Chapter 7 states that since February 1, 2018, all mutual fund schemes must be benchmarked to the Total Return Index (TRI) variant."}, {"id": "VB-Q232", "num": 32, "mock_id": 5, "chapter_num": 7, "chapter": "Chapter 7: Performance of Mutual Funds", "tag": "Conceptual", "question": "Which of the following is a specific risk associated with Mutual Fund schemes investing in Real Estate Investment Trusts (REITs) and Infrastructure Investment Trusts (InvITs)?", "options": {"A": "Price fluctuation, interest rate sensitivity, and regulatory/project cash-flow execution risks", "B": "Mandatory forfeiture of principal if held for more than twelve months under prevailing SEBI mutual fund norms", "C": "Prohibition on distributing rental or toll cash flows to unitholders", "D": "Complete absence of listing on recognized Indian stock exchanges"}, "answer": "A", "explanation": "Chapter 7 notes that REITs and InvITs carry risks of price volatility, interest rate changes, liquidity constraints, and underlying real estate/infrastructure project execution risks."}, {"id": "VB-Q233", "num": 33, "mock_id": 5, "chapter_num": 7, "chapter": "Chapter 7: Performance of Mutual Funds", "tag": "Conceptual", "question": "Which benchmark index is mandated as the 'Additional Benchmark' for Long-Term Debt Mutual Fund schemes in performance advertisements?", "options": {"A": "London Interbank Offered Rate (LIBOR) Overnight Currency Index", "B": "10-Year Dated Government of India Security (10-Year G-Sec) Index", "C": "BSE Sensex or NSE Nifty 50 Total Return Equity Index", "D": "1-Year Government of India Treasury Bill (1-Year T-Bill) Index under prevailing SEBI mutual fund norms"}, "answer": "B", "explanation": "For debt schemes (other than short-term/liquid which use 1-Year T-Bill), the standard additional benchmark is the 10-Year Dated GOI Security."}, {"id": "VB-Q234", "num": 34, "mock_id": 5, "chapter_num": 8, "chapter": "Chapter 8: Taxation", "tag": "Numerical", "question": "A resident investor realizes Long-Term Capital Gains of Rs. 2,25,000 on redeeming an Equity Large-Cap Fund after 18 months in FY 2026-27 (no other capital gains). What is the base LTCG tax (before cess)?", "options": {"A": "Rs. 45,000 calculated as 20.00% Short-Term Capital Gains tax on Rs. 2,25,000", "B": "Rs. 28,125 calculated as 12.50% on the entire Rs. 2,25,000 gain without any exemption under prevailing SEBI mutual fund norms", "C": "Rs. 12,500 calculated as 12.50% on the taxable gain of Rs. 1,00,000 (above Rs. 1.25 Lakh exemption)", "D": "Rs. 10,000 calculated as 10.00% on Rs. 1,00,000 gain under the old 2018 tax rate"}, "answer": "C", "explanation": "Exempt LTCG threshold = Rs. 1,25,000 per FY. Taxable LTCG = 2,25,000 - 1,25,000 = Rs. 1,00,000. Base LTCG tax @ 12.50% = Rs. 12,500."}, {"id": "VB-Q235", "num": 35, "mock_id": 5, "chapter_num": 8, "chapter": "Chapter 8: Taxation", "tag": "Conceptual", "question": "What is the 'Grandfathering' cut-off date specified under the Income Tax Act for computing the cost of acquisition of long-term equity mutual fund units acquired before Feb 2018?", "options": {"A": "April 1, 2001 (base year of the Cost Inflation Index for real estate assets)", "B": "March 31, 2020 (date of abolition of Dividend Distribution Tax in India)", "C": "July 23, 2024 (date of presentation of the full Union Budget 2024-25)", "D": "January 31, 2018 (highest NAV on Jan 31, 2018 is used to step up acquisition cost)"}, "answer": "D", "explanation": "Capital gains accrued on equity-oriented mutual funds up to January 31, 2018 were grandfathered as tax-exempt when LTCG tax on equities was reintroduced in Budget 2018."}, {"id": "VB-Q236", "num": 36, "mock_id": 5, "chapter_num": 8, "chapter": "Chapter 8: Taxation", "tag": "Conceptual", "question": "How is Goods and Services Tax (GST) charged on AMC Investment Management & Advisory Fees versus GST on Exit Load?", "options": {"A": "GST on management fees can be charged in addition to TER cap; GST on exit load is deducted from the exit load credited to scheme", "B": "GST on exit load is charged extra to existing unitholders by reducing the scheme's daily NAV by 18%", "C": "Mutual fund management fees and exit loads are 100% exempt from GST under Section 10(23D)", "D": "GST on both management fees and exit load is paid entirely by SEBI out of investor protection funds under prevailing SEBI mutual fund norms"}, "answer": "A", "explanation": "AMCs can charge GST on investment management and advisory fees over and above the TER limit, whereas GST on other services must stay within TER, and GST on exit load is deducted from the exit load credited to the scheme."}, {"id": "VB-Q237", "num": 37, "mock_id": 5, "chapter_num": 9, "chapter": "Chapter 9: Investor Services", "tag": "Conceptual", "question": "Under SEBI's Two-Factor Authentication (2FA) mandate for online mutual fund subscriptions and redemptions, how is investor consent verified?", "options": {"A": "Through a physical notarized affidavit mailed to the Custodian's registered office under prevailing SEBI mutual fund norms", "B": "Through a One-Time Password (OTP) sent to the investor's registered email ID and/or mobile number", "C": "Through an open unencrypted link that executes without any user authentication", "D": "Through a verbal confirmation recorded by the distributor's relationship manager"}, "answer": "B", "explanation": "SEBI mandates Two-Factor Authentication (2FA) via OTP on registered mobile/email for both online subscriptions (OTM/pooling avoidance) and online redemptions."}, {"id": "VB-Q238", "num": 38, "mock_id": 5, "chapter_num": 9, "chapter": "Chapter 9: Investor Services", "tag": "Conceptual", "question": "What is the rule regarding pooling of investor funds in a Mutual Fund Distributor's or Platform's bank account?", "options": {"A": "MFDs are encouraged to pool client money in their personal savings account for up to 30 days", "B": "Pooling is mandatory for all Systematic Investment Plan (SIP) transactions executed via UPI", "C": "Pooling of funds by MFDs/platforms is strictly prohibited; money must flow directly between investor bank and scheme account/clearing corp", "D": "Corporate distributors can pool retail funds to earn overnight call money interest before remitting to AMCs under prevailing SEBI mutual fund norms"}, "answer": "C", "explanation": "To prevent misuse of client funds, SEBI discontinued pooling of funds/units by distributors and platforms; funds move directly from investor's bank to Clearing Corp/AMC."}, {"id": "VB-Q239", "num": 39, "mock_id": 5, "chapter_num": 9, "chapter": "Chapter 9: Investor Services", "tag": "Conceptual", "question": "In a Minor's mutual fund investment, who can act as the Guardian representing the minor?", "options": {"A": "Any maternal or paternal cousin aged between 19 and 21 years without court order", "B": "The Branch Manager of the collecting bank where the minor holds a savings account under prevailing SEBI mutual fund norms", "C": "Any AMFI-registered mutual fund distributor holding a valid NISM certificate", "D": "Either of the natural parents (father or mother) or a court-appointed legal guardian"}, "answer": "D", "explanation": "A minor must be represented by a natural guardian (father or mother) or a legal guardian appointed by a competent court (accompanied by relationship/age proof)."}, {"id": "VB-Q240", "num": 40, "mock_id": 5, "chapter_num": 9, "chapter": "Chapter 9: Investor Services", "tag": "Conceptual", "question": "What is a 'SIP Top-Up' (or Step-Up SIP) facility offered by mutual funds?", "options": {"A": "Allows an investor to automatically increase their periodic SIP instalment by a fixed amount or percentage at regular intervals", "B": "Allows an investor to borrow top-up margin money from the AMC when the equity market crashes", "C": "Automatically caps the scheme's NAV at Rs. 100 and pays out the excess as tax-free cash", "D": "Converts an open-ended equity SIP into a 10-year close-ended Infrastructure Debt Fund"}, "answer": "A", "explanation": "SIP Top-Up allows investors to step up their SIP contribution (e.g., by Rs. 1,000 or 10% every year) in line with rising annual income."}, {"id": "VB-Q241", "num": 41, "mock_id": 5, "chapter_num": 9, "chapter": "Chapter 9: Investor Services", "tag": "Conceptual", "question": "How does a 'Trigger' facility help an investor manage their mutual fund investments?", "options": {"A": "Forces the Trustee Board to replace the fund manager if NAV drops by 1% in a day", "B": "Automatically executes a pre-specified action (e.g., redeem or switch profits) when a target NAV, return, or index level is reached", "C": "Eliminates all market risk by freezing the scheme's portfolio in cash for ten years under prevailing SEBI mutual fund norms as stipulated in the scheme offer document", "D": "Grants an automatic exemption from Securities Transaction Tax and Stamp Duty"}, "answer": "B", "explanation": "Triggers allow investors to pre-set automated instructions (such as booking profits into a liquid fund once return hits 15% or Sensex crosses a level)."}, {"id": "VB-Q242", "num": 42, "mock_id": 5, "chapter_num": 9, "chapter": "Chapter 9: Investor Services", "tag": "Conceptual", "question": "What is the role of 'KYC Registration Agencies' (KRAs) such as CVL, NDML, Karvy, DotEx, and CAMS KRA?", "options": {"A": "Agencies that guarantee minimum investment returns on Small Cap and Mid Cap mutual fund schemes under prevailing SEBI mutual fund norms", "B": "Stock exchanges that provide intraday order matching for physical real estate properties", "C": "Centralized SEBI-registered agencies that maintain investor KYC records digitally across all capital market intermediaries", "D": "Credit bureaus that determine the personal loan eligibility of mutual fund distributors"}, "answer": "C", "explanation": "KRAs (regulated under SEBI KRA Regulations, 2011) store KYC documents centrally so an investor completing KYC once can invest across any AMC/broker without repeating KYC."}, {"id": "VB-Q243", "num": 43, "mock_id": 5, "chapter_num": 9, "chapter": "Chapter 9: Investor Services", "tag": "Conceptual", "question": "Under Aadhaar-based e-KYC norms using UIDAI authentication, how are Mutual Funds / AMCs and Distributors classified?", "options": {"A": "AMCs act as Registrars General of Census and distributors act as Notary Publics", "B": "AMCs act as Sovereign Issuers and distributors act as Primary Dealers of RBI", "C": "AMCs act as Foreign Portfolio Custodians and distributors act as Clearing Members under prevailing SEBI mutual fund norms", "D": "AMCs/RTAs act as KYC User Agencies (KUAs) and registered distributors act as Sub-KUAs"}, "answer": "D", "explanation": "For UIDAI Aadhaar e-KYC authentication, SEBI-registered intermediaries/AMCs act as KYC User Agencies (KUAs) and distributors onboarded by them act as Sub-KUAs."}, {"id": "VB-Q244", "num": 44, "mock_id": 5, "chapter_num": 9, "chapter": "Chapter 9: Investor Services", "tag": "Sep 2026 Update", "question": "With which Government of India digital document wallet have mutual fund holding statements and CAS been integrated (as highlighted on Page 188 of the Sep 2026 workbook)?", "options": {"A": "DigiLocker platform, enabling investors to pull and store mutual fund holding statements digitally", "B": "e-Way Bill GST portal, enabling transport of physical mutual fund unit certificates under prevailing SEBI mutual fund norms", "C": "Passport Seva Kendra portal for automatic NRI status conversion", "D": "FASTag National Electronic Toll Collection portal for highway infrastructure bonds"}, "answer": "A", "explanation": "Chapter 9 (Page 188) highlights the integration of mutual fund holding statements with DigiLocker to prevent unclaimed assets and ease family visibility."}, {"id": "VB-Q245", "num": 45, "mock_id": 5, "chapter_num": 9, "chapter": "Chapter 9: Investor Services", "tag": "Numerical", "question": "If an investor submits a valid REDEMPTION request in an Equity or Hybrid scheme at 4:15 PM on Wednesday (a business day), which day's NAV will be applicable?", "options": {"A": "Friday's opening NAV, because equity redemptions require T+2 settlement before pricing", "B": "Thursday's closing NAV (next business day), because the request was received after the 3:00 PM cut-off", "C": "Wednesday's closing NAV, because redemptions are processed up to 7:00 PM across all equity schemes", "D": "Tuesday's closing NAV, because equity redemptions use historic previous-day valuation"}, "answer": "B", "explanation": "For Equity/Hybrid redemptions, the cut-off time is 3:00 PM. Since the request was received at 4:15 PM on Wednesday (after 3:00 PM), the next business day's (Thursday's) closing NAV applies."}, {"id": "VB-Q246", "num": 46, "mock_id": 5, "chapter_num": 9, "chapter": "Chapter 9: Investor Services", "tag": "Conceptual", "question": "What is the turnaround time (TAT) within which redemption proceeds must be dispatched/credited to the investor from the date of valid redemption request?", "options": {"A": "Within 45 calendar days from the end of the financial quarter without any interest for delay under prevailing SEBI mutual fund norms", "B": "Within 30 working days after obtaining individual sign-off from the Scheme Auditor", "C": "Within 3 working days (or as per SEBI's T+1/T+2/T+3 asset-class settlement timelines; 15% p.a. interest for delay)", "D": "Within 60 days from the date of the next half-yearly portfolio disclosure"}, "answer": "C", "explanation": "Redemption proceeds must be credited within the SEBI-prescribed turnaround time (and any delay beyond the statutory window attracts 15% p.a. penal interest payable by the AMC)."}, {"id": "VB-Q247", "num": 47, "mock_id": 5, "chapter_num": 10, "chapter": "Chapter 10: Legal and Regulatory Environment", "tag": "Conceptual", "question": "Can creditors of the Sponsor or the Asset Management Company (AMC) attach the assets of a Mutual Fund Scheme to recover debts owed by the Sponsor/AMC?", "options": {"A": "Yes, provided the creditors obtain a letter of consent from the Registrar and Transfer Agent under prevailing SEBI mutual fund norms", "B": "Yes, up to 40% of the scheme's corpus corresponding to the Sponsor's stake in the AMC", "C": "Yes, because the AMC is the absolute legal owner of all stocks and bonds in the portfolio", "D": "No, because the scheme's assets are held in Trust for the beneficial ownership of Unitholders"}, "answer": "D", "explanation": "Because a mutual fund is a separate legal Trust and unitholders are the beneficial owners, scheme assets are completely ring-fenced from creditors of the Sponsor or AMC."}, {"id": "VB-Q248", "num": 48, "mock_id": 5, "chapter_num": 10, "chapter": "Chapter 10: Legal and Regulatory Environment", "tag": "Conceptual", "question": "Under Regulation 39 investment restrictions, what is the rule regarding a mutual fund scheme investing in unlisted or privately placed securities of associate/group companies of the Sponsor?", "options": {"A": "Strictly prohibited\u2014no scheme can invest in unlisted or privately placed securities of Sponsor's group companies (and listed group securities capped at 25% of NAV)", "B": "Permitted up to 80% of the scheme's NAV without any disclosure to the Board of Trustees under prevailing SEBI mutual fund norms as stipulated in the scheme offer document", "C": "Mandatory for at least 25% of the corpus of all Multi Cap and Flexi Cap schemes", "D": "Permitted up to 50% of the scheme's NAV in Overnight and Liquid schemes"}, "answer": "A", "explanation": "No mutual fund scheme can invest in unlisted or privately placed securities of any associate or group company of the Sponsor; investment in listed securities of group companies is capped at 25% of net assets."}, {"id": "VB-Q249", "num": 49, "mock_id": 5, "chapter_num": 10, "chapter": "Chapter 10: Legal and Regulatory Environment", "tag": "Conceptual", "question": "Under AGNI and SEBI regulations, is a Mutual Fund Distributor allowed to 'Rebate' (pass back part of their commission) or offer gifts to induce an investor to invest?", "options": {"A": "Permitted up to 50% of the first-year trail commission for investments exceeding Rs. 1 lakh under prevailing SEBI mutual fund norms", "B": "Strictly prohibited\u2014rebating commission or offering gifts/inducements violates AGNI and can lead to ARN suspension/cancellation", "C": "Mandatory for all New Cadre Distributors operating in rural B-30 postal branches", "D": "Permitted if the investor is a close family relative or an institutional corporate treasury"}, "answer": "B", "explanation": "Rebating (sharing commission back with investors) and offering gifts/inducements are strictly prohibited under AGNI to maintain level playing field and ethical standards."}, {"id": "VB-Q250", "num": 50, "mock_id": 5, "chapter_num": 10, "chapter": "Chapter 10: Legal and Regulatory Environment", "tag": "Conceptual", "question": "Under Section 3 of Chapter 10, can a Unitholder sue the Trust itself directly in a court of law?", "options": {"A": "No, because mutual fund unitholders waive all constitutional legal rights when signing the KIM", "B": "Yes, because the Trust is incorporated as a public limited company under the Companies Act", "C": "No, because a Trust is a notional entity; legal suits must be filed against the Trustees who represent the Trust", "D": "Yes, by serving a criminal summons directly on the Valuation Agency (CRISIL or ICRA)"}, "answer": "C", "explanation": "Since a Trust is a legal obligation rather than a separate juristic person capable of being sued in its own name, legal proceedings are brought against the Trustees."}];
+let rawData = [];
+let currentIndex = 0;
+let userAnswers = {};
+let reviewStatus = {};
+let visited = {};
+let isSubmitted = false;
+let timeRemaining = 120 * 60;
+let timerInterval = null;
+
+function fisherYates(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+function buildActiveQuestionSet() {
+    const shuffleOpts = document.getElementById('chk-shuffle-opts').checked;
+    const shuffleQs = document.getElementById('chk-shuffle-qs').checked;
+    let list = baseQuestions.map(q => JSON.parse(JSON.stringify(q)));
+    if (shuffleQs) list = fisherYates(list);
+    rawData = list.map((q, idx) => {
+        if (!shuffleOpts) return { ...q, num: idx + 1 };
+        const correctText = q.options[q.answer];
+        const shuffledTexts = fisherYates(Object.values(q.options));
+        const letters = ['A', 'B', 'C', 'D'];
+        const newOptions = {};
+        let newAnswer = 'A';
+        letters.forEach((L, i) => {
+            newOptions[L] = shuffledTexts[i];
+            if (shuffledTexts[i] === correctText) newAnswer = L;
+        });
+        return { ...q, num: idx + 1, options: newOptions, answer: newAnswer };
+    });
+}
+
+function validateAndStart() {
+    buildActiveQuestionSet();
+    currentIndex = 0;
+    userAnswers = {};
+    reviewStatus = {};
+    visited = {};
+    isSubmitted = false;
+    timeRemaining = 120 * 60;
+    document.getElementById('start-page').classList.add('hidden');
+    document.getElementById('test-interface').classList.remove('hidden');
+    document.getElementById('scorecard').classList.add('hidden');
+    document.getElementById('submit-btn').classList.remove('hidden');
+    document.getElementById('clear-btn').classList.remove('hidden');
+    document.getElementById('review-btn').classList.remove('hidden');
+    initPalette();
+    loadQuestion(0);
+    startTimer();
+}
+
+function retakeWithFreshShuffle() {
+    clearInterval(timerInterval);
+    validateAndStart();
+}
+
+function initPalette() {
+    const grid = document.getElementById('q-grid');
+    grid.innerHTML = '';
+    for (let i = 0; i < rawData.length; i++) {
+        const btn = document.createElement('div');
+        btn.className = 'q-num';
+        btn.id = 'p-btn-' + i;
+        btn.innerText = (i + 1);
+        btn.onclick = () => loadQuestion(i);
+        grid.appendChild(btn);
+    }
+}
+
+function updatePalette() {
+    for (let i = 0; i < rawData.length; i++) {
+        const btn = document.getElementById('p-btn-' + i);
+        if (!btn) continue;
+        btn.className = 'q-num';
+        if (i === currentIndex) btn.classList.add('current');
+        if (isSubmitted) {
+            const chosen = userAnswers[i];
+            const correct = rawData[i].answer;
+            if (chosen === undefined) btn.classList.add('res-none');
+            else if (chosen === correct) btn.classList.add('res-correct');
+            else btn.classList.add('res-wrong');
+        } else {
+            if (reviewStatus[i]) btn.classList.add('marked');
+            else if (userAnswers[i] !== undefined) btn.classList.add('attempted');
+            else if (visited[i]) btn.classList.add('visited');
+        }
+    }
+    const attemptedCount = Object.keys(userAnswers).length;
+    document.getElementById('stat-attempted').innerText = attemptedCount;
+    document.getElementById('stat-left').innerText = rawData.length - attemptedCount;
+}
+
+function loadQuestion(index) {
+    if (index < 0 || index >= rawData.length) return;
+    visited[index] = true;
+    currentIndex = index;
+    const q = rawData[index];
+    document.getElementById('q-title').innerText = `Question ${index + 1} of ${rawData.length}`;
+    document.getElementById('q-category').innerText = q.chapter;
+    document.getElementById('q-text').innerText = `Q${index + 1}. ${q.question}`;
+    const container = document.getElementById('options-container');
+    container.innerHTML = '';
+    ['A', 'B', 'C', 'D'].forEach(letter => {
+        const optText = q.options[letter];
+        const item = document.createElement('div');
+        item.className = 'option-item';
+        if (userAnswers[index] === letter) item.classList.add('selected');
+        if (isSubmitted) {
+            if (letter === q.answer) item.classList.add('correct');
+            else if (userAnswers[index] === letter) item.classList.add('wrong');
+        } else {
+            item.onclick = () => selectOption(letter);
+        }
+        item.innerHTML = `<span class="opt-letter">${letter}</span><span>${optText}</span>`;
+        container.appendChild(item);
+    });
+    const resInfo = document.getElementById('result-info');
+    if (isSubmitted) {
+        resInfo.classList.remove('hidden');
+        document.getElementById('explanation-text').innerHTML = `<b>Correct Option: (${q.answer}) — ${q.options[q.answer]}</b><br>${q.explanation}`;
+    } else {
+        resInfo.classList.add('hidden');
+    }
+    const revBtn = document.getElementById('review-btn');
+    revBtn.innerText = reviewStatus[index] ? 'Unmark Review' : 'Mark for Review';
+    updatePalette();
+}
+
+function selectOption(letter) {
+    if (isSubmitted) return;
+    userAnswers[currentIndex] = letter;
+    loadQuestion(currentIndex);
+}
+
+function clearResponse() {
+    if (isSubmitted) return;
+    delete userAnswers[currentIndex];
+    loadQuestion(currentIndex);
+}
+
+function toggleReview() {
+    if (isSubmitted) return;
+    if (reviewStatus[currentIndex]) delete reviewStatus[currentIndex];
+    else reviewStatus[currentIndex] = true;
+    loadQuestion(currentIndex);
+}
+
+function prevQuestion() { if (currentIndex > 0) loadQuestion(currentIndex - 1); }
+function nextQuestion() { if (currentIndex < rawData.length - 1) loadQuestion(currentIndex + 1); }
+
+function startTimer() {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        if (timeRemaining <= 0) {
+            clearInterval(timerInterval);
+            endTest();
+            return;
+        }
+        timeRemaining--;
+        const m = Math.floor(timeRemaining / 60);
+        const s = timeRemaining % 60;
+        document.getElementById('timer').innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+    }, 1000);
+}
+
+function openSubmitModal() {
+    const attempted = Object.keys(userAnswers).length;
+    const unattempted = rawData.length - attempted;
+    document.getElementById('submit-modal-text').innerText =
+        `You have answered ${attempted} out of ${rawData.length} questions (${unattempted} unanswered). Are you ready to submit and view your diagnostic scorecard?`;
+    document.getElementById('submit-modal').classList.remove('hidden');
+}
+
+function closeSubmitModal() {
+    document.getElementById('submit-modal').classList.add('hidden');
+}
+
+function endTest() {
+    if (isSubmitted) return;
+    isSubmitted = true;
+    clearInterval(timerInterval);
+    let correct = 0, incorrect = 0;
+    for (let i = 0; i < rawData.length; i++) {
+        if (userAnswers[i] !== undefined) {
+            if (userAnswers[i] === rawData[i].answer) correct++;
+            else incorrect++;
+        }
+    }
+    const attempted = correct + incorrect;
+    const score = correct;
+    const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+    document.getElementById('res-attempted').innerText = attempted;
+    document.getElementById('res-correct').innerText = correct;
+    document.getElementById('res-incorrect').innerText = incorrect;
+    document.getElementById('res-accuracy').innerText = accuracy + '%';
+    document.getElementById('res-score').innerText = `${score} / ${rawData.length}`;
+    const statusBox = document.getElementById('res-status');
+    if (score >= 25) {
+        statusBox.innerText = `STATUS: PASSED (>= 50%)`;
+        statusBox.className = 'pass-status passed';
+    } else {
+        statusBox.innerText = `STATUS: NEEDS PRACTICE (< 50%)`;
+        statusBox.className = 'pass-status failed';
+    }
+    document.getElementById('scorecard').classList.remove('hidden');
+    document.getElementById('submit-btn').classList.add('hidden');
+    document.getElementById('clear-btn').classList.add('hidden');
+    document.getElementById('review-btn').classList.add('hidden');
+    loadQuestion(0);
+}
+</script>
+</body>
+</html>

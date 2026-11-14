@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NISM-Series-V-B: Mutual Fund Foundation — Comprehensive Master Study Notes (Sep 2026) · SHIVAM</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-dark: #172554;
+    --secondary: #0d9488;
+    --accent: #d97706;
+    --danger: #b91c1c;
+    --success: #15803d;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --gray-border: #cbd5e1;
+    --text-main: #1e293b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f1f5f9;
+    color: var(--text-main);
+    line-height: 1.68;
+    font-size: 15.5px;
+  }
+  .container { max-width: 1240px; margin: 28px auto 64px; padding: 0 20px; }
+  .cover-banner, .header-banner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #0d9488 100%);
+    color: #ffffff;
+    padding: 36px 34px;
+    border-radius: 16px;
+    margin-bottom: 26px;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16);
+  }
+  .cover-kicker {
+    display: inline-block;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    color: #99f6e4;
+  }
+  .cover-banner h1, .header-banner h1 { color: #ffffff; font-size: 28px; font-weight: 800; margin: 0 0 10px 0; border: none; }
+  .cover-banner p, .header-banner p { color: #e0f2fe; font-size: 15px; margin: 0; }
+  .toc-box {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 16px;
+    padding: 22px 26px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  }
+  .toc-title { font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+  .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+  .toc-pill {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    text-decoration: none; background: #f8fafc; border: 1px solid #e2e8f0;
+    padding: 10px 14px; border-radius: 10px; color: #1e293b; font-size: 13.5px; font-weight: 600;
+    transition: all 0.16s ease;
+  }
+  .toc-pill:hover { background: #eff6ff; border-color: #93c5fd; color: #1d4ed8; transform: translateY(-1px); }
+  .toc-num { background: #1e3a8a; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px; }
+  .toc-cnt { background: #ccfbf1; color: #0f766e; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-left: auto; }
+  section {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #cbd5e1;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    scroll-margin-top: 72px;
+  }
+  h1 { color: var(--primary); font-size: 24px; font-weight: 800; margin-top: 0; }
+  h2 { color: var(--primary); font-size: 21px; font-weight: 800; border-bottom: 2.5px solid #bfdbfe; padding-bottom: 10px; margin-top: 0; margin-bottom: 16px; }
+  h3 { color: var(--dark); font-size: 17px; font-weight: 700; border-left: 4px solid var(--secondary); padding-left: 12px; margin-top: 22px; margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px; }
+  th, td { border: 1px solid #cbd5e1; padding: 11px 14px; text-align: left; vertical-align: top; }
+  th { background: #0f294a; color: #ffffff; font-weight: 700; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  .callout {
+    background: linear-gradient(to right, #f0fdf4, #ecfdf5);
+    border: 1px solid #bbf7d0;
+    border-left: 5px solid #16a34a;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+  }
+  .callout-title { font-weight: 800; color: #166534; margin-bottom: 6px; font-size: 15px; }
+  .math {
+    font-family: 'Cambria Math', 'Consolas', monospace;
+    background: #eff6ff;
+    color: #1e3a8a;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-weight: 700;
+  }
+  figure { margin: 20px 0; text-align: center; }
+  figcaption { font-size: 13px; color: #475569; margin-top: 8px; font-weight: 600; }
+</style>
+</head>
+<body>
+<style>
+.fin-unified-nav { background: #0f172a; border-bottom: 2px solid #0284c7; padding: 10px 16px; position: sticky; top: 0; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.fin-unified-nav-inner { max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.fnav-btn { color: #cbd5e1; text-decoration: none; font-size: 12.5px; font-weight: 600; padding: 6px 11px; border-radius: 6px; background: #1e293b; border: 1px solid #334155; transition: all 0.15s ease; white-space: nowrap; cursor: pointer; }
+.fnav-btn:hover { background: #334155; color: #ffffff; border-color: #38bdf8; }
+.fnav-btn.active { background: #0284c7; color: #ffffff; border-color: #38bdf8; box-shadow: 0 0 0 2px rgba(56,189,248,0.3); }
+.fnav-home { background: #0f766e; border-color: #14b8a6; color: #f0fdfa; }
+.fnav-pdf { background: #b45309; border-color: #f59e0b; color: #fffbeb; }
+.fnav-mock { padding: 6px 9px; font-size: 12px; }
+</style><div class="fin-unified-nav"><div class="fin-unified-nav-inner"><a href="../index.html" class="fnav-btn fnav-home">🏠 All NISM Certifications</a><a href="NISM_Series_VB_Hub.html" class="fnav-btn">🏛️ Series V-B Hub</a><a href="NISM_Series_VB_Comprehensive_Master_Study_Notes.html" class="fnav-btn active">📘 Detailed Notes (10 Ch)</a><a href="NISM_Series_VB_Master_Revision_and_Formula_Sheet.html" class="fnav-btn">⚡ Revision & Formula Sheet</a><a href="NISM_Series_VB_Official_Sample_and_Practice_Bank.html" class="fnav-btn">🎯 Official Sample & Practice (250 Qs)</a><a href="NISM_Series_VB_Topic_Wise_Mocks.html" class="fnav-btn">🧩 Topic-Wise Mocks (10 Ch)</a><a href="NISM_Series_VB_Interactive_Mock_Test_1.html" class="fnav-btn fnav-mock">Mock 1</a><a href="NISM_Series_VB_Interactive_Mock_Test_2.html" class="fnav-btn fnav-mock">Mock 2</a><a href="NISM_Series_VB_Interactive_Mock_Test_3.html" class="fnav-btn fnav-mock">Mock 3</a><a href="NISM_Series_VB_Interactive_Mock_Test_4.html" class="fnav-btn fnav-mock">Mock 4</a><a href="NISM_Series_VB_Interactive_Mock_Test_5.html" class="fnav-btn fnav-mock">Mock 5</a><a href="https://drive.google.com/uc?export=download&id=1axp1tpYUFTd_JKKGj9yoe6VZXaubJJj4" target="_blank" rel="noopener" class="fnav-btn fnav-pdf">📥 Official Workbook PDF</a></div></div>
+<div class="container">
+  
+<div class="toc-box">
+  <div class="toc-title">🧭 Quick Chapter Navigation &amp; Exam Weightage (50 Questions • 50 Marks • 120 Mins)</div>
+  <div class="toc-grid">
+    <a href="#exam-blueprint" class="toc-pill"><span class="toc-num">00</span><span>Exam Blueprint &amp; Weightage</span><span class="toc-cnt">50 Marks</span></a>
+    <a href="#ch1" class="toc-pill"><span class="toc-num">Ch 1</span><span>Investment Landscape</span><span class="toc-cnt">6% (3 Qs)</span></a>
+    <a href="#ch2" class="toc-pill"><span class="toc-num">Ch 2</span><span>Concept &amp; Role of Mutual Fund</span><span class="toc-cnt">12% (6 Qs)</span></a>
+    <a href="#ch3" class="toc-pill"><span class="toc-num">Ch 3</span><span>Legal Structure in India</span><span class="toc-cnt">8% (4 Qs)</span></a>
+    <a href="#ch4" class="toc-pill"><span class="toc-num">Ch 4</span><span>Products for New Cadre</span><span class="toc-cnt">6% (3 Qs)</span></a>
+    <a href="#ch5" class="toc-pill"><span class="toc-num">Ch 5</span><span>Scheme Related Information</span><span class="toc-cnt">12% (6 Qs)</span></a>
+    <a href="#ch6" class="toc-pill"><span class="toc-num">Ch 6</span><span>Distribution &amp; Channel Mgmt</span><span class="toc-cnt">10% (5 Qs)</span></a>
+    <a href="#ch7" class="toc-pill"><span class="toc-num">Ch 7</span><span>Performance of Mutual Funds</span><span class="toc-cnt">12% (6 Qs)</span></a>
+    <a href="#ch8" class="toc-pill"><span class="toc-num">Ch 8</span><span>Taxation (Budget 2024-25 Rules)</span><span class="toc-cnt">6% (3 Qs)</span></a>
+    <a href="#ch9" class="toc-pill"><span class="toc-num">Ch 9</span><span>Investor Services (Highest Weight)</span><span class="toc-cnt">20% (10 Qs)</span></a>
+    <a href="#ch10" class="toc-pill"><span class="toc-num">Ch 10</span><span>Legal &amp; Regulatory Environment</span><span class="toc-cnt">8% (4 Qs)</span></a>
+    <a href="NISM_Series_VB_Official_Sample_and_Practice_Bank.html" class="toc-pill"><span class="toc-num">MCQs</span><span>Practice All 250 Balanced MCQs</span><span class="toc-cnt">250 Qs →</span></a>
+  </div>
+</div>
+
+  
+
+  <div class="cover-banner">
+    <div class="cover-kicker">NISM-Series-V-B &#183; Official September 2026 Workbook Edition</div>
+    <h1>Mutual Fund Foundation Certification Examination</h1>
+    <p>Comprehensive Chapter-Wise Master Study Notes, September 2026 Regulatory Amendments, Worked Numericals &amp; Complete 10-Chapter Blueprint</p>
+  </div>
+
+  <section id="exam-blueprint">
+    <h2>Examination Blueprint &amp; Syllabus Weightage (Effective Nov 18, 2026)</h2>
+    <p>The <a href="https://www.nism.ac.in/mutual-fund-foundation/">NISM-Series-V-B: Mutual Fund Foundation Certification Examination</a> (Workbook Version: <strong>September 2026</strong>) seeks to create a common minimum knowledge benchmark for the new cadre of mutual fund distributors (postal agents, retired government/semi-government officials of Class III and above with 10+ years of service, retired bank officers with 10+ years of service, and bank correspondents) distributing simple and performing mutual fund schemes under <a href="https://www.nism.ac.in/curriculum-mutual-fund-foundation/">SEBI Circular CIR/IMD/DF/21/2012</a>.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 12%;">Chapter</th>
+          <th style="width: 56%;">Chapter Title &amp; Core Coverage</th>
+          <th class="num" style="width: 16%;">Weightage (%)</th>
+          <th class="num" style="width: 16%;">Questions (Marks)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Ch. 1</strong></td>
+          <td>Investment Landscape (Saving vs Investing, 4 Asset Classes, Inflation, Goal Matrix)</td>
+          <td class="num">6%</td>
+          <td class="num">3</td>
+        </tr>
+        <tr>
+          <td><strong>Ch. 2</strong></td>
+          <td>Concept &amp; Role of a Mutual Fund (SEBI Feb 26, 2026 Categorization, Life Cycle, SIF, MF Lite)</td>
+          <td class="num">12%</td>
+          <td class="num">6</td>
+        </tr>
+        <tr>
+          <td><strong>Ch. 3</strong></td>
+          <td>Legal Structure of Mutual Funds in India (SEBI MF Regulations 2026, UHPC, CSCRF &amp; FIRE)</td>
+          <td class="num">8%</td>
+          <td class="num">4</td>
+        </tr>
+        <tr>
+          <td><strong>Ch. 4</strong></td>
+          <td>Mutual Fund Products for the New Cadre of Distributors (Eligibility, Simple &amp; Performing Schemes)</td>
+          <td class="num">6%</td>
+          <td class="num">3</td>
+        </tr>
+        <tr>
+          <td><strong>Ch. 5</strong></td>
+          <td>Scheme Related Information (SID, SAI, KIM, April 2026 TER Formula, 6-Level Risk-o-meter)</td>
+          <td class="num">12%</td>
+          <td class="num">6</td>
+        </tr>
+        <tr>
+          <td><strong>Ch. 6</strong></td>
+          <td>Fund Distribution &amp; Channel Management (Full Trail Model, B-30 &amp; Women Incentive, MFU/MFCentral)</td>
+          <td class="num">10%</td>
+          <td class="num">5</td>
+        </tr>
+        <tr>
+          <td><strong>Ch. 7</strong></td>
+          <td>Performance of Mutual Funds (Simple/Annualized/CAGR, Sharpe, Treynor, Mandatory Info Ratio, TRI)</td>
+          <td class="num">12%</td>
+          <td class="num">6</td>
+        </tr>
+        <tr>
+          <td><strong>Ch. 8</strong></td>
+          <td>Taxation (Section 10(23D), July 23, 2024 Capital Gains Matrix, Rs 1.25L LTCG, STT, Stamp Duty)</td>
+          <td class="num">6%</td>
+          <td class="num">3</td>
+        </tr>
+        <tr>
+          <td><strong>Ch. 9</strong></td>
+          <td>Investor Services (NFO, Cut-Off Timings incl. 7 PM Overnight Online, KYC, SIP Pause, MITRA, Gifting)</td>
+          <td class="num">20%</td>
+          <td class="num">10</td>
+        </tr>
+        <tr>
+          <td><strong>Ch. 10</strong></td>
+          <td>Legal &amp; Regulatory Environment (Reg 39 Restrictions, Ad Code, SCORES, SMART ODR, ACE &amp; AGNI)</td>
+          <td class="num">8%</td>
+          <td class="num">4</td>
+        </tr>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td><strong>Duration: 120 Minutes (2 Hours) &#183; Passing Score: 50% (25 Marks) &#183; Negative Marking: NIL</strong></td>
+          <td class="num"><strong>100%</strong></td>
+          <td class="num"><strong>50 (50 Marks)</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="ch1">
+    <h2>Chapter 1: Investment Landscape (Weightage: 6% &#183; 3 Questions)</h2>
+    <h3>1.1 Financial Goals, Saving vs. Investment &amp; Inflation</h3>
+    <ul>
+      <li><strong>Saving vs. Investing:</strong> Saving is keeping aside money from current income for future needs with emphasis on capital preservation and high liquidity (e.g., savings bank account, post office savings). Investing commits saved capital to productive assets to generate positive real returns over time. <strong>Rule:</strong> <em>Saving always precedes investing</em>, though both are often used interchangeably in casual usage.</li>
+      <li><strong>Four Broad Financial Needs:</strong> (1) <strong>Transaction needs</strong> (day-to-day living expenses requiring liquid cash), (2) <strong>Protection needs</strong> (contingencies, medical emergencies, life/general insurance), (3) <strong>Investment needs</strong> (wealth creation for milestone goals like education, home purchase), and (4) <strong>Retirement needs</strong> (Accumulation Phase during working years vs. Distribution Phase post-retirement).</li>
+      <li><strong>Future Value &amp; Inflation Formula:</strong> Inflation erodes purchasing power. If a goal costs <span class="math">PV</span> today and inflation is <span class="math">i</span> per annum over <span class="math">n</span> years, the future money requirement is <span class="math">FV = PV &times; (1 + i)<sup>n</sup></span>.</li>
+    </ul>
+
+    <div class="callout">
+      <div class="callout-title">Worked Numerical Example (Workbook Sapna Case Study)</div>
+      <p>Sapna requires <strong>Rs. 10,00,000</strong> in today's money terms for her daughter's higher education after <strong>10 years</strong>. Expected education inflation is <strong>8% p.a.</strong><br>
+      <span class="math">Future Requirement = 10,00,000 &times; (1 + 0.08)<sup>10</sup> = 10,00,000 &times; 2.158925 = Rs. 21,58,925 (&approx; Rs. 21.59 Lakh)</span>.<br>
+      Similarly, an expense of Rs. 50,000 today at 10% inflation for 3 years requires <span class="math">50,000 &times; (1 + 0.10)<sup>3</sup> = Rs. 66,550</span>.</p>
+    </div>
+
+    <h3>1.2 Goal Classification Matrix &amp; Evaluation Factors</h3>
+    <ul>
+      <li><strong>Time Horizon Classification:</strong> <strong>Immediate term</strong> (up to 1 year), <strong>Near term</strong> (1 to 3 years), <strong>Medium term</strong> (3 to 5 years), and <strong>Long term</strong> (beyond 5 years).</li>
+      <li><strong>Priority Classification:</strong> <strong>Critically Important</strong> (non-negotiable goals: children's education, retirement, primary residence), <strong>Dreams</strong> (aspirational upgrades: bigger house, international vacation), and <strong>Good-to-have</strong> (discretionary lifestyle purchases).</li>
+      <li><strong>Seven Investment Evaluation Parameters:</strong> (1) <strong>Safety</strong> of principal, (2) <strong>Liquidity</strong> (ease of conversion to cash without value loss), (3) <strong>Returns</strong> (Regular income vs. Capital appreciation), (4) <strong>Convenience</strong> (ease of buying, holding, servicing), (5) <strong>Ticket Size</strong> (minimum investment required), (6) <strong>Taxability of Income</strong> (post-tax return matters most), and (7) <strong>Tax Deduction</strong> (e.g., Section 80C under old tax regime).</li>
+    </ul>
+
+    <h3>1.3 Four Broad Asset Classes &amp; DIY Risks (September 2026 Table 1.1 Update)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 18%;">Asset Class</th>
+          <th style="width: 18%;">Nature</th>
+          <th style="width: 34%;">Key Characteristics &amp; Return Source</th>
+          <th style="width: 30%;">Sub-Categories (Table 1.1 Update)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Equity</strong></td>
+          <td>Financial Asset</td>
+          <td>Ownership capital; highest long-term inflation-beating capital appreciation; high volatility. Sensex grew from <strong>100 (1979) to 82,269 on 30 Jan 2026 (~15.4% p.a. CAGR)</strong> excluding dividends.</td>
+          <td>Large Cap, Mid Cap, Small Cap, Unlisted Equity, International Equity.</td>
+        </tr>
+        <tr>
+          <td><strong>Fixed Income (Debt)</strong></td>
+          <td>Financial Asset</td>
+          <td>Lending capital; majority of return comes from <strong>regular interest income</strong> plus minor capital gains when interest rates fall.</td>
+          <td>Government Securities, Money Market Instruments, Corporate Bonds/Debentures, Bank FDs, Small Savings (PPF, NSC, SCSS).</td>
+        </tr>
+        <tr>
+          <td><strong>Real Estate</strong></td>
+          <td>Real / Physical</td>
+          <td>Illiquid, indivisible, high ticket size, high transaction/stamp duty costs, location-specific risk; generates rental income + capital growth.</td>
+          <td>Residential, Commercial, Industrial, Agricultural Land, REITs.</td>
+        </tr>
+        <tr>
+          <td><strong>Commodities</strong></td>
+          <td>Real / Physical</td>
+          <td>No periodic cash flow (no interest/dividend); return purely price-driven. <strong>Gold</strong> acts as a classic <strong>safe haven asset</strong> and inflation hedge.</td>
+          <td>Precious Metals (Gold, Silver), Base Metals, Soft/Agri Commodities, Energy (<strong>Crude Oil</strong>), <strong>Commodity ETFs</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>Alternatives</strong></td>
+          <td>Structured</td>
+          <td>High-ticket specialized vehicles for sophisticated/accredited investors with long lock-ins.</td>
+          <td><strong>Angel Funds, Venture Capital, Private Equity, Private Credit, Hedge Funds</strong>.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Hidden Costs of Doing Investments Yourself (DIY):</strong> (1) Extensive time required to research securities, (2) Value/opportunity cost of the investor's own time, and (3) Potential costly mistakes due to emotional biases (greed, fear, herd mentality) and inadequate diversification.</p>
+  </section>
+
+  <section id="ch2">
+    <h2>Chapter 2: Concept and Role of a Mutual Fund (Weightage: 12% &#183; 6 Questions)</h2>
+    <h3>2.1 Concept, Key Terms &amp; Role of Mutual Funds</h3>
+    <ul>
+      <li><strong>Investing "Through" Mutual Funds:</strong> Technically, an investor does not invest <em>in</em> a mutual fund; one invests <em>through</em> a mutual fund into underlying asset classes (equities, bonds, gold, real estate). Each scheme must have a clearly stated <strong>Investment Objective</strong>.</li>
+      <li><strong>Core Accounting Terms:</strong>
+        <ul>
+          <li><strong>Face Value:</strong> Standard face value of a mutual fund unit is <strong>Rs. 10</strong>.</li>
+          <li><strong>Unit Capital:</strong> Total number of outstanding units &times; Face Value (Rs. 10).</li>
+          <li><strong>Assets Under Management (AUM):</strong> Total market value of all portfolio investments plus current assets across a scheme or AMC.</li>
+          <li><strong>Net Asset Value (NAV):</strong> Indicates how much money can be generated per unit if the scheme is liquidated: <span class="math">NAV = (Market Value of Investments + Current Assets &minus; Current Liabilities &amp; Accrued Expenses) &divide; Total Outstanding Units</span>.</li>
+          <li><strong>Mark to Market (MTM):</strong> Daily valuation of every security in the scheme's portfolio at current market prices so investors enter and exit at fair value.</li>
+          <li><strong>IDCW (Income Distribution cum Capital Withdrawal):</strong> Effective <strong>April 1, 2021</strong>, SEBI renamed the "Dividend Option" to IDCW to clarify that payouts are drawn from the investor's own accumulated scheme surplus and reduce NAV by the exact payout amount.</li>
+        </ul>
+      </li>
+      <li><strong>Key Advantages vs. Limitations:</strong>
+        <ul>
+          <li><em>Advantages:</em> Professional management, affordable portfolio diversification (even with Rs. 500), economies of scale, high transparency, liquidity, tax deferral (<a href="https://incometaxindia.gov.in/">Section 10(23D)</a>), tax deduction under Section 80C (ELSS up to Rs. 1.50 lakh in old regime), convenient systematic options (SIP, SWP, STP), and strict regulatory oversight by SEBI.</li>
+          <li><em>Limitations:</em> <strong>Lack of portfolio customization</strong> (a unit holder cannot instruct the fund manager which stock to buy/sell, unlike PMS), choice overload (2,000+ scheme variants), no investor control over scheme operating costs (within SEBI caps), and no guaranteed returns.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>2.2 Structural Classification of Mutual Fund Schemes</h3>
+    <ul>
+      <li><strong>Open-Ended Schemes:</strong> No fixed maturity date; variable unit capital; investors can buy and redeem units directly with the fund on any business day at Applicable NAV.</li>
+      <li><strong>Close-Ended Schemes:</strong> Have a <strong>fixed maturity date</strong>; units are issued only during the New Fund Offer (NFO) and redeemed at maturity. To provide interim liquidity, SEBI mandates compulsory listing on a stock exchange (except ELSS). Close-ended units on exchanges typically trade at a <strong>discount to NAV</strong> due to low secondary market liquidity.</li>
+      <li><strong>Interval Funds:</strong> Combine features of open-ended and close-ended schemes. Largely close-ended, but become open-ended during pre-specified <strong>Transaction Periods (minimum 2 days)</strong> separated by an <strong>Interval Period (minimum 15 days)</strong> between two transaction periods. Compulsorily listed on stock exchanges.</li>
+      <li><strong>Exchange Traded Funds (ETFs):</strong> Passive open-ended funds tracking an index or commodity (Gold ETFs, Silver ETFs) whose units are listed and traded on stock exchanges <strong>throughout the day at real-time market prices</strong> like equity shares (requires Demat + Trading account).</li>
+      <li><strong>MF Lite Framework (SEBI Circular Dec 2024):</strong> Simplified regulatory framework with relaxed net-worth, track-record, and compliance rules specifically designed for AMCs managing <strong>exclusively passive schemes</strong> (Index Funds, ETFs, and passive FoFs).</li>
+    </ul>
+
+    <h3>2.3 SEBI Categorization &amp; Rationalization Circular (Dated 26 February 2026)</h3>
+    <p>Under SEBI Circular <strong>HO/24/13/15(2)2026-IMD-RAC4/I/5764/2026 dated 26 February 2026</strong>, mutual fund schemes are classified into <strong>5 Broad Categories</strong> (Equity, Debt, Hybrid, Life Cycle Funds, and Other Schemes). Only one scheme per category is permitted per AMC, except for Index Funds/ETFs, Fund of Funds, Sectoral/Thematic Funds, and Target Maturity/Life Cycle Funds.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 24%;">Category / Scheme</th>
+          <th style="width: 48%;">Mandated Asset Allocation &amp; Portfolio Rules (Feb 2026 Circular)</th>
+          <th style="width: 28%;">Key Exam Rule / Cap Definition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Multi Cap Fund</strong></td>
+          <td>Minimum <strong>75%</strong> in equity &amp; equity-related instruments across market caps.</td>
+          <td>Mandatory min <strong>25% Large, 25% Mid, 25% Small Cap</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>2. Large Cap Fund</strong></td>
+          <td>Minimum <strong>80%</strong> in equity of Large Cap companies.</td>
+          <td>Large Cap = <strong>1st to 100th</strong> company by full market cap.</td>
+        </tr>
+        <tr>
+          <td><strong>3. Large &amp; Mid Cap</strong></td>
+          <td>Minimum <strong>35%</strong> in Large Cap AND minimum <strong>35%</strong> in Mid Cap (Total min 70% equity).</td>
+          <td>Balanced exposure to top 250 companies.</td>
+        </tr>
+        <tr>
+          <td><strong>4. Mid Cap Fund</strong></td>
+          <td>Minimum <strong>65%</strong> in equity of Mid Cap companies.</td>
+          <td>Mid Cap = <strong>101st to 250th</strong> company by full market cap.</td>
+        </tr>
+        <tr>
+          <td><strong>5. Small Cap Fund</strong></td>
+          <td>Minimum <strong>65%</strong> in equity of Small Cap companies.</td>
+          <td>Small Cap = <strong>251st company onwards</strong> by full market cap.</td>
+        </tr>
+        <tr>
+          <td><strong>6. Dividend Yield Fund</strong></td>
+          <td>Predominantly dividend-yielding stocks; minimum <strong>80%</strong> in equity (updated to 80% in Feb 2026).</td>
+          <td>Focus on high dividend-yield companies.</td>
+        </tr>
+        <tr>
+          <td><strong>7 &amp; 8. Value / Contra</strong></td>
+          <td>Minimum <strong>80%</strong> in equity following Value or Contrarian strategy.</td>
+          <td><strong>2026 Update:</strong> AMC can offer <strong>BOTH Value &amp; Contra</strong> if portfolio overlap is <strong>&le; 50%</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>9. Focused Fund</strong></td>
+          <td>Minimum <strong>80%</strong> in equity; maximum <strong>30 stocks</strong> in portfolio.</td>
+          <td>Must specify market cap focus (Large/Mid/Small/Multi).</td>
+        </tr>
+        <tr>
+          <td><strong>10 &amp; 11. Sectoral / Thematic</strong></td>
+          <td>Minimum <strong>80%</strong> in equity of a specific sector or broad multi-sector theme.</td>
+          <td>Thematic overlap with other equity schemes (except Large Cap) <strong>&le; 50%</strong>; AMFI publishes half-yearly list.</td>
+        </tr>
+        <tr>
+          <td><strong>12. ELSS</strong></td>
+          <td>Minimum <strong>80%</strong> in equity under Equity Linked Savings Scheme, 2005 notified by Ministry of Finance.</td>
+          <td>Statutory <strong>3-year lock-in</strong>; Sec 80C benefit up to Rs. 1.5L (Old Regime).</td>
+        </tr>
+        <tr>
+          <td><strong>13. Flexi Cap Fund</strong></td>
+          <td>Minimum <strong>65%</strong> in equity dynamically across Large, Mid, and Small Cap stocks without fixed floors.</td>
+          <td>Differs from Multi Cap (no 25% floor per cap segment).</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><em>Note on Equity Residual Portion (Feb 2026 Update):</em> The residual portion of Equity schemes may be invested in debt &amp; money market instruments, gold &amp; silver instruments, and InvITs.</p>
+
+    <h3>2.4 All 17 Debt Scheme Sub-Categories, 7 Hybrid Schemes &amp; Life Cycle Funds</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 28%;">Debt / Hybrid / Life Cycle Category</th>
+          <th style="width: 72%;">Mandatory Duration / Credit / Allocation Specification (Feb 2026 Circular)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1–5. Money Market &amp; Short End</strong></td>
+          <td>(1) <strong>Overnight Fund:</strong> 1-day maturity securities. (2) <strong>Liquid Fund:</strong> Debt/MMI with maturity up to <strong>91 days</strong>. (3) <strong>Ultra Short Term:</strong> Macaulay duration <strong>3 to 6 months</strong>. (4) <strong>Ultra-Short to Short Term (Low Duration):</strong> Macaulay duration <strong>6 to 12 months</strong>. (5) <strong>Money Market Fund:</strong> Money market instruments with maturity up to <strong>1 year</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>6–10. Duration-Based Debt</strong></td>
+          <td>(6) <strong>Short Term:</strong> Macaulay duration <strong>1–3 years</strong>. (7) <strong>Medium Term:</strong> Macaulay duration <strong>3–4 years</strong> (1–4 yrs under anticipated adverse situation). (8) <strong>Medium to Long Term:</strong> Macaulay duration <strong>4–7 years</strong> (1–7 yrs under adverse situation). (9) <strong>Long Term:</strong> Macaulay duration <strong>&gt; 7 years</strong>. (10) <strong>Dynamic Bond:</strong> Investment across durations dynamically.</td>
+        </tr>
+        <tr>
+          <td><strong>11–17. Credit, Gilt &amp; Sectoral Debt</strong></td>
+          <td>(11) <strong>Corporate Bond Fund:</strong> Min <strong>80%</strong> in AA+ and above rated corporate bonds. (12) <strong>Credit Risk Fund:</strong> Min <strong>65%</strong> in AA and below rated corporate bonds (excludes AA+). (13) <strong>Banking &amp; PSU Fund:</strong> Min <strong>80%</strong> in debt of Banks, PSUs, PFIs, Municipal bonds. (14) <strong>Gilt Fund:</strong> Min <strong>80%</strong> in G-Secs across maturity. (15) <strong>Gilt Fund with 10-Yr Constant Duration:</strong> Min <strong>80%</strong> in G-Secs with Macaulay duration equal to <strong>10 years</strong>. (16) <strong>Floater Fund:</strong> Min <strong>65%</strong> in floating rate instruments. (17) <strong>Sectoral Debt Fund (NEW 2026):</strong> Min <strong>80%</strong> in debt instruments of a single sector (<strong>AA+ and above only</strong>) across 5 permitted sectors: Financial Services, Energy, Infrastructure, Housing, and Real Estate (max 50% overlap with other debt schemes).</td>
+        </tr>
+        <tr>
+          <td><strong>Hybrid Schemes (7 Types)</strong></td>
+          <td>(1) <strong>Conservative Hybrid:</strong> Debt 75–90%, Equity 10–25%. (2) <strong>Balanced Hybrid:</strong> Equity 40–60%, Debt 40–60% (No arbitrage permitted). (3) <strong>Aggressive Hybrid:</strong> Equity 65–80%, Debt 20–35% (AMC can offer either Balanced OR Aggressive Hybrid). (4) <strong>Dynamic Asset Allocation / Balanced Advantage:</strong> Dynamically managed equity/debt. (5) <strong>Multi Asset Allocation:</strong> At least <strong>3 asset classes</strong> with min <strong>10%</strong> in each (foreign securities not treated as separate asset class). (6) <strong>Arbitrage Fund:</strong> Min <strong>65%</strong> in equity/arbitrage; debt restricted to &lt;1 yr G-Secs &amp; repo. (7) <strong>Equity Savings:</strong> Min <strong>65%</strong> equity (incl. arbitrage), min <strong>10%</strong> debt, minimum net unhedged equity 15–40%.</td>
+        </tr>
+        <tr>
+          <td><strong>D. Life Cycle Funds (NEW 2026 Category)</strong></td>
+          <td>Open-ended target date maturity fund with a predetermined <strong>Glide Path</strong> across Equity, Debt, InvITs, ETCDs, Gold &amp; Silver ETFs (as maturity approaches, equity allocation decreases and debt increases). Tenure: <strong>5 to 30 years in multiples of 5 years</strong>; max <strong>6 active Life Cycle Funds</strong> per MF; name includes target year (e.g., <em>Life Cycle Fund 2055</em>). <strong>Graded Exit Load:</strong> <strong>3%</strong> (within 1 yr), <strong>2%</strong> (within 2 yrs), <strong>1%</strong> (within 3 yrs), Nil thereafter.</td>
+        </tr>
+        <tr>
+          <td><strong>E. Other Schemes (2 Types)</strong></td>
+          <td>(1) <strong>Index Funds / ETFs:</strong> Minimum <strong>95%</strong> in securities of the tracked index. (2) <strong>Fund of Funds (Overseas/Domestic):</strong> Minimum <strong>95%</strong> of total assets in the underlying fund(s).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2.5 Specialized &amp; Emerging Fund Categories &amp; AMFI Growth Milestones</h3>
+    <ul>
+      <li><strong>Target Maturity Funds (TMFs):</strong> Passive open-ended debt index funds or ETFs with a specified maturity date (tenure <strong>3 to 14 years</strong> / 2 to 14 years) investing in constituent bonds of a target maturity index.</li>
+      <li><strong>Specialized Investment Fund (SIF — New 2026 Update):</strong> Bridges the gap between traditional mutual funds and PMS, offering greater portfolio flexibility (including permitted long-short derivatives strategies). Requires a <strong>minimum investment of Rs. 10 Lakhs per investor across all SIF strategies at the PAN level within the same AMC</strong> (exception: mandatory investments by AMC designated employees).</li>
+      <li><strong>ESG Investing (6 Permitted Strategies):</strong> (1) Exclusion, (2) Integration, (3) Best-in-class &amp; Positive Screening, (4) Impact Investing, (5) Sustainable Objectives, and (6) Transition / Transition-related investments.</li>
+      <li><strong>Smart Beta, Factor &amp; Quant Funds:</strong> Factor/Smart Beta funds are rule-based passive/semi-active strategies targeting specific factors (<strong>Value, Size, Momentum, Low Volatility, Quality, Dividend Yield</strong>). Quant funds use mathematical/statistical models selected by fund managers with limited human intervention.</li>
+      <li><strong>Infrastructure Debt Funds (IDFs):</strong> Can be set up either as a <strong>Trust (regulated by SEBI)</strong> or as a <strong>Company/NBFC (regulated by RBI)</strong>; minimum investment Rs. 1 crore with Rs. 10 lakh minimum unit size.</li>
+      <li><strong>Industry Growth Data (AMFI March 2026 Update):</strong> Indian MF industry AUM grew over 6-fold from <strong>Rs. 12.33 lakh crore (March 2016) to Rs. 79.46 lakh crore (March 2026)</strong>. Monthly SIP inflows surged from <strong>Rs. 8,055 crore (March 2019) to Rs. 32,087 crore (March 2026)</strong>.</li>
+    </ul>
+  </section>
+
+  <section id="ch3">
+    <h2>Chapter 3: Legal Structure of Mutual Funds in India (Weightage: 8% &#183; 4 Questions)</h2>
+    <h3>3.1 Three-Tier Trust Structure under SEBI (Mutual Funds) Regulations, 2026</h3>
+    <figure>
+      <svg viewBox="0 0 760 210" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:8px;">
+        <rect x="20" y="20" width="160" height="70" rx="6" fill="#0f294a" />
+        <text x="100" y="48" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">SPONSOR(S)</text>
+        <text x="100" y="68" fill="#99f6e4" font-family="sans-serif" font-size="10" text-anchor="middle">Promoter (&ge;5 Yrs Exp)</text>
+
+        <line x1="180" y1="55" x2="225" y2="55" stroke="#0f294a" stroke-width="2" />
+        <polygon points="225,50 235,55 225,60" fill="#0f294a" />
+
+        <rect x="235" y="20" width="190" height="70" rx="6" fill="#0d9488" />
+        <text x="330" y="45" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">TRUST &amp; TRUSTEES</text>
+        <text x="330" y="63" fill="#ffffff" font-family="sans-serif" font-size="10" text-anchor="middle">Indian Trusts Act, 1882</text>
+        <text x="330" y="78" fill="#e2e8f0" font-family="sans-serif" font-size="10" text-anchor="middle">(&ge; 2/3rds Independent)</text>
+
+        <line x1="425" y1="55" x2="470" y2="55" stroke="#0f294a" stroke-width="2" />
+        <polygon points="470,50 480,55 470,60" fill="#0f294a" />
+
+        <rect x="480" y="20" width="260" height="70" rx="6" fill="#1e3a8a" />
+        <text x="610" y="45" fill="#ffffff" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="middle">ASSET MANAGEMENT CO. (AMC)</text>
+        <text x="610" y="63" fill="#bfdbfe" font-family="sans-serif" font-size="10" text-anchor="middle">Day-to-Day Investment Mgmt</text>
+        <text x="610" y="78" fill="#99f6e4" font-family="sans-serif" font-size="10" text-anchor="middle">Includes Mandatory UHPC (2026)</text>
+
+        <rect x="20" y="120" width="220" height="65" rx="6" fill="#ffffff" stroke="#0f294a" stroke-width="1.5" />
+        <text x="130" y="145" fill="#0f294a" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">UNITHOLDERS</text>
+        <text x="130" y="165" fill="#475569" font-family="sans-serif" font-size="10" text-anchor="middle">Beneficial Owners of the Trust</text>
+
+        <rect x="270" y="120" width="220" height="65" rx="6" fill="#ffffff" stroke="#0d9488" stroke-width="1.5" />
+        <text x="380" y="145" fill="#0f294a" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">CUSTODIAN</text>
+        <text x="380" y="165" fill="#475569" font-family="sans-serif" font-size="10" text-anchor="middle">Holds &amp; Safeguards Physical/Demat Assets</text>
+
+        <rect x="520" y="120" width="220" height="65" rx="6" fill="#ffffff" stroke="#1e3a8a" stroke-width="1.5" />
+        <text x="630" y="145" fill="#0f294a" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">RTA, AUDITORS &amp; KRAs</text>
+        <text x="630" y="165" fill="#475569" font-family="sans-serif" font-size="10" text-anchor="middle">Investor Records, Audit &amp; KYC</text>
+      </svg>
+      <figcaption>Figure 3.1: Institutional Architecture of an Indian Mutual Fund under SEBI (Mutual Funds) Regulations, 2026</figcaption>
+    </figure>
+
+    <ul>
+      <li><strong>Mutual Fund as a Trust:</strong> Governed by the <strong>SEBI (Mutual Funds) Regulations, 2026</strong> (which replaced the 1996 regulations) and established under the <strong>Indian Trusts Act, 1882</strong>. The Trust Deed is executed by the Sponsor in favour of the Trustees and registered under the <strong>Indian Registration Act, 1908</strong>. <strong>Unitholders are the beneficiaries</strong> of the trust.</li>
+      <li><strong>Sponsor:</strong> Promoter who establishes the mutual fund (akin to a company promoter). Eligibility: minimum <strong>5 years of experience in financial services</strong>, positive net worth in all immediately preceding 5 years, and contributes at least <strong>40% of the net worth of the AMC</strong> (any person holding 40% or more of AMC net worth is deemed a Sponsor).</li>
+      <li><strong>Trustees (Regulation 11 of SEBI MF Regulations, 2026):</strong> Hold scheme property in trust for the benefit of unitholders. Can be a Board of Trustees (minimum 4 individuals) or a Trustee Company. At least <strong>two-thirds (2/3rds) of the trustees/directors must be independent</strong> and not associated with the Sponsor. Prior SEBI approval is mandatory before appointing any trustee.</li>
+      <li><strong>Asset Management Company (AMC):</strong> Appointed by Trustees via an Investment Management Agreement (IMA) to handle <strong>day-to-day management</strong> of the mutual fund. At least <strong>50% of AMC directors must be independent</strong>. An AMC of one mutual fund cannot be an AMC or trustee of another mutual fund. Appointment of an AMC can be terminated by a <strong>majority of Trustees OR by 75% of the unitholders</strong> of the scheme.</li>
+      <li><strong>Unit Holder Protection Committee (UHPC — 2026 Mandate):</strong> Under SEBI (Mutual Funds) Regulations, 2026, every AMC is mandated to constitute a <strong>Unit Holder Protection Committee (UHPC)</strong> responsible for reviewing investor grievances, unclaimed amounts, regulatory compliance, and investor awareness initiatives, reporting directly to the AMC Board and Trustees.</li>
+      <li><strong>Custodian:</strong> Registered with SEBI under the <em>SEBI (Custodian) Regulations, 1996</em>; appointed by Trustees to hold and safeguard scheme securities, settle delivery/receipt of trades, and track corporate actions (dividends, bonuses, rights). Independence rule: A custodian in which the Sponsor or its associates hold <strong>50% or more voting rights or directors cannot act as custodian</strong> unless stringent net-worth and independent-director conditions are met.</li>
+    </ul>
+
+    <h3>3.2 Other Key Constituents, AMFI &amp; Cyber Security (CSCRF / FIRE 2026 Updates)</h3>
+    <ul>
+      <li><strong>Registrar and Transfer Agency (RTA):</strong> Registered with SEBI; maintains investor records, processes purchases, redemptions, switches, and issues account statements (e.g., CAMS, KFintech). <em>Exam Trap:</em> An AMC can either appoint an independent RTA OR choose to carry out the RTA function <strong>in-house</strong> (hence the statement "RTA function cannot be retained in-house" is <strong>FALSE</strong>).</li>
+      <li><strong>Fund Accountant:</strong> Calculates daily NAV by accounting for assets, liabilities, and expenses. Unlike Custodians and RTAs, a Fund Accountant <strong>does NOT require separate registration with SEBI</strong> (can be done in-house or outsourced).</li>
+      <li><strong>Auditors:</strong> <strong>Scheme Auditor</strong> is appointed by the Trustees; <strong>AMC Auditor</strong> is appointed by the AMC. Both auditors <strong>must be different</strong> entities to avoid conflict of interest.</li>
+      <li><strong>Valuation Agencies &amp; Credit Rating Agencies:</strong> AMFI has appointed two valuation agencies—<strong>CRISIL Ltd. and ICRA Ltd.</strong>—to provide security-level valuation prices for debt instruments.</li>
+      <li><strong>Association of Mutual Funds in India (AMFI):</strong> Incorporated on August 22, 1995 as a non-profit association of all SEBI-registered AMCs. <strong>AMFI is NEITHER a regulatory body NOR a Self-Regulatory Organization (SRO)</strong>; it is an industry association that issues ARN numbers, enforces the AMFI Code of Ethics (ACE) and AGNI, and promotes investor awareness.</li>
+      <li><strong>Cyber Security &amp; Cyber Resilience Framework (CSCRF — May &amp; August 2026 Updates):</strong>
+        <ul>
+          <li>Built on 5 core cyber resiliency goals from CERT-In's Cyber Crisis Management Plan (CCMP): <strong>Anticipate, Withstand, Contain, Recover, and Evolve</strong>.</li>
+          <li>SEBI established the AI task force <strong>cyber-suraksha.ai</strong> (SEBI Circular dated May 5, 2026) to strengthen AI-driven cyber resilience in securities markets.</li>
+          <li>Under SEBI Circular dated <strong>August 24, 2026</strong> aligned with the Financial Stability Board's (FSB) <strong>Format for Incident Reporting Exchange (FIRE)</strong> framework, regulated entities must report cyber incidents to <code>mkt_incidents@sebi.gov.in</code> within <strong>6 hours</strong> of detection and submit the detailed report on the SEBI Incident Reporting Portal within <strong>24 hours</strong>.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ch4">
+    <h2>Chapter 4: Mutual Fund Products for the New Cadre of Distributors (Weightage: 6% &#183; 3 Questions)</h2>
+    <h3>4.1 Eligibility &amp; Permitted Simple and Performing Schemes</h3>
+    <p>Introduced via SEBI Circular <strong>CIR/IMD/DF/21/2012 dated September 13, 2012</strong> to expand mutual fund penetration into semi-urban and rural India, the <strong>New Cadre of Distributors</strong> obtains an ARN after passing <strong>NISM-Series-V-B: Mutual Fund Foundation Certification Examination</strong> (with simplified KYD and exemption from biometric verification).</p>
+    <ul>
+      <li><strong>Eligible Categories of Individuals:</strong>
+        <ol>
+          <li>Postal agents,</li>
+          <li>Retired government and semi-government officials (<strong>Class III and above</strong>) with at least <strong>10 years of service</strong>,</li>
+          <li>Retired teachers with at least <strong>10 years of service</strong>,</li>
+          <li>Retired bank officers with at least <strong>10 years of service</strong>, and</li>
+          <li>Bank correspondents appointed by scheduled commercial banks.</li>
+        </ol>
+      </li>
+      <li><strong>Permitted "Simple and Performing" Mutual Fund Schemes (5 Allowed Categories):</strong>
+        <ol>
+          <li><strong>Liquid Schemes and Money Market Schemes</strong> (lowest interest rate and credit risk among debt funds),</li>
+          <li><strong>Index Schemes</strong> (passively tracking a market index with at least 95% allocation; zero fund manager selection risk),</li>
+          <li><strong>Diversified Equity Schemes</strong> (having a track record of <strong>returns equal to or better than their scheme benchmark in each of the immediately preceding 3 years</strong>),</li>
+          <li><strong>Retirement Benefit Schemes / Life Cycle Funds</strong> (open-ended target date glide-path funds with 5–30 year tenures and graded exit loads of 3%/2%/1%), and</li>
+          <li><strong>Fixed Maturity Plans (FMPs) and Target Maturity Funds (TMFs)</strong> (close-ended debt FMPs with locked-in yields and passive open-ended TMFs with <strong>3 to 14 years</strong> maturity).</li>
+        </ol>
+      </li>
+      <li><strong>Excluded Schemes for New Cadre:</strong> Complex or high-risk schemes such as Credit Risk Funds, Dynamic Bond Funds, Gilt Funds, Arbitrage Funds, Sectoral/Thematic Equity Funds, Focused Funds, and Specialized Investment Funds (SIFs) are <strong>NOT permitted</strong> to be distributed under NISM-Series-V-B.</li>
+    </ul>
+  </section>
+
+  <section id="ch5">
+    <h2>Chapter 5: Scheme Related Information (Weightage: 12% &#183; 6 Questions)</h2>
+    <h3>5.1 Mandatory Legal Documents: SID, SAI, KIM &amp; Addendum</h3>
+    <p>Mutual fund documents are prepared strictly in the format prescribed by <strong>SEBI</strong>. SEBI does not "approve" or certify the merits of any scheme; draft documents are <strong>"vetted"</strong> by SEBI for disclosure compliance. Final documents must be hosted on the AMFI website at least <strong>2 days before the NFO opens</strong>.</p>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 18%;">Document</th>
+          <th style="width: 46%;">Core Contents &amp; Investor Utility</th>
+          <th style="width: 36%;">Mandatory Updation Timeline</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>SID (Scheme Information Document)</strong></td>
+          <td>Scheme-specific details: investment objective, asset allocation, investment strategies, benchmark, risk factors, fund manager, load structure, TER, and fundamental attributes.</td>
+          <td>Draft available on SEBI website for 21 working days. Updated <strong>half-yearly within 1 month</strong> from the end of September and March.</td>
+        </tr>
+        <tr>
+          <td><strong>SAI (Statement of Additional Information)</strong></td>
+          <td>Statutory fund-level details: Sponsors, Trustees, AMC directors, Custodian, RTA, condensed financial information (for schemes launched in last 3 FYs), investor rights, and legal disclosures.</td>
+          <td>Updated within <strong>3 months</strong> from the end of every financial year (i.e., by June 30); material changes updated via addendum within 7 days.</td>
+        </tr>
+        <tr>
+          <td><strong>KIM (Key Information Memorandum)</strong></td>
+          <td>Concise summary of SID and SAI; <strong>mandatorily attached to every application form</strong> so investors review key scheme parameters before signing.</td>
+          <td>Updated <strong>at least once a half-year within 1 month</strong> from the end of September and March.</td>
+        </tr>
+        <tr>
+          <td><strong>Addendum</strong></td>
+          <td>Official notice of interim changes (e.g., change of fund manager, branch address, exit load, or TER) which automatically becomes an integral part of SID/SAI/KIM.</td>
+          <td>Issued as and when changes occur; hosted on AMC website and published in newspapers where mandated.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>5.2 Fundamental Attributes &amp; Mandatory Disclosures (April 2026 TER Update)</h3>
+    <ul>
+      <li><strong>Change in Fundamental Attributes (Regulation 18(15A)):</strong> Fundamental attributes include type of scheme (open/close-ended), investment objective, asset allocation pattern, and terms of issue (liquidity/fees). To change any fundamental attribute, the AMC must obtain prior Trustee and SEBI approval, publish an advertisement in 1 English national daily and 1 regional newspaper, and give existing unitholders an <strong>exit window of not less than 30 days at prevailing NAV without any exit load</strong>.</li>
+      <li><strong>Total Expense Ratio (TER) Formula (Effective April 1, 2026):</strong> Under the revised SEBI framework effective April 1, 2026, Base Expense Ratio (BER) is separated from brokerage, transaction costs, and statutory levies:
+        <p style="margin:6px 0;"><span class="math">Total Expense Ratio (TER) = Base Expense Ratio (BER) + Brokerage Cost + Transaction Cost + Statutory Levies (including GST, STT, Stamp Duty)</span></p>
+        AMCs must disclose scheme-wise TER (Direct and Regular plans separately) on a <strong>daily basis</strong> on the AMC and AMFI websites in <strong>Format No. 7E</strong>. Any single expenditure item exceeding <strong>10% of total scheme expenses</strong> must be disclosed separately in the annual report.</li>
+      <li><strong>Product Labeling &amp; 6-Level Risk-o-meter:</strong> Depicts the risk level of both the <strong>Scheme AND its Benchmark</strong> side-by-side across 6 levels: (1) <strong>Low</strong>, (2) <strong>Low to Moderate</strong>, (3) <strong>Moderate</strong>, (4) <strong>Moderately High</strong>, (5) <strong>High</strong>, and (6) <strong>Very High</strong>. Evaluated monthly and disclosed by the 10th of the succeeding month (along with annual history of risk-o-meter changes by March 31).</li>
+      <li><strong>Mandatory Disclosure Deadlines:</strong>
+        <ul>
+          <li><strong>Daily NAV:</strong> Every business day on AMC &amp; AMFI websites (by 11:00 PM; 10:00 AM next business day for FoFs). <strong>Liquid and Overnight Funds</strong> must compute and declare NAV for <strong>all calendar days including Sundays and non-business holidays</strong>. Close-ended schemes declare NAV at least once a week.</li>
+          <li><strong>Portfolio Disclosure:</strong> <strong>Monthly within 10 days</strong> of the close of each month and half-year for all schemes. For <strong>Debt Schemes</strong>, portfolio disclosure is mandatory on a <strong>fortnightly basis within 5 days</strong> of every fortnight (15th and month-end), including security-wise yield.</li>
+          <li><strong>Unaudited Financial Results:</strong> Within <strong>1 month</strong> from the close of each half-year (March 31 and September 30).</li>
+          <li><strong>Scheme Annual Report:</strong> Within <strong>4 months</strong> from the close of the financial year (i.e., on or before July 31).</li>
+          <li><strong>Non-Mandatory Disclosure:</strong> The <strong>Monthly Fund Factsheet</strong> is a voluntary marketing/informational publication (not a statutory document under SEBI regulations), though once published it must adhere to the SEBI Advertisement Code.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ch6">
+    <h2>Chapter 6: Fund Distribution and Channel Management Practices (Weightage: 10% &#183; 5 Questions)</h2>
+    <h3>6.1 Distribution Channels, Digital Aggregators &amp; ARN Prerequisites</h3>
+    <ul>
+      <li><strong>Channel Types:</strong> Individual Distributors vs. Institutional Distributors (Banks, NBFCs, National/Regional Distributors, and SEBI-registered <strong>Execution Only Platforms (EOPs)</strong> introduced via June 13, 2023 circular).</li>
+      <li><strong>Stock Exchange &amp; Industry Aggregator Platforms:</strong>
+        <ul>
+          <li><strong>Stock Exchange Platforms:</strong> <strong>BSE StAR MF</strong> and <strong>NSE NMF-II</strong> (non-demat as well as demat order routing).</li>
+          <li><strong>MF Utilities (MFU):</strong> Industry-shared transaction aggregation platform promoted by AMCs that assigns a single <strong>Common Account Number (CAN)</strong> to consolidate all mutual fund holdings of an investor and enables multi-AMC investments using a single <strong>Common Transaction Form (CTF)</strong> and single payment.</li>
+          <li><strong>MFCentral:</strong> Unified investor services and transaction portal jointly launched by the two Qualified RTAs—<strong>CAMS and KFintech</strong>—pursuant to SEBI directive.</li>
+        </ul>
+      </li>
+      <li><strong>Mandatory Prerequisites to Become a Distributor:</strong> (1) Minimum age of <strong>18 years</strong>, (2) Passing <strong>NISM-Series-V-A</strong> (or <strong>NISM-Series-V-B</strong> for the New Cadre), (3) Completing <strong>KYD (Know Your Distributor)</strong> with PAN + address proof (biometric exempted for new cadre), and (4) Obtaining <strong>AMFI Registration Number (ARN)</strong> (valid for 3 years; renewed via CPE or re-exam; individuals aged 50+ or with 10+ years experience as of May 31, 2010 are eligible for CPE). Corporate distributor sales employees must obtain an <strong>Employee Unique Identification Number (EUIN)</strong>.</li>
+    </ul>
+
+    <h3>6.2 Distributor Revenue, Full Trail Model &amp; 2025–2026 Commission Reforms</h3>
+    <div class="callout">
+      <div class="callout-title">Critical September 2026 Regulatory Updates on Commissions</div>
+      <ul>
+        <li><strong>Abolition of Upfront Commission &amp; Transaction Charges (SEBI Circular Aug 2025 &amp; Master Circular 20 March 2026):</strong>Mutual funds follow a strict <strong>100% Full Trail Commission Model</strong> (Regulation 66(6) of SEBI MF Regulations, 2026). Upfront commissions and investor-borne transaction charges (which were earlier Rs. 100 / Rs. 150 on subscriptions &ge; Rs. 10,000) have been <strong>completely discontinued</strong>.</li>
+        <li><strong>Additional Commission for B-30 &amp; Women Investors (Regulation 52(4A) &amp; SEBI Circular Nov 27, 2025):</strong> Paid out of the 2 bps investor education/inclusion accrual for inflows from: (a) <strong>New individual investors (new PAN) from B-30 cities</strong>, and (b) <strong>New women individual investors (new PAN) from BOTH Top-30 and B-30 cities</strong> (no dual incentive if a woman investor is from B-30). Incentive rate: <strong>1% of the first lump sum application (or first-year SIP investments), capped at a maximum of Rs. 2,000</strong>, subject to a minimum <strong>1-year holding period</strong> (clawed back if redeemed within 1 year).</li>
+        <li><strong>Two-Tranche GST Commission Payout (AMFI Best Practices Circular dated 12 March 2026):</strong> Since BER excludes statutory levies, AMCs pay trail commission in two tranches: (1) Base commission (exclusive of GST) to all distributors, and (2) GST component separately only to GST-registered distributors (aggregate annual turnover &gt; Rs. 20 Lakhs) upon submission of a valid GST invoice.</li>
+      </ul>
+    </div>
+
+    <ul>
+      <li><strong>Daily Trail Commission Formula:</strong> Trail commission is calculated daily on the current market value (AUM) of the investor's holdings and paid monthly:
+        <p style="margin:6px 0;"><span class="math">Daily Trail Commission = (Investor AUM on that Day &times; Annual Trail Commission Rate) &divide; 365</span></p>
+        For example, on an AUM of Rs. 10,00,000 at a trail rate of 1.00% p.a., daily trail = <span class="math">(10,00,000 &times; 0.01) &divide; 365 = Rs. 27.40 per day</span>. No commission is payable on a distributor's <strong>self-business (own investments)</strong>.</li>
+      <li><strong>Change of Distributor Code:</strong> If an investor switches their ARN code from one distributor to another without changing the scheme/plan, a mandatory <strong>12-month cooling-off period</strong> applies during which <strong>neither the old nor the new distributor receives trail commission</strong> (exception: voluntary cessation of business or death of the original distributor).</li>
+      <li><strong>Commission Disclosure &amp; AMC Due Diligence Mandate:</strong> Applies to large distributors meeting <strong>any 1 of 4 thresholds</strong>: (i) Presence in <strong>&gt; 20 locations</strong>, (ii) AUM raised <strong>&gt; Rs. 100 Crore</strong> across the industry (excluding institutional AUM), (iii) Commission received <strong>&gt; Rs. 1 Crore p.a.</strong> across the industry, OR (iv) Commission received <strong>&gt; Rs. 50 Lakhs p.a.</strong> from a single mutual fund.</li>
+      <li><strong>Nomination for Deceased Individual MFDs:</strong> A legal heir/nominee does <strong>not</strong> need an ARN to continue receiving ongoing trail commission on existing AUM mobilized by the deceased MFD before demise. However, to transfer the clientele/AUM into the nominee's own name and service them, the nominee must hold a valid <strong>ARN + KYD</strong> and issue a <strong>15-day notice</strong> to investors.</li>
+    </ul>
+  </section>
+
+  <section id="ch7">
+    <h2>Chapter 7: Performance of Mutual Funds (Weightage: 12% &#183; 6 Questions)</h2>
+    <h3>7.1 Return Calculation Formulas &amp; Worked Numericals</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 24%;">Return Metric</th>
+          <th style="width: 38%;">Exact Mathematical Formula</th>
+          <th style="width: 38%;">When Used &amp; Worked Numerical Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Simple (Absolute) Return</strong></td>
+          <td><span class="math">[(Ending NAV &minus; Beginning NAV) &divide; Beginning NAV] &times; 100</span></td>
+          <td>Used for holding periods <strong>&le; 1 year</strong>.<br><em>Ex:</em> NAV grows from Rs. 20 to Rs. 23 in 6 months &rarr; <span class="math">[(23&minus;20)/20]&times;100 = 15.00%</span>.</td>
+        </tr>
+        <tr>
+          <td><strong>2. Simple Annualized Return</strong></td>
+          <td><span class="math">Simple Return &times; (365 &divide; Holding Days)</span> or <span class="math">&times; (12 &divide; Months)</span></td>
+          <td>Used for Money Market/Liquid/Overnight funds (&lt;1 yr).<br><em>Ex:</em> 1.5% return in 3 months &rarr; <span class="math">1.5% &times; (12/3) = 6.00% p.a.</span></td>
+        </tr>
+        <tr>
+          <td><strong>3. Compounded Annual Growth Rate (CAGR)</strong></td>
+          <td><span class="math">[(Ending Value &divide; Beginning Value)<sup>(1 &divide; n)</sup> &minus; 1] &times; 100</span></td>
+          <td>Mandatory for holding periods <strong>&gt; 1 year</strong>.<br><em>Ex:</em> Rs. 100 grows to Rs. 133.10 in 3 years &rarr; <span class="math">(1.331)<sup>1/3</sup> &minus; 1 = 10.00% p.a.</span></td>
+        </tr>
+        <tr>
+          <td><strong>4. Redemption Price with Exit Load</strong></td>
+          <td><span class="math">Redemption Price = Applicable NAV &times; (1 &minus; Exit Load %)</span></td>
+          <td><em>Ex:</em> Applicable NAV = Rs. 50, Exit Load = 1% &rarr; <span class="math">50 &times; (1 &minus; 0.01) = Rs. 49.50</span> per unit.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>7.2 Risk Drivers in Equity, Debt &amp; Hybrid Funds</h3>
+    <ul>
+      <li><strong>Equity Portfolio Risks:</strong>
+        <ul>
+          <li><strong>Market / Systematic Risk:</strong> Economy-wide risk that <strong>cannot be diversified away</strong>; measured by <strong>Beta (&beta;)</strong>. Market Beta = <strong>1.0</strong>. A fund with <span class="math">&beta; &gt; 1</span> is more volatile than the market; <span class="math">&beta; &lt; 1</span> is less volatile.</li>
+          <li><strong>Company-Specific / Unsystematic Risk:</strong> Business/financial risk unique to a company/sector; <strong>reduced through portfolio diversification</strong>.</li>
+          <li><strong>Liquidity Risk:</strong> Difficulty in buying or selling securities without severe price impact (highest in Small Cap &amp; Mid Cap stocks).</li>
+        </ul>
+      </li>
+      <li><strong>Debt Portfolio Risks:</strong>
+        <ul>
+          <li><strong>Interest Rate Risk:</strong> Bond prices and market interest rates move in <strong>opposite (inverse) directions</strong>. When interest rates <strong>rise</strong>, prices of existing fixed-income bonds <strong>fall</strong> (and vice versa). Sensitivity to interest rate changes is measured by <strong>Modified Duration / Macaulay Duration</strong> (longer maturity/duration = higher interest rate risk).</li>
+          <li><strong>Reinvestment Risk:</strong> Risk that interim coupon inflows or maturing principal will be reinvested at lower prevailing interest rates when market rates fall.</li>
+          <li><strong>Credit (Default) Risk &amp; Rating Migration Risk:</strong> Risk of delay/default in principal or interest payment by issuer, or downgrade in credit rating (e.g., AAA to AA), which widens credit spreads and causes bond prices to drop.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>7.3 Risk-Adjusted Returns, Mandatory Information Ratio &amp; Benchmarks</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 24%;">Metric / Concept</th>
+          <th style="width: 36%;">Formula</th>
+          <th style="width: 40%;">Regulatory &amp; Analytical Significance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Sharpe Ratio</strong></td>
+          <td><span class="math">(R<sub>s</sub> &minus; R<sub>f</sub>) &divide; Standard Deviation (&sigma;)</span></td>
+          <td>Measures excess return over Risk-Free Rate (<span class="math">R<sub>f</sub></span>, 91-day T-bill) per unit of <strong>Total Risk (&sigma;)</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>Treynor Ratio</strong></td>
+          <td><span class="math">(R<sub>s</sub> &minus; R<sub>f</sub>) &divide; Beta (&beta;)</span></td>
+          <td>Measures excess return per unit of <strong>Systematic Risk (&beta;)</strong>; ideal for well-diversified equity funds.</td>
+        </tr>
+        <tr>
+          <td><strong>Information Ratio (IR — 2025/2026 Mandate)</strong></td>
+          <td><span class="math">(R<sub>p</sub> &minus; R<sub>b</sub>) &divide; Std. Dev. of Excess Return (Tracking Error)</span></td>
+          <td>Measures consistency of active outperformance over Tier-1 Benchmark (<span class="math">R<sub>b</sub></span>). <strong>SEBI Circular Jan 17, 2025 mandates daily disclosure of IR for all equity-oriented schemes on AMC &amp; AMFI websites (only mandatory risk-adjusted ratio).</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Tracking Error</strong></td>
+          <td>Annualized Std. Dev. of <span class="math">(R<sub>p</sub> &minus; R<sub>b</sub>)</span></td>
+          <td>Measures how closely a passive Index Fund/ETF replicates its index; <strong>lower tracking error is better</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>TRI &amp; Two-Tier Benchmark</strong></td>
+          <td>Total Return Index (Capital Gains + Reinvested Dividends)</td>
+          <td>All MF benchmarks use <strong>TRI</strong> (w.e.f. Feb 1, 2018). <strong>Past returns of a scheme can NEVER be criteria for selecting its benchmark.</strong> Debt &amp; Equity funds use a 2-Tier structure (Tier-1 broad category + Tier-2 strategy/style).</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="ch8">
+    <h2>Chapter 8: Taxation (Weightage: 6% &#183; 3 Questions)</h2>
+    <h3>8.1 Pass-Through Tax Status &amp; Capital Gains Tax Matrix (Effective July 23, 2024)</h3>
+    <p>Under <strong>Section 10(23D) of the Income Tax Act, 1961</strong>, all income earned by a SEBI-registered Mutual Fund trust (dividends, interest, or capital gains) is <strong>100% exempt from income tax</strong> at the mutual fund level. Tax is levied only in the hands of the investor upon receiving IDCW or redeeming units.</p>
+    <p>Following the <strong>Union Budget 2024–25 (effective July 23, 2024)</strong>, indexation benefits on mutual funds were removed and holding periods were rationalized to only two thresholds: <strong>12 months</strong> and <strong>24 months</strong>:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 30%;">Mutual Fund Category</th>
+          <th style="width: 22%;">LTCG Holding Threshold</th>
+          <th style="width: 24%;">Short-Term Capital Gains (STCG)</th>
+          <th style="width: 24%;">Long-Term Capital Gains (LTCG)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Equity-Oriented MFs</strong><br>(&ge; 65% in domestic equity)</td>
+          <td><strong>&gt; 12 Months</strong></td>
+          <td><strong>20%</strong> (+ surcharge &amp; 4% cess)</td>
+          <td><strong>12.50%</strong> on gains exceeding <strong>Rs. 1.25 Lakh / FY</strong> (without indexation; Grandfathered to Jan 31, 2018)</td>
+        </tr>
+        <tr>
+          <td><strong>2. Equity ETFs &amp; Gold ETFs</strong><br>(Listed on Stock Exchanges)</td>
+          <td><strong>&gt; 12 Months</strong></td>
+          <td><strong>Marginal Slab Rate (MSR)</strong> / 20% for Equity ETF</td>
+          <td><strong>12.50%</strong> (after 12 months, without indexation)</td>
+        </tr>
+        <tr>
+          <td><strong>3. Hybrid MFs (&gt;35% to &lt;65% Domestic Equity), FoFs &amp; International Funds</strong></td>
+          <td><strong>&gt; 24 Months</strong></td>
+          <td><strong>Marginal Slab Rate (MSR)</strong></td>
+          <td><strong>12.50%</strong> (after 24 months, without indexation)</td>
+        </tr>
+        <tr>
+          <td><strong>4. Specified Debt-Oriented MFs &amp; Debt ETFs</strong><br>(&gt; 65% in Debt &amp; Money Market)</td>
+          <td><strong>Deemed Short-Term (Sec 50AA)</strong></td>
+          <td><strong>Marginal Slab Rate (MSR)</strong></td>
+          <td><strong>Marginal Slab Rate (MSR)</strong> irrespective of holding period</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>8.2 IDCW TDS, STT, Stamp Duty, Capital Loss Set-Off &amp; Section 80C</h3>
+    <ul>
+      <li><strong>Taxation of IDCW (Dividends):</strong> Dividend Distribution Tax (DDT) was abolished in February 2020. IDCW is taxed in the hands of the investor at their applicable <strong>income tax slab rate</strong>. For resident investors, the AMC deducts <strong>TDS @ 10% under Section 194K if aggregate IDCW paid exceeds Rs. 10,000 in a financial year</strong>. There is <strong>NO TDS on capital gains for resident investors</strong> (TDS applies on both IDCW and capital gains for NRIs, subject to DTAA relief).</li>
+      <li><strong>Securities Transaction Tax (STT):</strong> Applicable <strong>ONLY on sale/redemption/switch-out of Equity-Oriented Mutual Fund units</strong> (STT is <strong>NIL on purchase</strong> of any mutual fund and <strong>NIL on Debt/Liquid/Overnight funds</strong>):
+        <ul>
+          <li>Sale/Redemption of equity-oriented units to the Mutual Fund (or delivery sale on exchange): <strong>0.001%</strong> paid by seller.</li>
+          <li>Non-delivery (intraday) sale of ETF/units on stock exchange: <strong>0.025%</strong> paid by seller.</li>
+        </ul>
+      </li>
+      <li><strong>Stamp Duty (Effective July 1, 2020):</strong> Levied at <strong>0.005% on all unit issuances/purchases</strong> (lump sum, SIP, STP-in, switch-in, and IDCW reinvestment — reducing the net amount allotted by 0.005%) and <strong>0.015% on transfer of units in demat mode</strong>. No stamp duty on redemptions.</li>
+      <li><strong>Set-off &amp; Carry Forward of Capital Losses:</strong> Capital losses <strong>cannot</strong> be set off against salary, business, or house property income.
+        <ul>
+          <li><strong>Short-Term Capital Loss (STCL)</strong> can be set off against <strong>both STCG and LTCG</strong>.</li>
+          <li><strong>Long-Term Capital Loss (LTCL)</strong> can be set off <strong>ONLY against LTCG</strong>.</li>
+          <li>Unabsorbed capital losses can be carried forward for up to <strong>8 assessment years</strong>.</li>
+        </ul>
+      </li>
+      <li><strong>Section 80C (ELSS):</strong> Investment in ELSS qualifies for tax deduction up to <strong>Rs. 1,50,000 per FY</strong> for individuals and HUFs <strong>ONLY under the Old Tax Regime</strong> (not available under the New Tax Regime). Mandatory <strong>3-year lock-in period</strong> from the date of unit allotment.</li>
+    </ul>
+  </section>
+
+  <section id="ch9">
+    <h2>Chapter 9: Investor Services (Weightage: 20% &#183; 10 Questions — Highest Weightage)</h2>
+    <h3>9.1 NFO Cycle, Direct vs. Regular Plans &amp; Investor Eligibility</h3>
+    <ul>
+      <li><strong>New Fund Offer (NFO) Timelines:</strong> An NFO (other than ELSS) can remain open for a maximum of <strong>15 days</strong>. NFO offer price is Rs. 10 per unit. Unit allotment and dispatch of Statement of Account (SOA) must happen within <strong>5 business days</strong> of NFO closure (<strong>2 working days</strong> for credit to Demat account); refunds for rejected applications within 5 business days (failing which the AMC pays <strong>15% p.a. interest</strong>).</li>
+      <li><strong>Direct Plan vs. Regular Plan:</strong> Direct Plan is for investors investing directly without a distributor; it has a <strong>lower TER</strong> (zero distribution commission) and consequently a <strong>separate, higher NAV</strong> than the Regular Plan of the same scheme.</li>
+      <li><strong>Eligible Investors &amp; Documentation Rules:</strong>
+        <ul>
+          <li><strong>Individuals:</strong> Singly or jointly (up to a maximum of <strong>3 joint holders</strong>). Mode of operation: Single, Joint, or Anyone or Survivor.</li>
+          <li><strong>Minors (Sole Holder Rule):</strong> An investment in the name of a minor must be as a <strong>sole holder represented by a natural/court-appointed guardian</strong> (no joint holding with a minor, and no nomination permitted in a minor's folio). Payment can come from the minor's bank account or joint account with guardian. <strong>Both the Guardian's KYC and Minor's proof of date of birth/relationship are required</strong> (Sample Q4 stresses Guardian's KYC). Upon attaining majority (18 years), the folio is frozen for debits until the <strong>Minor Attaining Majority (MAM)</strong> form, PAN, and KYC of the major are updated.</li>
+          <li><strong>Hindu Undivided Family (HUF):</strong> Invests through its <strong>Karta</strong> in the name of the HUF (with HUF PAN &amp; bank account).</li>
+          <li><strong>NRIs, PIOs &amp; OCIs:</strong> Fully eligible (many AMCs restrict US/Canada residents due to FATCA compliance costs). Repatriable investments must come from <strong>NRE or FCNR</strong> accounts; Non-repatriable investments from <strong>NRO</strong> accounts.</li>
+          <li><strong>Non-Individual / Institutional Investors &amp; UBO Norms:</strong> Require PAN, KYC, MoA/AoA or Trust Deed, Board Resolution, Authorised Signatory List, and <strong>Ultimate Beneficial Owner (UBO)</strong> declaration. UBO threshold: holding <strong>&gt; 25%</strong> of shares/capital/profits in a <strong>Company</strong>, or <strong>&gt; 15%</strong> in a <strong>Partnership Firm, Unincorporated Association, or Trust</strong> (Listed companies and their subsidiaries are exempt).</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>9.2 Cut-Off Timings, Applicable NAV &amp; Overnight 7:00 PM Online Rule</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 26%;">Transaction Type &amp; Scheme Category</th>
+          <th style="width: 20%;">Cut-Off Time</th>
+          <th style="width: 54%;">Applicable NAV Rule (Realization of Funds + Application Receipt)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Purchase &amp; Switch-In:</strong><br>All Equity, Debt &amp; Hybrid (Except Liquid &amp; Overnight)</td>
+          <td><strong>3:00 PM</strong></td>
+          <td><strong>Closing NAV of the day on which funds are available for utilization (realized)</strong> in the scheme's bank account before 3:00 PM (regardless of investment amount).</td>
+        </tr>
+        <tr>
+          <td><strong>Purchase &amp; Switch-In:</strong><br>Liquid &amp; Overnight Funds</td>
+          <td><strong>1:30 PM</strong></td>
+          <td>If application received AND funds realized before 1:30 PM &rarr; <strong>Closing NAV of the day immediately preceding the day of application (Historic NAV)</strong>. If after 1:30 PM &rarr; Closing NAV of day immediately preceding next business day.</td>
+        </tr>
+        <tr>
+          <td><strong>Redemption &amp; Switch-Out:</strong><br>All Equity, Debt &amp; Hybrid (Except Liquid &amp; Overnight)</td>
+          <td><strong>3:00 PM</strong></td>
+          <td>If valid application received up to 3:00 PM &rarr; <strong>Same day's closing NAV</strong>. If received after 3:00 PM &rarr; <strong>Next business day's closing NAV</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>Redemption &amp; Switch-Out:</strong><br>Liquid Funds</td>
+          <td><strong>3:00 PM</strong></td>
+          <td>If received up to 3:00 PM &rarr; <strong>Closing NAV of the day immediately preceding the next business day</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>Redemption &amp; Switch-Out:</strong><br>Overnight Funds (<strong>June 1, 2025 Update</strong>)</td>
+          <td><strong>3:00 PM (Physical)<br>7:00 PM (Online)</strong></td>
+          <td><strong>SEBI Update w.e.f. June 1, 2025:</strong> Cut-off is 3:00 PM for physical applications, and extended to <strong>7:00 PM for online redemption applications</strong> in Overnight schemes!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>9.3 Payment Modes, Instant Access Facility (IAF), KYC &amp; 2026 Investor Service Reforms</h3>
+    <ul>
+      <li><strong>Permitted Payment Modes &amp; Rs. 50,000 Cash/E-Wallet Limit:</strong> Net banking, NEFT, RTGS, IMPS, UPI, NACH, One-Time Mandate (OTM), ASBA (for NFOs), AEPS, NUUP (<code>*99#</code> across 11 languages), and Debit Cards (<strong>Credit Cards are strictly prohibited</strong>).
+        <ul>
+          <li><strong>Cash &amp; E-Wallet Umbrella Cap:</strong> Maximum <strong>Rs. 50,000 per investor, per mutual fund, per financial year</strong> (combined limit across cash and e-wallet). Cash investments are permitted only for resident individuals, sole proprietorships, and minors without PAN/taxpayer status via physical deposit slip at designated banks, but <strong>all redemptions and IDCW payouts must be credited strictly to the investor's bank account</strong> (never paid in cash).</li>
+          <li><strong>Third-Party Payments Prohibited (with 3 Exceptions):</strong> Payments must come from the first holder's bank account, except: (1) Payment by parents/grandparents/related persons on behalf of a minor up to <strong>Rs. 50,000</strong> per transaction/SIP, (2) Employer making payroll deductions for employees or Custodian paying on behalf of FPIs, and (3) AMC transferring commission in the form of units to an MFD.</li>
+          <li><strong>Multiple Bank Accounts Registration:</strong> Up to <strong>5 bank accounts for individuals/HUFs</strong> and up to <strong>10 bank accounts for non-individuals</strong>.</li>
+        </ul>
+      </li>
+      <li><strong>Instant Access Facility (IAF):</strong> Permitted <strong>ONLY in Liquid Schemes</strong> for resident individual investors via online IMPS transfer. Maximum instant redemption limit per day per scheme per investor is <strong>Rs. 50,000 OR 90% of the latest value of the investment, whichever is lower</strong>.</li>
+      <li><strong>PAN &amp; KYC Exemptions and Accessible Digital KYC (April 30, 2025 SC Ruling):</strong>
+        <ul>
+          <li><strong>4 PAN Exemptions:</strong> (1) Micro-SIPs / lump-sum investments not exceeding <strong>Rs. 50,000 per investor per MF per FY</strong> (must quote PAN Exempt KYC Reference Number — <strong>PEKRN</strong>), (2) Investors residing in the state of <strong>Sikkim</strong>, (3) Transactions on behalf of Central/State Government and court orders, and (4) UN entities/multilateral agencies exempt from tax in India.</li>
+          <li><strong>Central KYC Registry (cKYCR):</strong> Operated by <strong>CERSAI</strong> since August 1, 2016 (14-digit KIN). Pursuant to the <strong>Supreme Court judgement dated April 30, 2025</strong>, SEBI mandated accessible digital KYC Norms for Persons with Disabilities (PwDs), including live video/human-assisted fallback where automated liveness checks fail.</li>
+        </ul>
+      </li>
+      <li><strong>Systematic Facilities &amp; SIP Pause:</strong> SIP (Rupee Cost Averaging), SIP Top-Up, <strong>SIP Pause Facility</strong> (allows investors to temporarily pause SIP instalments for <strong>1 to 6 months</strong> during financial emergencies with automatic resumption), SWP, STP, Switch, and DTP (IDCW Transfer Plan).</li>
+      <li><strong>Nomination Reforms (2025–2026 Circulars):</strong> Under SEBI circular <code>SEBI/HO/OIAE/OIAE_IAD-3/P/ON/2025/01650</code> (tested in Chapter 9 Sample Question 6) and May 2026 updates, investors can nominate up to <strong>10 individuals</strong> in a folio (while traditional operational sections also mention up to 3 nominees; note both <strong>10 individuals under the new 2025/2026 SEBI nomination circular</strong> and 3 nominees in legacy text). Power of Attorney (PoA) holders <strong>cannot</strong> make or change nominations. Investors can also empower a non-minor nominee to operate the account in case of the investor's physical incapacitation.</li>
+      <li><strong>Transfer &amp; Gifting of Units in SOA &amp; Demat Mode (2026 Update):</strong> SEBI now permits off-market transfer/gifting of mutual fund units held in <strong>both Statement of Account (SOA) and Demat modes</strong> to eligible relatives (<strong>Spouses, children, parents, siblings, and parents-in-law</strong>), except for ETFs, solution-oriented retirement/children's funds, and units under lock-in (ELSS) or pledge/lien.</li>
+      <li><strong>MITRA Portal, DigiLocker &amp; Unclaimed Assets (2026 Update):</strong>
+        <ul>
+          <li>Qualified RTAs (CAMS &amp; KFintech) launched <strong>MITRA (Mutual Fund Investment Tracing and Retrieval Assistant)</strong> to help investors and legal heirs trace inactive and unclaimed mutual fund folios across the industry. Holdings can also be linked with <strong>DigiLocker</strong>.</li>
+          <li><strong>Unclaimed Redemption &amp; IDCW Amounts:</strong> Deployed in a separate plan of a <strong>Liquid / Overnight scheme</strong> (AMC can charge max <strong>0.50% p.a.</strong> management fee; zero exit load). If claimed by the investor <strong>within 3 years</strong>, paid at <strong>prevailing NAV</strong> (including appreciation); if claimed <strong>after 3 years</strong>, investor receives the value as at the <strong>end of 3 years</strong>, and appreciation beyond 3 years is transferred to the Investor Education and Protection Fund.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ch10">
+    <h2>Chapter 10: Legal and Regulatory Environment (Weightage: 8% &#183; 4 Questions)</h2>
+    <h3>10.1 Regulation 39 Investment Restrictions &amp; SEBI Advertisement Code</h3>
+    <ul>
+      <li><strong>Purpose of Investment Restrictions (Regulation 39 of SEBI MF Regulations, 2026):</strong> Primarily designed to <strong>control concentration/credit risks and protect investor interests</strong> (e.g., max 10% of NAV in a single issuer's rated debt expandable to 12% with Trustee approval; max 10% of NAV in a single company's equity for open-ended diversified schemes; no investment in unlisted/privately placed group company securities of the Sponsor).</li>
+      <li><strong>SEBI Advertisement Code (Fifth Schedule):</strong>
+        <ul>
+          <li><strong>Standard Warning:</strong> Every advertisement must carry the 14-word disclaimer: <em>"Mutual Fund investments are subject to market risks, read all scheme related documents carefully"</em> (in audio-visual advertisements, the voice-over and text must run for <strong>at least 5 seconds</strong> without background music).</li>
+          <li><strong>Return Disclosure Rules:</strong>
+            <ul>
+              <li>Schemes in existence for <strong>&gt; 3 years</strong>: Disclose <strong>CAGR for 1 year, 3 years, 5 years, and Since Inception</strong>, along with a point-to-point value of a standard investment of <strong>Rs. 10,000</strong> compared against the TRI benchmark and additional benchmark.</li>
+              <li>Schemes in existence for <strong>&lt; 6 months</strong>: Past performance <strong>shall NOT be advertised</strong>.</li>
+              <li>Schemes in existence for <strong>6 months to 1 year</strong>: Disclose <strong>simple annualized return for the 6-month period</strong>.</li>
+              <li><strong>Overnight, Liquid &amp; Money Market Funds:</strong> Permitted to advertise simple annualized yields for <strong>7 days, 15 days, and 30 days</strong>.</li>
+            </ul>
+          </li>
+          <li><strong>Celebrity Endorsements:</strong> Permitted <strong>ONLY at the industry level</strong> (e.g., <em>"Mutual Funds Sahi Hai"</em> by AMFI) to promote general awareness with prior SEBI approval. Celebrities are <strong>strictly prohibited from endorsing individual mutual fund schemes or AMCs</strong>.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>10.2 Investors' Rights, Grievance Redressal (SCORES / SMART ODR) &amp; AMFI Code of Ethics (ACE / AGNI)</h3>
+    <ul>
+      <li><strong>Key Statutory Rights of Unitholders:</strong> Beneficial ownership of scheme assets (creditors of AMC/Sponsor cannot attach scheme assets); right to terminate the AMC or wind up a scheme by resolution of <strong>75% of unitholders</strong>; right to inspect Trust Deed and unclaimed asset records; right to proceeds recovered from illiquid/defaulted securities within <strong>2 years</strong> of scheme winding-up (if substantial, paid to old unitholders; otherwise transferred to Investor Education Fund).</li>
+      <li><strong>Escalation Matrix for Investor Grievances:</strong>
+        <ol>
+          <li>First approach the AMC / RTA Investor Service Centre (ISC).</li>
+          <li>If unresolved, lodge an online complaint on SEBI's <strong>SCORES Portal (<a href="https://scores.sebi.gov.in/">scores.sebi.gov.in</a>)</strong>.</li>
+          <li>If still unsatisfied, initiate Online Conciliation and Online Arbitration via the <strong>SMART ODR Portal (<a href="https://smartodr.in/login">smartodr.in</a>)</strong>.</li>
+        </ol>
+      </li>
+      <li><strong>AMFI Code of Ethics (ACE) &amp; AGNI (AMFI Guidelines &amp; Norms for Intermediaries):</strong>
+        <ul>
+          <li>Under ACE, a <strong>"Significant Unitholder"</strong> is defined as any entity holding <strong>5% or more of the total corpus of any scheme</strong>.</li>
+          <li>Under <strong>AGNI</strong>, distributors must never rebate/pass back commission to investors, never split applications to earn higher incentives, and never churn portfolios unnecessarily.</li>
+          <li>If a breach of AGNI is alleged, the intermediary is given <strong>3 weeks</strong> to submit a written explanation. Upon a <strong>second proven violation</strong>, AMFI cancels the distributor's ARN registration permanently and notifies all AMCs.</li>
+          <li>Every distributor must disclose their identity on all business cards, websites, and stationary using the exact tagline: <strong>"AMFI-registered Mutual Fund Distributor"</strong> in a clear font size of <strong>at least 12</strong>.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+
+</div>
+</body>
+</html>

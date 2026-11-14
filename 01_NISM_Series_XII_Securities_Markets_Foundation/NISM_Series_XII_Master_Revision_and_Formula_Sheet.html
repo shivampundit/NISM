@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NISM-Series-XII: Securities Markets Foundation — Master Revision &amp; Formula Sheet · SHIVAM</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-dark: #172554;
+    --secondary: #0d9488;
+    --accent: #d97706;
+    --danger: #b91c1c;
+    --success: #15803d;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --gray-border: #cbd5e1;
+    --text-main: #1e293b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f1f5f9;
+    color: var(--text-main);
+    line-height: 1.68;
+    font-size: 15.5px;
+  }
+  .container { max-width: 1240px; margin: 28px auto 64px; padding: 0 20px; }
+  .cover-banner, .header-banner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #0d9488 100%);
+    color: #ffffff;
+    padding: 36px 34px;
+    border-radius: 16px;
+    margin-bottom: 26px;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16);
+  }
+  .cover-kicker {
+    display: inline-block;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    color: #99f6e4;
+  }
+  .cover-banner h1, .header-banner h1 { color: #ffffff; font-size: 28px; font-weight: 800; margin: 0 0 10px 0; border: none; }
+  .cover-banner p, .header-banner p { color: #e0f2fe; font-size: 15px; margin: 0; }
+  .toc-box {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 16px;
+    padding: 22px 26px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  }
+  .toc-title { font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+  .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+  .toc-pill {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    text-decoration: none; background: #f8fafc; border: 1px solid #e2e8f0;
+    padding: 10px 14px; border-radius: 10px; color: #1e293b; font-size: 13.5px; font-weight: 600;
+    transition: all 0.16s ease;
+  }
+  .toc-pill:hover { background: #eff6ff; border-color: #93c5fd; color: #1d4ed8; transform: translateY(-1px); }
+  .toc-num { background: #1e3a8a; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px; }
+  .toc-cnt { background: #ccfbf1; color: #0f766e; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-left: auto; }
+  section {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #cbd5e1;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    scroll-margin-top: 72px;
+  }
+  h1 { color: var(--primary); font-size: 24px; font-weight: 800; margin-top: 0; }
+  h2 { color: var(--primary); font-size: 21px; font-weight: 800; border-bottom: 2.5px solid #bfdbfe; padding-bottom: 10px; margin-top: 0; margin-bottom: 16px; }
+  h3 { color: var(--dark); font-size: 17px; font-weight: 700; border-left: 4px solid var(--secondary); padding-left: 12px; margin-top: 22px; margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px; }
+  th, td { border: 1px solid #cbd5e1; padding: 11px 14px; text-align: left; vertical-align: top; }
+  th { background: #0f294a; color: #ffffff; font-weight: 700; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  .callout {
+    background: linear-gradient(to right, #f0fdf4, #ecfdf5);
+    border: 1px solid #bbf7d0;
+    border-left: 5px solid #16a34a;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+  }
+  .callout-title { font-weight: 800; color: #166534; margin-bottom: 6px; font-size: 15px; }
+  .math {
+    font-family: 'Cambria Math', 'Consolas', monospace;
+    background: #eff6ff;
+    color: #1e3a8a;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-weight: 700;
+  }
+  figure { margin: 20px 0; text-align: center; }
+  figcaption { font-size: 13px; color: #475569; margin-top: 8px; font-weight: 600; }
+</style>
+</head>
+<body>
+<style>
+.fin-unified-nav { background: #0f172a; border-bottom: 2px solid #0284c7; padding: 10px 16px; position: sticky; top: 0; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.fin-unified-nav-inner { max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.fnav-btn { color: #cbd5e1; text-decoration: none; font-size: 12.5px; font-weight: 600; padding: 6px 11px; border-radius: 6px; background: #1e293b; border: 1px solid #334155; transition: all 0.15s ease; white-space: nowrap; cursor: pointer; }
+.fnav-btn:hover { background: #334155; color: #ffffff; border-color: #38bdf8; }
+.fnav-btn.active { background: #0284c7; color: #ffffff; border-color: #38bdf8; box-shadow: 0 0 0 2px rgba(56,189,248,0.3); }
+.fnav-home { background: #0f766e; border-color: #14b8a6; color: #f0fdfa; }
+.fnav-pdf { background: #b45309; border-color: #f59e0b; color: #fffbeb; }
+.fnav-mock { padding: 6px 9px; font-size: 12px; }
+</style><div class="fin-unified-nav"><div class="fin-unified-nav-inner"><a href="../index.html" class="fnav-btn fnav-home">🏠 All NISM Certifications</a><a href="NISM_Series_XII_Hub.html" class="fnav-btn">🏛️ Series XII Hub</a><a href="NISM_Series_XII_Comprehensive_Master_Study_Notes.html" class="fnav-btn">📘 Detailed Notes (6 Ch)</a><a href="NISM_Series_XII_Master_Revision_and_Formula_Sheet.html" class="fnav-btn active">⚡ Revision & Formula Sheet</a><a href="NISM_Series_XII_All_Chapters_Practice_Bank.html" class="fnav-btn">🎯 Practice Question Bank (500 Qs)</a><a href="NISM_Series_XII_Topic_Wise_Mocks.html" class="fnav-btn">🧩 Topic-Wise Mocks (6 Ch)</a><a href="NISM_Series_XII_Interactive_Mock_Test_1.html" class="fnav-btn fnav-mock">Mock 1</a><a href="NISM_Series_XII_Interactive_Mock_Test_2.html" class="fnav-btn fnav-mock">Mock 2</a><a href="NISM_Series_XII_Interactive_Mock_Test_3.html" class="fnav-btn fnav-mock">Mock 3</a><a href="NISM_Series_XII_Interactive_Mock_Test_4.html" class="fnav-btn fnav-mock">Mock 4</a><a href="NISM_Series_XII_Interactive_Mock_Test_5.html" class="fnav-btn fnav-mock">Mock 5</a><a href="https://drive.google.com/drive/folders/16gtrKvxBbRsz50bheAy-YHLWGvo73eMU" target="_blank" rel="noopener" class="fnav-btn fnav-pdf">📂 Drive Folder</a></div></div>
+<div class="container">
+  <section>
+<div style="background: linear-gradient(135deg, #0f766e 0%, #0f172a 100%); color: white; padding: 40px 25px; text-align: center; border-radius: 8px; margin-bottom: 30px;">
+    <div style="display: inline-block; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); padding: 4px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">NISM SERIES XII &#183; QUICK REVISION BOOST</div>
+    <h1 style="color: white; border: none; margin: 0 0 10px 0; font-size: 2.2rem;">Master Formula & Regulatory Limits Cheat Sheet</h1>
+    <p style="color: #99f6e4; font-size: 1.1rem; margin: 0; font-weight: 500;">High-Yield Summary: Formulas, Numerical Thresholds, Timelines & Trap Busters</p>
+</div>
+
+<h1>NISM Series XII: Securities Markets Foundation</h1>
+<h2>Quick Revision Notes & Formula Cheat Sheet (Last-Minute Booster)</h2>
+<p><strong>Core Exam Rules:</strong> 100 Marks | 100 MCQs | 120 Minutes | Passing: 60% | No Negative Marking | September 2026 Edition</p>
+
+<h2>PART 1: MASTER FORMULA CHEAT SHEET</h2>
+
+<div class="card">
+    <span class="rule-title">1. Bond Valuation & Yield Formulas</span>
+    <span class="formula">Fair Value of Bond (PV) = [ Coupon / (1 + y)^1 ] + [ Coupon / (1 + y)^2 ] + ... + [ (Coupon + Face Value) / (1 + y)^n ]</span>
+    <span class="formula">Current Yield (%) = [ Annual Coupon (Rs.) / Current Market Price (Rs.) ] * 100</span>
+    <p><em>Exam Rules:</em> If Market Yield &gt; Coupon Rate &rarr; Bond trades at Discount (Price &lt; Face Value). If Market Yield &lt; Coupon Rate &rarr; Bond trades at Premium (Price &gt; Face Value). Bond Price and Yield share an <strong>inverse relationship</strong>.</p>
+</div>
+
+<div class="card">
+    <span class="rule-title">2. Equity Valuation Metrics</span>
+    <span class="formula">Price-Earnings (PE) Ratio = Current Market Price per Share / Earnings per Share (EPS)</span>
+    <span class="formula">Earnings per Share (EPS) = Profit After Tax (PAT) / Total Number of Outstanding Shares</span>
+    <span class="formula">Price to Book Value (PBV) Ratio = Market Price per Share / Book Value per Share</span>
+    <span class="formula">Book Value per Share = Net Worth (Paid-up Equity Capital + Free Reserves) / Number of Shares</span>
+    <span class="formula">Dividend Yield (%) = [ Dividend per Share (Rs.) / Market Price per Share (Rs.) ] * 100</span>
+    <p><em>Exam Trap:</em> Dividend % is declared on <strong>Face Value</strong>, while Dividend Yield compares Dividend to <strong>Market Price</strong>.</p>
+</div>
+
+<div class="card">
+    <span class="rule-title">3. Primary Market Allotment & Rights Issue Math</span>
+    <span class="formula">Oversubscription Ratio = Total Shares Applied For in Category / Shares Available for Category</span>
+    <span class="formula">Shares Allotted to Applicant = Shares Applied By Applicant / Oversubscription Ratio</span>
+    <span class="formula">Post-Rights Share Capital = Pre-Issue Capital + (Pre-Issue Capital * Rights Ratio)</span>
+</div>
+
+<div class="card">
+    <span class="rule-title">4. Secondary Market Costs, Spreads & Impact Cost</span>
+    <span class="formula">Bid-Ask Spread = Best Sell Price (Ask) - Best Buy Price (Bid)</span>
+    <span class="formula">Ideal (Mid) Price = (Best Bid + Best Ask) / 2</span>
+    <span class="formula">Impact Cost (%) = [ |Execution Price - Ideal Price| / Ideal Price ] * 100</span>
+    <span class="formula">Turnover Ratio = Total Traded Turnover (in Rupees) / Total Market Capitalisation</span>
+</div>
+
+<div class="card">
+    <span class="rule-title">5. Mutual Fund NAV & Transaction Math</span>
+    <span class="formula">Net Asset Value (NAV) = [ (Market Value of Portfolio + Accrued Income) - (Accrued Expenses + Liabilities) ] / Total Outstanding Units</span>
+    <span class="formula">Redemption Price (Repurchase Price) = Applicable NAV * (1 - Exit Load %)</span>
+    <span class="formula">New NAV After Unit Creation = (Previous Net Assets + Fresh Cash Inflow) / (Previous Units + New Units Issued)</span>
+</div>
+
+<div class="card">
+    <span class="rule-title">6. Derivatives Calculations & Ratios</span>
+    <span class="formula">Basis (Futures) = Cash (Spot) Price - Futures Price</span>
+    <span class="formula">Put-Call Ratio (PCR) = Total Outstanding Put Open Interest / Total Outstanding Call Open Interest</span>
+    <span class="formula">Option Intrinsic Value (Call) = Max(0, Spot Price - Strike Price)</span>
+    <span class="formula">Option Intrinsic Value (Put) = Max(0, Strike Price - Spot Price)</span>
+</div>
+
+<h2>PART 2: STATUTORY LIMITS, NUMERICAL THRESHOLDS & REGULATORY TIMELINES</h2>
+
+<table>
+    <tr><th>Regulatory Concept</th><th>Prescribed Threshold / Metric</th><th>Governing Authority / Act</th></tr>
+    <tr><td><strong>Definition of Securities</strong></td><td>Section 2(h) includes shares, bonds, derivatives, CIS, MF units, G-Secs, EGRs, ZCZPs</td><td>SCRA, 1956</td></tr>
+    <tr><td><strong>Retail Individual Investor (RII)</strong></td><td>Total application amount &le; <strong>Rs. 2,00,000</strong> in a public issue</td><td>SEBI (ICDR) Regulations, 2018</td></tr>
+    <tr><td><strong>Non-Institutional Buyer (NIB)</strong></td><td>Total application amount &gt; <strong>Rs. 2,00,000</strong> (1/3rd: 2L–10L; 2/3rd: &gt;10L)</td><td>SEBI (ICDR) Regulations</td></tr>
+    <tr><td><strong>IPO Net Tangible Assets Norm</strong></td><td>At least <strong>Rs. 3 Crores</strong> in each of preceding 3 full years (&le; 50% monetary)</td><td>SEBI (ICDR) Eligibility Norm 1</td></tr>
+    <tr><td><strong>IPO Operating Profit Norm</strong></td><td>Average operating profit &ge; <strong>Rs. 15 Crores</strong> across preceding 3 full years</td><td>SEBI (ICDR) Eligibility Norm 1</td></tr>
+    <tr><td><strong>IPO Net Worth Norm</strong></td><td>At least <strong>Rs. 1 Crore</strong> in each of preceding 3 full years</td><td>SEBI (ICDR) Eligibility Norm 1</td></tr>
+    <tr><td><strong>Alternative IPO Route (QIB)</strong></td><td>If Norm 1 failed, issue via book building with &ge; <strong>75% QIB allotment</strong></td><td>SEBI (ICDR) Alternative Route</td></tr>
+    <tr><td><strong>Minimum Promoters' Contribution</strong></td><td>Minimum <strong>20% of post-issue capital</strong></td><td>SEBI (ICDR) Regulations</td></tr>
+    <tr><td><strong>Promoter Lock-in (Min 20%)</strong></td><td><strong>18 Months</strong> from allotment (or <strong>3 Years</strong> if funding capex)</td><td>SEBI (ICDR) Regulations</td></tr>
+    <tr><td><strong>Promoter Lock-in (Excess &gt; 20%)</strong></td><td><strong>6 Months</strong> from allotment (or <strong>1 Year</strong> if funding capex)</td><td>SEBI (ICDR) Regulations</td></tr>
+    <tr><td><strong>SCRR Minimum Public Offer <span class="badge">2026 Rule</span></strong></td><td>&le; 1600 cr: 25% | 1600–4000 cr: Rs. 400 cr value | 4000–50,000 cr: 10%</td><td>Securities Contracts Rules 2026</td></tr>
+    <tr><td><strong>Mandatory Public Float Reach</strong></td><td>Must reach at least <strong>25% public float within 3 years</strong> of listing</td><td>SEBI SCRR Regulations</td></tr>
+    <tr><td><strong>IPO Bidding Subscription Window</strong></td><td>Minimum <strong>3 working days</strong>, Maximum <strong>10 working days</strong></td><td>SEBI (ICDR) Regulations</td></tr>
+    <tr><td><strong>Price Band Announcement</strong></td><td>At least <strong>2 working days</strong> prior to issue opening</td><td>SEBI (ICDR) Regulations</td></tr>
+    <tr><td><strong>Minimum Bid Application Size</strong></td><td>Prescribed lot size to fall in <strong>Rs. 10,000 to Rs. 15,000</strong> range</td><td>SEBI (ICDR) Regulations</td></tr>
+    <tr><td><strong>UPI in ASBA Limit</strong></td><td>Retail individual application up to <strong>Rs. 5 Lakhs</strong> via UPI</td><td>SEBI Circular May 2022</td></tr>
+    <tr><td><strong>IPO Minimum Subscription</strong></td><td>Minimum <strong>90% of net offer</strong>; refund within <strong>4 days</strong> if failed</td><td>SEBI (ICDR) Regulations</td></tr>
+    <tr><td><strong>Green Shoe Option (GSO)</strong></td><td>Up to <strong>15% additional shares</strong>; stabilizing period max <strong>30 days</strong></td><td>SEBI (ICDR) Regulations</td></tr>
+    <tr><td><strong>Rights Issue Window</strong></td><td>Open for minimum <strong>7 days</strong> and maximum <strong>30 days</strong></td><td>SEBI (ICDR) Regulations</td></tr>
+    <tr><td><strong>Private Placement Cap</strong></td><td>Maximum <strong>50 persons</strong> (excluding QIBs and ESOPs)</td><td>Section 42, Companies Act 2013</td></tr>
+    <tr><td><strong>QIP Mutual Fund Reservation</strong></td><td>Minimum <strong>10%</strong> of issue allocated to mutual funds</td><td>SEBI (ICDR) Regulations</td></tr>
+    <tr><td><strong>Debt Public Issue Min Subscription</strong></td><td>Minimum <strong>75% of base issue size</strong> (CBDT tax-free exempt)</td><td>SEBI (NCS) Regulations, 2021</td></tr>
+    <tr><td><strong>EBP Platform for Debt</strong></td><td>Mandatory for private placements &ge; <strong>Rs. 50 Crores</strong> or issuers &lt; 3 yrs</td><td>SEBI NCS Circulars</td></tr>
+    <tr><td><strong>Settlement Cycles</strong></td><td>Standard <strong>T+1 rolling settlement</strong>; optional <strong>T+0 settlement</strong></td><td>SEBI Secondary Market Circulars</td></tr>
+    <tr><td><strong>Contract Note Issuance</strong></td><td>Within <strong>24 hours</strong> of trade execution</td><td>SEBI Stock Broker Regulations</td></tr>
+    <tr><td><strong>Bulk Deal vs. Block Deal</strong></td><td>Bulk: &gt; <strong>0.50%</strong> shares | Block: Min <strong>Rs. 25 Crores</strong>, &plusmn;3% price band</td><td>SEBI Block Deal Circular Oct 2025</td></tr>
+    <tr><td><strong>Block Deal Windows</strong></td><td>Morning: <strong>08:45–09:00 hrs</strong> | Afternoon: <strong>14:05–14:20 hrs</strong></td><td>SEBI Secondary Market Norms</td></tr>
+    <tr><td><strong>Base Minimum Capital (BMC)</strong></td><td>Prop only: 10L | Client only: 15L | Prop+Client: 25L | With Algo: 50L</td><td>SEBI Risk Management Rules</td></tr>
+    <tr><td><strong>Extreme Loss Margin (ELM)</strong></td><td>Mandatory minimum <strong>3.5%</strong> for any equity stock</td><td>SEBI Margin Framework</td></tr>
+    <tr><td><strong>SCORES Grievance Resolution</strong></td><td>Action Taken Report (ATR) within <strong>21 days</strong> of SEBI intimation</td><td>SEBI SCORES Portal Rules</td></tr>
+    <tr><td><strong>Arbitration Timelines</strong></td><td>Award within <strong>30 days</strong> (extendable by 30); Appeal within <strong>7 days</strong></td><td>SEBI Arbitration Framework</td></tr>
+    <tr><td><strong>IPEF Restitution Claim Period</strong></td><td>Eligible investors can claim restitution within <strong>7 years</strong></td><td>SEBI (IPEF) Regulations</td></tr>
+    <tr><td><strong>MF Temporary Borrowing Limit</strong></td><td>Max <strong>20% of net assets</strong> for up to <strong>6 months</strong> (liquidity only)</td><td>SEBI (Mutual Funds) Reg. 1996</td></tr>
+    <tr><td><strong>MF Dividend & Redemption Payout</strong></td><td>Dividends: <strong>15 days</strong> | Redemptions: <strong>10 working days</strong> (15% p.a. penalty)</td><td>SEBI Investor Service Standards</td></tr>
+    <tr><td><strong>Specialized Investment Fund (SIF) <span class="badge">Dec 2024</span></strong></td><td>Minimum ticket size <strong>Rs. 10 Lakhs</strong> across all strategies</td><td>SEBI MF 3rd Amendment 2024</td></tr>
+    <tr><td><strong>Life Cycle Funds <span class="badge">2026 Master Cir</span></strong></td><td>Glide path target maturity; 5–30 years (multiples of 5); max 6 schemes</td><td>SEBI MF Master Circular 2026</td></tr>
+    <tr><td><strong>Derivatives Lot Value & Expiry</strong></td><td>Min lot value <strong>Rs. 5 Lakhs</strong> at launch; Expiry: Last Tuesday / Thursday</td><td>SEBI Equity Derivatives Norms</td></tr>
+</table>
+
+<h2>PART 3: MUTUAL FUND ASSET ALLOCATION QUICK REFERENCE TABLE</h2>
+
+<table>
+    <tr><th>Scheme Sub-Category</th><th>Minimum Equity Allocation</th><th>Minimum Debt Allocation</th><th>Defining Structural Rule</th></tr>
+    <tr><td><strong>Multi Cap Fund</strong></td><td>75% (Min 25% Large, 25% Mid, 25% Small)</td><td>--</td><td>Strict 25% minimum in all three market caps</td></tr>
+    <tr><td><strong>Large Cap Fund</strong></td><td>80% in Top 100 stocks</td><td>--</td><td>Predominantly large-cap blue-chip universe</td></tr>
+    <tr><td><strong>Large & Mid Cap Fund</strong></td><td>35% in Large + 35% in Mid Cap</td><td>--</td><td>Combines growth and stability</td></tr>
+    <tr><td><strong>Mid Cap Fund</strong></td><td>65% in Mid Cap (101st to 250th stock)</td><td>--</td><td>Focused on medium-sized companies</td></tr>
+    <tr><td><strong>Small Cap Fund</strong></td><td>65% in Small Cap (251st stock onwards)</td><td>--</td><td>High volatility and growth potential</td></tr>
+    <tr><td><strong>Flexi Cap Fund</strong></td><td>65% in overall equity</td><td>--</td><td>Dynamic allocation without cap restrictions</td></tr>
+    <tr><td><strong>Sectoral / Thematic</strong></td><td>80% in specific sector/theme</td><td>--</td><td>Max 50% portfolio overlap with other schemes</td></tr>
+    <tr><td><strong>ELSS (Tax Saver)</strong></td><td>80% in equity instruments</td><td>--</td><td>Mandatory 3-year statutory lock-in</td></tr>
+    <tr><td><strong>Conservative Hybrid</strong></td><td>10% to 25%</td><td>75% to 90%</td><td>Income-oriented hybrid fund</td></tr>
+    <tr><td><strong>Balanced Hybrid</strong></td><td>40% to 60%</td><td>40% to 60%</td><td>No arbitrage permitted; strict balance</td></tr>
+    <tr><td><strong>Aggressive Hybrid</strong></td><td>65% to 80%</td><td>20% to 35%</td><td>Cannot be offered if fund has Balanced Hybrid</td></tr>
+    <tr><td><strong>Dynamic Asset (BAF)</strong></td><td>0% to 100% (dynamically managed)</td><td>0% to 100% (dynamically managed)</td><td>Model-driven allocation shifts</td></tr>
+    <tr><td><strong>Arbitrage Fund</strong></td><td>65% in equity/equity derivatives</td><td>Residual in G-Secs/repos &le; 1 yr</td><td>Completely hedged cash-futures arbitrage</td></tr>
+    <tr><td><strong>Overnight / Liquid Debt</strong></td><td>--</td><td>100% (Overnight: 1 day; Liquid: &le; 91 days)</td><td>Highest safety and immediate liquidity</td></tr>
+    <tr><td><strong>Corporate Bond Fund</strong></td><td>--</td><td>80% in AA+ and above rated corporate debt</td><td>High credit quality corporate debt focus</td></tr>
+    <tr><td><strong>Credit Risk Fund</strong></td><td>--</td><td>65% in AA and below rated corporate debt</td><td>Cannot use return-hype words in name</td></tr>
+    <tr><td><strong>Gilt / 10-Yr Gilt</strong></td><td>--</td><td>80% in Government Securities</td><td>Zero credit risk; sovereign backing</td></tr>
+    <tr><td><strong>Index / ETF Funds</strong></td><td>95% in target index constituent securities</td><td>--</td><td>Passive replication; minimizes tracking error</td></tr>
+</table>
+
+<h2>PART 4: RAPID MEMORY ANCHORS & TRAP BUSTERS</h2>
+<ul>
+    <li><strong>Primary Dealers (PDs):</strong> Regulated by <strong>RBI</strong>, not SEBI.</li>
+    <li><strong>Commodity Spot Markets:</strong> Regulated by <strong>State Governments (APMC)</strong>, while Commodity Futures/Derivatives are regulated by <strong>SEBI</strong>.</li>
+    <li><strong>REITs vs. InvITs Classification:</strong> W.e.f. January 1, 2026, REIT units are classified as <strong>equity-related instruments</strong> for mutual funds, while InvITs remain <strong>hybrid</strong>.</li>
+    <li><strong>Futures vs. Options Margins:</strong> Futures sellers AND buyers pay Initial Margin + Exposure Margin. For Options, Exposure Margin is levied <strong>only on short option positions (writers)</strong>, while option buyers pay only the upfront premium.</li>
+    <li><strong>Physical Settlement of Derivatives:</strong> Since October 2019, all individual stock futures and options are settled by <strong>physical delivery</strong> of shares. Index derivatives (Nifty, Bank Nifty) continue to be settled in <strong>cash</strong>.</li>
+    <li><strong>Good-till-Cancelled (GTC) Orders:</strong> <strong>Not permitted</strong> on Indian exchanges. All unexecuted orders lapse at market close (Day Orders).</li>
+    <li><strong>Passive vs. Active Orders:</strong> Limit orders are <em>passive</em> (provide liquidity to book); Market orders are <em>active</em> (drain liquidity).</li>
+</ul>
+
+</section>
+</div>
+</body>
+</html>

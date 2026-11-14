@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NISM-Series-XII: Securities Markets Foundation — Mock Test 3 (CBT Exam Simulator) · SHIVAM</title>
+<style>
+:root {
+    --primary: #1e40af;
+    --primary-hover: #1d4ed8;
+    --secondary: #0d9488;
+    --accent: #d97706;
+    --danger: #ef4444;
+    --success: #16a34a;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --gray: #e2e8f0;
+    --gray-border: #cbd5e1;
+    --text-main: #334155;
+    --review: #8b5cf6;
+}
+* { box-sizing: border-box; }
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    margin: 0;
+    background: #f1f5f9;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+.hidden { display: none !important; }
+.app-header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+    color: white;
+    padding: 14px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+.brand-badge { font-weight: 800; font-size: 1.15rem; letter-spacing: 0.5px; color: #93c5fd; }
+.exam-tag {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #f8fafc;
+}
+#start-page {
+    max-width: 820px;
+    margin: 32px auto;
+    background: white;
+    padding: 2.3rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid var(--gray);
+}
+.start-heading { color: #1e3a8a; font-size: 1.85rem; margin-bottom: 6px; text-align: center; font-weight: 800; }
+.start-subheading { color: #64748b; font-size: 1rem; margin-top: 0; margin-bottom: 22px; text-align: center; }
+.input-group { margin-bottom: 14px; }
+.input-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #475569; margin-bottom: 5px; }
+.input-group input {
+    width: 100%; padding: 11px 14px; border: 1.5px solid var(--gray-border);
+    border-radius: 8px; font-size: 0.98rem; outline: none;
+}
+.rules-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; margin: 18px 0; }
+.rules-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px; }
+.rule-metric { background: white; padding: 11px; border-radius: 8px; border: 1px solid var(--gray); text-align: center; }
+.rule-metric span { color: #64748b; display: block; font-size: 0.72rem; text-transform: uppercase; font-weight: 600; }
+.rule-metric b { color: #0f172a; font-size: 1.05rem; }
+.syllabus-list { font-size: 0.9rem; color: #334155; line-height: 1.65; margin: 10px 0; padding-left: 20px; }
+.rand-toggles {
+    display: flex; flex-wrap: wrap; gap: 16px; background: #ecfdf5; border: 1px solid #a7f3d0;
+    padding: 12px 16px; border-radius: 8px; margin-top: 14px; font-size: 0.9rem; font-weight: 600; color: #065f46;
+}
+.rand-toggles label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+#test-container {
+    display: grid; grid-template-columns: 1fr 350px; gap: 24px; padding: 24px; max-width: 1340px; margin: auto;
+}
+.question-card {
+    background: white; padding: 2rem; border-radius: 12px; min-height: 510px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05); border: 1px solid var(--gray);
+    display: flex; flex-direction: column; justify-content: space-between;
+}
+.q-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--gray); padding-bottom: 12px; margin-bottom: 16px; }
+.q-header h3 { color: #1e3a8a; margin: 0; font-size: 1.2rem; }
+.q-category-tag { font-size: 0.8rem; background: #eff6ff; color: #1e40af; font-weight: 700; padding: 4px 11px; border-radius: 15px; margin-bottom: 10px; display: inline-block; }
+.q-marks-tag { font-size: 0.82rem; font-weight: 700; color: var(--success); background: #ecfdf5; padding: 4px 12px; border-radius: 20px; }
+.q-text { font-size: 1.12rem; font-weight: 600; line-height: 1.6; color: #0f172a; margin-bottom: 20px; }
+.options-list { list-style: none; padding: 0; margin: 14px 0; display: flex; flex-direction: column; gap: 11px; }
+.option-item {
+    border: 1.5px solid var(--gray); padding: 13px 16px; border-radius: 8px; cursor: pointer;
+    transition: all 0.18s ease; background: white; display: flex; align-items: center; gap: 13px; font-size: 0.98rem; line-height: 1.45;
+}
+.option-item:hover { background: #f8fafc; border-color: #94a3b8; }
+.option-item.selected { border-color: var(--primary); background: #eff6ff; font-weight: 600; color: #1e3a8a; }
+.opt-letter {
+    display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px;
+    border-radius: 50%; background: #f1f5f9; color: #475569; font-weight: 700; font-size: 0.85rem; flex-shrink: 0;
+}
+.option-item.selected .opt-letter { background: var(--primary); color: white; }
+.option-item.correct { background: #dcfce7 !important; border-color: var(--success) !important; color: #166534 !important; font-weight: 600; }
+.option-item.correct .opt-letter { background: var(--success) !important; color: white !important; }
+.option-item.wrong { background: #fee2e2 !important; border-color: var(--danger) !important; color: #991b1b !important; font-weight: 600; }
+.option-item.wrong .opt-letter { background: var(--danger) !important; color: white !important; }
+.explanation-card {
+    margin-top: 22px; padding: 16px 18px; background: #f0fdf4; border-left: 5px solid var(--success);
+    border-radius: 0 8px 8px 0; color: #14532d; font-size: 0.95rem; line-height: 1.6;
+}
+.nav-controls { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; border-top: 1px solid var(--gray); padding-top: 18px; }
+button { padding: 10px 20px; border: none; border-radius: 7px; cursor: pointer; font-weight: 600; font-size: 0.93rem; transition: all 0.18s; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-clear { background: #f1f5f9; color: #475569; border: 1px solid var(--gray-border); }
+.btn-review { background: #ede9fe; color: #6d28d9; border: 1px solid #ddd6fe; }
+.sidebar {
+    background: white; padding: 1.4rem; border-radius: 12px; height: fit-content;
+    position: sticky; top: 64px; box-shadow: 0 4px 14px rgba(0,0,0,0.05); border: 1px solid var(--gray);
+}
+.timer-box { background: #fef2f2; border: 1.5px solid #fecaca; border-radius: 8px; padding: 10px; margin-bottom: 16px; text-align: center; }
+.timer-label { font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: #991b1b; }
+.timer { font-size: 2rem; font-weight: 800; color: var(--danger); font-variant-numeric: tabular-nums; }
+.stats { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.88rem; font-weight: 600; background: #f8fafc; padding: 9px 12px; border-radius: 6px; border: 1px solid var(--gray); }
+.question-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; max-height: 280px; overflow-y: auto; padding: 8px; border: 1px solid #f1f5f9; background: #f8fafc; border-radius: 6px; }
+.q-num {
+    width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
+    background: white; border: 1.5px solid var(--gray-border); border-radius: 6px; cursor: pointer; font-size: 0.88rem; font-weight: 700; color: #475569;
+}
+.q-num.visited { background: #fee2e2; color: #b91c1c; border-color: #f87171; }
+.q-num.attempted { background: var(--success); color: white; border-color: #16a34a; }
+.q-num.marked { background: var(--review); color: white; border-color: #7c3aed; }
+.q-num.current { outline: 2.5px solid #0f172a; outline-offset: 1px; }
+.q-num.res-correct { background: #22c55e !important; color: white !important; border-color: #16a34a !important; }
+.q-num.res-wrong { background: #ef4444 !important; color: white !important; border-color: #dc2626 !important; }
+.q-num.res-none { background: #f1f5f9 !important; border: 1.5px solid var(--gray-border) !important; color: #64748b !important; }
+.legend { margin-top: 12px; font-size: 0.76rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; border-top: 1px solid var(--gray); padding-top: 10px; }
+.legend-item { display: flex; align-items: center; gap: 6px; color: #475569; font-weight: 500; }
+.dot { width: 12px; height: 12px; border-radius: 3px; }
+#submit-btn { width: 100%; margin-top: 14px; background: var(--dark); color: white; padding: 12px; font-size: 0.98rem; }
+#scorecard { margin-top: 16px; border-top: 2px solid var(--gray); padding-top: 16px; }
+.score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.score-box { padding: 10px; border-radius: 8px; text-align: center; background: #f8fafc; border: 1px solid var(--gray); }
+.score-box span { display: block; font-size: 0.7rem; color: #64748b; text-transform: uppercase; font-weight: 600; }
+.score-box b { font-size: 1.2rem; color: var(--dark); margin-top: 2px; display: block; }
+.final-total { grid-column: span 2; background: linear-gradient(135deg, #1e3a8a, #0f172a); color: white; border: none; padding: 14px; }
+.final-total b { color: #38bdf8; font-size: 1.65rem; }
+.pass-status { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; margin-top: 4px; }
+.pass-status.passed { background: #dcfce7; color: #15803d; }
+.pass-status.failed { background: #fee2e2; color: #b91c1c; }
+.modal-backdrop {
+    position: fixed; inset: 0; background: rgba(15,23,42,0.65); display: flex; align-items: center; justify-content: center; z-index: 10000;
+}
+.modal-box { background: #fff; border-radius: 12px; padding: 24px 28px; max-width: 440px; width: 92%; box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
+@media (max-width: 900px) {
+    #test-container { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .rules-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+<style>
+.fin-unified-nav { background: #0f172a; border-bottom: 2px solid #0284c7; padding: 10px 16px; position: sticky; top: 0; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.fin-unified-nav-inner { max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.fnav-btn { color: #cbd5e1; text-decoration: none; font-size: 12.5px; font-weight: 600; padding: 6px 11px; border-radius: 6px; background: #1e293b; border: 1px solid #334155; transition: all 0.15s ease; white-space: nowrap; cursor: pointer; }
+.fnav-btn:hover { background: #334155; color: #ffffff; border-color: #38bdf8; }
+.fnav-btn.active { background: #0284c7; color: #ffffff; border-color: #38bdf8; box-shadow: 0 0 0 2px rgba(56,189,248,0.3); }
+.fnav-home { background: #0f766e; border-color: #14b8a6; color: #f0fdfa; }
+.fnav-pdf { background: #b45309; border-color: #f59e0b; color: #fffbeb; }
+.fnav-mock { padding: 6px 9px; font-size: 12px; }
+</style><div class="fin-unified-nav"><div class="fin-unified-nav-inner"><a href="../index.html" class="fnav-btn fnav-home">🏠 All NISM Certifications</a><a href="NISM_Series_XII_Hub.html" class="fnav-btn">🏛️ Series XII Hub</a><a href="NISM_Series_XII_Comprehensive_Master_Study_Notes.html" class="fnav-btn">📘 Detailed Notes (6 Ch)</a><a href="NISM_Series_XII_Master_Revision_and_Formula_Sheet.html" class="fnav-btn">⚡ Revision & Formula Sheet</a><a href="NISM_Series_XII_All_Chapters_Practice_Bank.html" class="fnav-btn">🎯 Practice Question Bank (500 Qs)</a><a href="NISM_Series_XII_Topic_Wise_Mocks.html" class="fnav-btn">🧩 Topic-Wise Mocks (6 Ch)</a><a href="NISM_Series_XII_Interactive_Mock_Test_1.html" class="fnav-btn fnav-mock">Mock 1</a><a href="NISM_Series_XII_Interactive_Mock_Test_2.html" class="fnav-btn fnav-mock">Mock 2</a><a href="NISM_Series_XII_Interactive_Mock_Test_3.html" class="fnav-btn fnav-mock active">Mock 3</a><a href="NISM_Series_XII_Interactive_Mock_Test_4.html" class="fnav-btn fnav-mock">Mock 4</a><a href="NISM_Series_XII_Interactive_Mock_Test_5.html" class="fnav-btn fnav-mock">Mock 5</a><a href="https://drive.google.com/drive/folders/16gtrKvxBbRsz50bheAy-YHLWGvo73eMU" target="_blank" rel="noopener" class="fnav-btn fnav-pdf">📂 Drive Folder</a></div></div>
+
+<header class="app-header">
+    <div class="brand-badge">NISM-Series-XII: Securities Markets Foundation &#183; CBT SIMULATOR</div>
+    <div class="exam-tag">Full-Length Mock Test #3</div>
+</header>
+
+<div id="start-page">
+    <h1 class="start-heading">NISM-Series-XII: Securities Markets Foundation — Mock Test #3</h1>
+    <p class="start-subheading">Official Full-Length 100-Question Computer-Based Test (CBT) with Anti-Bias Option Randomizer</p>
+
+    <div style="background: #f8fafc; padding: 20px; border-radius: 10px; border: 1px solid var(--gray); margin-bottom: 20px;">
+        <div class="input-group">
+            <label for="user-name">Candidate Full Name:</label>
+            <input type="text" id="user-name" value="Shivam Tiwari" />
+        </div>
+        <div class="input-group">
+            <label for="user-email">Candidate Roll / Registration ID:</label>
+            <input type="text" id="user-email" value="NISM-2026-CANDIDATE" />
+        </div>
+
+        <div class="rules-card">
+            <h4 style="margin-top: 0; color: #1e3a8a;">Syllabus Blueprint &amp; Assessment Rules:</h4>
+            <ul class="syllabus-list">
+                
+<li><strong>Chapter 1: Understanding Securities Markets</strong> — 10 Qs (10%)</li>
+<li><strong>Chapter 2: Securities: Types, Features &amp; Asset Allocation</strong> — 20 Qs (20%)</li>
+<li><strong>Chapter 3: Primary Markets</strong> — 20 Qs (20%)</li>
+<li><strong>Chapter 4: Secondary Markets</strong> — 20 Qs (20%)</li>
+<li><strong>Chapter 5: Mutual Funds</strong> — 20 Qs (20%)</li>
+<li><strong>Chapter 6: Derivative Markets</strong> — 10 Qs (10%)</li>
+
+            </ul>
+
+            <div class="rules-grid">
+                <div class="rule-metric"><span>Total Questions</span><b>100 MCQs</b></div>
+                <div class="rule-metric"><span>Duration</span><b>120 Mins</b></div>
+                <div class="rule-metric"><span>Passing Score</span><b style="color: var(--success);">60% (60/100)</b></div>
+                <div class="rule-metric"><span>Negative Mark</span><b style="color: #64748b;">Nil (0.0)</b></div>
+            </div>
+
+            <div class="rand-toggles">
+                <label><input type="checkbox" id="chk-shuffle-opts" checked /> 🔀 Randomize Option Order (A/B/C/D)</label>
+                <label><input type="checkbox" id="chk-shuffle-qs" /> 🔀 Randomize Question Sequence</label>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center;">
+        <button class="btn-primary" onclick="validateAndStart()" style="padding: 15px 44px; font-size: 1.1rem; border-radius: 8px;">
+            Start CBT Examination Now &rarr;
+        </button>
+    </div>
+</div>
+
+<div id="test-interface" class="hidden">
+    <div id="test-container">
+        <main>
+            <div class="question-card">
+                <div>
+                    <div class="q-category-tag" id="q-category">Chapter</div>
+                    <div class="q-header">
+                        <h3 id="q-title">Question 1 of 100</h3>
+                        <span class="q-marks-tag">+1.0 Mark &#183; No Negative</span>
+                    </div>
+                    <div id="q-text" class="q-text"></div>
+                    <div id="options-container" class="options-list"></div>
+
+                    <div id="result-info" class="hidden">
+                        <div class="explanation-card">
+                            <strong>Detailed Rationale &amp; Regulatory Provision:</strong>
+                            <div id="explanation-text"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-controls">
+                    <button class="btn-clear" onclick="prevQuestion()">&larr; Previous</button>
+                    <button class="btn-primary" onclick="nextQuestion()">Save &amp; Next &rarr;</button>
+                    <button class="btn-clear" onclick="clearResponse()" id="clear-btn">Clear Response</button>
+                    <button class="btn-review" onclick="toggleReview()" id="review-btn">Mark for Review</button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="timer-box">
+                <div class="timer-label">Time Remaining</div>
+                <div class="timer" id="timer">120:00</div>
+            </div>
+
+            <div class="stats">
+                <span>Attempted: <b id="stat-attempted" style="color: var(--success);">0</b></span>
+                <span>Remaining: <b id="stat-left">100</b></span>
+            </div>
+
+            <div class="question-grid" id="q-grid"></div>
+
+            <div class="legend" id="live-legend">
+                <div class="legend-item"><div class="dot" style="background: white; border: 1.5px solid var(--gray-border);"></div> Not Visited</div>
+                <div class="legend-item"><div class="dot" style="background: #fee2e2; border: 1.5px solid #f87171;"></div> Not Answered</div>
+                <div class="legend-item"><div class="dot" style="background: var(--success);"></div> Answered</div>
+                <div class="legend-item"><div class="dot" style="background: var(--review);"></div> Marked</div>
+            </div>
+
+            <button class="btn-primary" id="submit-btn" onclick="openSubmitModal()">Submit Examination</button>
+
+            <div id="scorecard" class="hidden">
+                <div class="score-grid">
+                    <div class="score-box"><span>Attempted</span><b id="res-attempted">0</b></div>
+                    <div class="score-box"><span>Correct</span><b id="res-correct" style="color: var(--success);">0</b></div>
+                    <div class="score-box"><span>Incorrect</span><b id="res-incorrect" style="color: var(--danger);">0</b></div>
+                    <div class="score-box"><span>Accuracy</span><b id="res-accuracy">0%</b></div>
+                    <div class="score-box final-total">
+                        <span style="color: #cbd5e1;">Final Examination Score</span>
+                        <b id="res-score">0 / 100</b>
+                        <div id="res-status" class="pass-status">Status</div>
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="retakeWithFreshShuffle()" style="width: 100%; margin-top: 12px; background: #0d9488; color: white;">
+                    🔀 Re-Shuffle Options &amp; Retake Mock
+                </button>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<div id="submit-modal" class="modal-backdrop hidden">
+    <div class="modal-box">
+        <h3 style="margin-top:0;color:#0f172a;">Confirm CBT Exam Submission</h3>
+        <p id="submit-modal-text" style="color:#475569;font-size:0.95rem;"></p>
+        <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px;">
+            <button class="btn-clear" onclick="closeSubmitModal()">Continue Exam</button>
+            <button class="btn-primary" onclick="closeSubmitModal(); endTest();">Submit &amp; View Results</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const baseQuestions = [{"id": "S12-M3-Q001", "num": 1, "mock_id": 3, "chapter": "Chapter 1: Understanding Securities Markets", "question": "Under Section 2(h) of the SCRA, which of the following is NOT legally classified as a security?", "options": {"A": "Unit-linked life insurance policy (ULIP)", "B": "Zero Coupon Zero Principal instrument under prevailing SEBI mutual fund norms", "C": "Derivative contract on equity index", "D": "Security receipt under SARFAESI Act"}, "answer": "A", "explanation": "Section 2(h) explicitly excludes unit linked insurance policies (ULIPs) or policies providing combined life risk and investment issued by insurers."}, {"id": "S12-M3-Q002", "num": 2, "mock_id": 3, "chapter": "Chapter 1: Understanding Securities Markets", "question": "Zero Coupon Zero Principal (ZCZP) instruments were declared as securities under SCRA in which month and year?", "options": {"A": "January 2020", "B": "July 2022", "C": "March 2024", "D": "September 2026"}, "answer": "B", "explanation": "ZCZPs were declared as securities vide Gazette notification dated July 16, 2022."}, {"id": "S12-M3-Q003", "num": 3, "mock_id": 3, "chapter": "Chapter 1: Understanding Securities Markets", "question": "What is the primary function of Credit Rating Agencies (CRAs) in the debt market?", "options": {"A": "Managing daily cash settlement pay-in for clearing members", "B": "Underwriting unsubscribed debentures in public debt issues", "C": "Providing a professional opinion on the credit/default risk of debt", "D": "Guaranteeing full recovery of debt capital upon corporate failure under prevailing SEBI mutual fund norms"}, "answer": "C", "explanation": "CRAs evaluate debt instruments using rating symbols to express a professional opinion on the issuer's ability to timely pay interest and principal."}, {"id": "S12-M3-Q004", "num": 4, "mock_id": 3, "chapter": "Chapter 1: Understanding Securities Markets", "question": "Which of the following is an entity governed by the Insolvency and Bankruptcy Board of India (IBBI)?", "options": {"A": "Stock Exchange Floor Specialists", "B": "Self-Certified Syndicate Banks", "C": "Qualified Foreign Portfolio Investors under prevailing SEBI mutual fund norms", "D": "Insolvency Professionals and Information Utilities"}, "answer": "D", "explanation": "The IBBI regulates Insolvency Professional Agencies, Insolvency Professionals, and Information Utilities under the IBC, 2016."}, {"id": "S12-M3-Q005", "num": 5, "mock_id": 3, "chapter": "Chapter 1: Understanding Securities Markets", "question": "What is the primary distinction between an Asset Management Company (AMC) and a Portfolio Manager?", "options": {"A": "AMCs pool money into units; Portfolio Managers manage individual accounts", "B": "AMCs can only invest in debt; Portfolio Managers invest in equity", "C": "AMCs are regulated by RBI; Portfolio Managers are regulated by MCA", "D": "AMCs charge no management fees; Portfolio Managers charge fixed fees"}, "answer": "A", "explanation": "AMCs offer units representing a pool of money (mutual funds). Portfolio managers do not pool funds and manage individual client portfolios on a fee basis."}, {"id": "S12-M3-Q006", "num": 6, "mock_id": 3, "chapter": "Chapter 1: Understanding Securities Markets", "question": "Under SEBI's CSCRF framework, which of the following is constituted as a Market Infrastructure Institution (MII)?", "options": {"A": "Registered Investment Adviser (RIA) under prevailing SEBI mutual fund norms", "B": "Qualified Registrar and Transfer Agent (QRTA)", "C": "Non-Banking Finance Company (NBFC)", "D": "Authorized Person (sub-broker)"}, "answer": "B", "explanation": "Under CSCRF, MIIs include Stock Exchanges, Depositories, Clearing Corporations, KRAs, and Qualified RTAs (QRTAs)."}, {"id": "S12-M3-Q007", "num": 7, "mock_id": 3, "chapter": "Chapter 1: Understanding Securities Markets", "question": "What is the purpose of conducting In-Person Verification (IPV) during client onboarding in securities markets?", "options": {"A": "To audit the client's past three years of income tax returns under prevailing SEBI mutual fund norms", "B": "To assign the client a unique algorithm execution terminal", "C": "To verify the physical identity and residential existence of the client", "D": "To verify that the investor has passed the NISM examination"}, "answer": "C", "explanation": "IPV is an integral part of the KYC process to physically or digitally verify the client's identity and proof of address."}, {"id": "S12-M3-Q008", "num": 8, "mock_id": 3, "chapter": "Chapter 1: Understanding Securities Markets", "question": "Which market participant brings buyers and sellers together on the exchange as an agent of a stock broker?", "options": {"A": "Primary Dealer", "B": "Debenture Trustee", "C": "Qualified Institutional Buyer", "D": "Authorized Person (AP)"}, "answer": "D", "explanation": "Authorized Persons (APs, formerly sub-brokers) are registered agents of brokers who help expand brokerage services to a wider investor base."}, {"id": "S12-M3-Q009", "num": 9, "mock_id": 3, "chapter": "Chapter 1: Understanding Securities Markets", "question": "How does high market turnover in a listed stock benefit secondary market participants?", "options": {"A": "It enhances liquidity and narrows the bid-ask trading spread", "B": "It guarantees steady corporate dividend payouts each quarter", "C": "It eliminates the need for paying securities transaction tax under prevailing SEBI mutual fund norms", "D": "It prevents the exchange from imposing daily circuit limits"}, "answer": "A", "explanation": "Higher turnover indicates active trading volume, leading to deeper liquidity, lower impact costs, and tighter bid-ask spreads."}, {"id": "S12-M3-Q010", "num": 10, "mock_id": 3, "chapter": "Chapter 1: Understanding Securities Markets", "question": "Which regulatory authority manages the public debt borrowing program of the Central and State Governments?", "options": {"A": "Insolvency and Bankruptcy Board of India", "B": "Reserve Bank of India (RBI)", "C": "Securities and Exchange Board of India", "D": "Ministry of Corporate Affairs"}, "answer": "B", "explanation": "The RBI acts as the debt manager for Central and State Governments, conducting auctions for dated securities and treasury bills."}, {"id": "S12-M3-Q011", "num": 11, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "When an issuer chooses debt capital over equity financing, what is an important risk to consider?", "options": {"A": "Permanent dilution of voting control among promoters", "B": "Mandatory forfeiture of unallocated reserve capital", "C": "Fixed interest obligations can cause insolvency during poor earnings", "D": "Complete surrender of intellectual property assets to lenders under prevailing SEBI mutual fund norms"}, "answer": "C", "explanation": "Debt requires mandatory periodic interest payments regardless of profits. If earnings fall, interest burden can push the firm into default/bankruptcy."}, {"id": "S12-M3-Q012", "num": 12, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "Which of the following constitutes part of a company's net worth on its balance sheet?", "options": {"A": "Trade payables due to raw material vendors", "B": "Commercial paper obligations maturing within 90 days", "C": "Outstanding secured bank loan facilities", "D": "Paid-up equity share capital plus retained reserves"}, "answer": "D", "explanation": "Net worth consists of paid-up equity capital plus accumulated reserves and surplus (retained earnings) belonging to equity shareholders."}, {"id": "S12-M3-Q013", "num": 13, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "What is the primary right conferred by holding ordinary equity shares in a joint stock company?", "options": {"A": "Voting rights in general shareholder meetings", "B": "First liquidation priority over corporate assets", "C": "Guaranteed quarterly dividend payments", "D": "Annual interest coupons linked to repo rate"}, "answer": "A", "explanation": "Ordinary equity shares confer ownership and voting rights, allowing shareholders to elect the board and vote on company resolutions."}, {"id": "S12-M3-Q014", "num": 14, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "A 10-year bond pays a coupon of 8% annually. If market yields for comparable bonds drop to 6%, what happens to the bond's price?", "options": {"A": "It drops to zero due to negative carry", "B": "It trades at a premium above face value", "C": "It trades at a discount below face value", "D": "It remains exactly unchanged at par"}, "answer": "B", "explanation": "Because bond prices and yields are inversely related, when market yield falls below the coupon rate, the bond's present value rises above par (premium)."}, {"id": "S12-M3-Q015", "num": 15, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "A bond with a face value of Rs. 100 and coupon 7% trades at Rs. 105. What is its current yield?", "options": {"A": "7.00 percent", "B": "5.85 percent", "C": "6.67 percent", "D": "7.35 percent"}, "answer": "C", "explanation": "Current Yield = (Annual Coupon / Market Price) * 100 = (Rs. 7 / Rs. 105) * 100 = 6.67%."}, {"id": "S12-M3-Q016", "num": 16, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "Which of the following is true regarding Commercial Paper (CP) in India?", "options": {"A": "It pays variable quarterly coupons linked to MIBOR", "B": "It is issued exclusively by the Reserve Bank of India", "C": "It must be secured by fixed manufacturing plant assets under prevailing SEBI mutual fund norms", "D": "It is an unsecured promissory note with maturity up to 364 days"}, "answer": "D", "explanation": "Commercial paper is an unsecured, credit-rated short-term debt instrument issued by companies and NBFCs for tenors up to 364 days."}, {"id": "S12-M3-Q017", "num": 17, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "What is the most popular tenor for Commercial Paper issues in the Indian money market?", "options": {"A": "90 days", "B": "14 days", "C": "182 days", "D": "364 days"}, "answer": "A", "explanation": "Although CPs can be issued for tenors up to 364 days, the 90-day commercial paper is the most popular tenor in the Indian market."}, {"id": "S12-M3-Q018", "num": 18, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "What is the maturity range for dated Government Securities (G-Secs) issued in India?", "options": {"A": "91 days to 364 days", "B": "1 year to 40 years", "C": "10 years to 50 years", "D": "5 years to 15 years"}, "answer": "B", "explanation": "Government dated securities in India are long-term bonds issued with tenors ranging from 1 year to 40 years."}, {"id": "S12-M3-Q019", "num": 19, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "Which entity issued the world's first Rupee-denominated Masala Bond listed on the London Stock Exchange?", "options": {"A": "Asian Development Bank (ADB) under prevailing SEBI mutual fund norms", "B": "Reserve Bank of India", "C": "International Finance Corporation (IFC)", "D": "State Bank of India Treasury"}, "answer": "C", "explanation": "The first Masala Bond was issued by the International Finance Corporation (IFC) and listed on the London Stock Exchange."}, {"id": "S12-M3-Q020", "num": 20, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "What is the primary objective of issuing Green Debt Securities under SEBI (NCS) Regulations?", "options": {"A": "Providing tax-free dividends to high net worth individuals", "B": "Funding speculative algorithmic trading infrastructure", "C": "Restructuring non-performing loans of private lenders", "D": "Financing sustainable projects like renewable energy and clean transport"}, "answer": "D", "explanation": "Green debt securities are issued to raise capital for eco-friendly, sustainable assets such as renewable energy, clean transportation, and climate adaptation."}, {"id": "S12-M3-Q021", "num": 21, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "Bharat Bond ETF tracks an index consisting of which category of debt securities?", "options": {"A": "AAA-rated bonds issued by Public Sector Undertakings (PSUs)", "B": "Subordinated tier-2 debt of scheduled private banks", "C": "Sovereign Treasury bills with 91-day maturity", "D": "High-yield unrated commercial paper of private firms under prevailing SEBI mutual fund norms"}, "answer": "A", "explanation": "Bharat Bond ETF tracks the Nifty Bharat Bond Index, investing exclusively in AAA-rated bonds of Public Sector Undertakings."}, {"id": "S12-M3-Q022", "num": 22, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "In a repo transaction, how does the borrower view the trade?", "options": {"A": "As a direct outright sale of securities with no return obligation", "B": "As borrowing funds by pledging eligible securities as collateral", "C": "As converting floating rate loans into fixed rate debentures", "D": "As issuing fresh equity shares to institutional investors"}, "answer": "B", "explanation": "A repo (repurchase agreement) is a secured borrowing where the borrower pledges securities against funds, agreeing to repurchase them later."}, {"id": "S12-M3-Q023", "num": 23, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "What is the primary difference between a regular repo and a Tri-Party Repo?", "options": {"A": "Tri-party repos are restricted exclusively to overseas FPIs", "B": "Regular repos can only be conducted by retail individual savers", "C": "Tri-party repos are matched and settled via a central platform like CCIL", "D": "Regular repos are cleared by RBI; Tri-party repos are uncollateralized under prevailing SEBI mutual fund norms"}, "answer": "C", "explanation": "Tri-party repos trade on an electronic platform (CCIL/Exchanges) where a central counterparty facilitates clearing, settlement, and collateral management."}, {"id": "S12-M3-Q024", "num": 24, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "What is the definition of reinvestment risk for a bond investor?", "options": {"A": "The risk that high inflation reduces the real purchasing power of debt under prevailing SEBI mutual fund norms", "B": "The risk that the issuing corporate defaults on principal repayment", "C": "The risk that secondary market trading is suspended by the regulator", "D": "The risk that periodic coupon cash flows are reinvested at lower yields"}, "answer": "D", "explanation": "Reinvestment risk occurs when interest rates decline, forcing the investor to reinvest interim coupon payouts at lower prevailing rates."}, {"id": "S12-M3-Q025", "num": 25, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "An investor holds Rs. 10 Lakhs in a 5-year bond paying 8% coupon. If inflation averages 9% over the period, the real return is:", "options": {"A": "Negative 1.0 percent", "B": "Positive 1.0 percent", "C": "Zero percent", "D": "Positive 8.0 percent"}, "answer": "A", "explanation": "Real Return = Nominal Return - Inflation = 8% - 9% = -1.0% (negative purchasing power return)."}, {"id": "S12-M3-Q026", "num": 26, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "Under SEBI regulations, how much upfront margin must an investor pay to acquire share warrants?", "options": {"A": "50 percent", "B": "25 percent", "C": "10 percent", "D": "100 percent"}, "answer": "B", "explanation": "Investors must pay 25% of the total consideration upfront at the time of warrant issuance."}, {"id": "S12-M3-Q027", "num": 27, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "A stock with EPS of Rs. 15 trades at Rs. 180. What is its Price-Earnings (PE) ratio?", "options": {"A": "15 times", "B": "8 times", "C": "12 times", "D": "18 times under prevailing SEBI mutual fund norms"}, "answer": "C", "explanation": "PE Ratio = Market Price / EPS = 180 / 15 = 12 times."}, {"id": "S12-M3-Q028", "num": 28, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "A company has 5 Crore shares and declares a 40% dividend on a face value of Rs. 5. What is the total dividend payout?", "options": {"A": "Rs. 20 Crores under prevailing SEBI mutual fund norms", "B": "Rs. 40 Crores", "C": "Rs. 5 Crores", "D": "Rs. 10 Crores"}, "answer": "D", "explanation": "Dividend per share = 40% of Rs. 5 = Rs. 2. Total Payout = 5 Crore shares * Rs. 2 = Rs. 10 Crores."}, {"id": "S12-M3-Q029", "num": 29, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "Which valuation approach compares a company's metrics against similar listed peer companies?", "options": {"A": "Relative valuation model", "B": "Technical moving average model", "C": "Discounted cash flow model", "D": "Economic order quantity model"}, "answer": "A", "explanation": "Relative valuation uses multiples (PE, PBV, EV/EBITDA) of comparable peer companies to estimate fair value."}, {"id": "S12-M3-Q030", "num": 30, "mock_id": 3, "chapter": "Chapter 2: Securities: Types, Features & Asset Allocation", "question": "In an amortizing bond, what happens to the interest component of periodic payments over time?", "options": {"A": "It increases because the outstanding principal rises", "B": "It decreases because outstanding principal is gradually repaid", "C": "It is waived entirely after the fifth anniversary", "D": "It remains completely identical in every single installment"}, "answer": "B", "explanation": "As principal is repaid in each installment, the remaining loan balance falls, reducing the interest component over time."}, {"id": "S12-M3-Q031", "num": 31, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "Under SEBI ICDR Regulations, what is the maximum public issue period under ordinary circumstances?", "options": {"A": "5 working days", "B": "15 working days under prevailing SEBI mutual fund norms", "C": "10 working days", "D": "21 working days"}, "answer": "C", "explanation": "A public issue is open for subscription for a minimum of 3 working days and a maximum of 10 working days."}, {"id": "S12-M3-Q032", "num": 32, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "What is the mandatory price band announcement timeline prior to IPO issue opening?", "options": {"A": "At least 5 working days prior under prevailing SEBI mutual fund norms", "B": "At least 7 working days prior", "C": "At least 1 working day prior", "D": "At least 2 working days prior"}, "answer": "D", "explanation": "The issuer must announce the price band at least 2 working days before the public issue opens for bidding."}, {"id": "S12-M3-Q033", "num": 33, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "In a public issue, an individual applying for shares worth Rs. 1,50,000 is classified under which category?", "options": {"A": "Retail Individual Investor", "B": "Qualified Institutional Buyer", "C": "Non-Institutional Buyer", "D": "Anchor Institutional Bidder"}, "answer": "A", "explanation": "Individual applications up to Rs. 2,00,000 belong to the Retail Individual Investor (RII) category."}, {"id": "S12-M3-Q034", "num": 34, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "What is the retail application limit for utilizing the UPI payment mechanism in ASBA?", "options": {"A": "Up to Rs. 1 Lakh", "B": "Up to Rs. 5 Lakhs", "C": "Up to Rs. 10 Lakhs", "D": "Up to Rs. 25 Lakhs"}, "answer": "B", "explanation": "SEBI permits retail individual investors to use UPI in ASBA for application amounts up to Rs. 5 Lakhs."}, {"id": "S12-M3-Q035", "num": 35, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "Under SEBI ICDR Regulations, if an IPO receives only 80% subscription, what must the issuer do?", "options": {"A": "Issue bonus shares to compensate existing successful bidders", "B": "Extend the bidding period indefinitely until 100% is reached", "C": "Refund and unblock all application funds within 4 days of issue close", "D": "Allot shares to available bidders and seek bank term loans"}, "answer": "C", "explanation": "If the issue fails to receive 90% minimum subscription, the entire subscription amount must be refunded/unblocked within 4 days of closure."}, {"id": "S12-M3-Q036", "num": 36, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "Under the Green Shoe Option (GSO), what maximum percentage of additional shares may be allotted?", "options": {"A": "25 percent of issue size", "B": "50 percent of issue size under prevailing SEBI mutual fund norms", "C": "5 percent of issue size", "D": "15 percent of issue size"}, "answer": "D", "explanation": "The issuer can allocate up to 15% additional shares under the Green Shoe Option for post-listing price stabilization."}, {"id": "S12-M3-Q037", "num": 37, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "How long does the stabilizing agent have to stabilize share prices under the Green Shoe Option?", "options": {"A": "Up to 30 days from listing", "B": "Up to 60 days from listing", "C": "Up to 90 days from listing", "D": "Up to 15 days from listing under prevailing SEBI mutual fund norms"}, "answer": "A", "explanation": "The price stabilization intervention in the secondary market can be carried out for up to 30 days from the date of listing."}, {"id": "S12-M3-Q038", "num": 38, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "In an Offer for Sale (OFS), what happens to the total paid-up share capital of the issuing company?", "options": {"A": "It converts into long-term secured debentures", "B": "It remains unchanged as no new shares are created", "C": "It expands by the number of shares sold", "D": "It shrinks because shares are transferred to the public"}, "answer": "B", "explanation": "In an OFS, existing shareholders sell their stake; no new shares are issued, so the company's capital remains unchanged."}, {"id": "S12-M3-Q039", "num": 39, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "Under SEBI ICDR profitability norms, what is the retail reservation percentage in a book-built issue?", "options": {"A": "Not less than 75 percent", "B": "Not less than 10 percent under prevailing SEBI mutual fund norms", "C": "Not less than 35 percent", "D": "Not less than 50 percent"}, "answer": "C", "explanation": "In a book-built issue under normal profitability norms, the allocation to retail investors must be not less than 35% of the net offer."}, {"id": "S12-M3-Q040", "num": 40, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "Under the alternative QIB book-building route (Regulation 6(2)), what is the minimum QIB allocation?", "options": {"A": "At least 90 percent of net offer", "B": "At least 50 percent of net offer", "C": "At least 85 percent of net offer", "D": "At least 75 percent of net offer"}, "answer": "D", "explanation": "Issuers lacking a 3-year profit history can issue via book building provided at least 75% of the net offer is allotted to QIBs."}, {"id": "S12-M3-Q041", "num": 41, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "Under the Companies Act, 2013, an offer of securities to not more than how many persons constitutes a private placement?", "options": {"A": "50 persons", "B": "100 persons", "C": "25 persons", "D": "200 persons"}, "answer": "A", "explanation": "Under Section 42 of the Companies Act, an offer to subscribe to securities made to not more than 50 persons is a private placement."}, {"id": "S12-M3-Q042", "num": 42, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "In a book-built IPO, what proportion of the Non-Institutional Investors (NII) category is reserved for bids between Rs. 2 Lakhs and Rs. 10 Lakhs?", "options": {"A": "One-fourth of the NII portion", "B": "One-third of the NII portion", "C": "Two-thirds of the NII portion", "D": "Half of the NII portion"}, "answer": "B", "explanation": "In the NII category, one-third is reserved for applications between Rs. 2 Lakhs and Rs. 10 Lakhs; two-thirds for applications > Rs. 10 Lakhs."}, {"id": "S12-M3-Q043", "num": 43, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "What is the validity period of a Shelf Prospectus filed for public issues of debt securities?", "options": {"A": "2 years", "B": "6 months", "C": "1 year", "D": "3 years"}, "answer": "C", "explanation": "A shelf prospectus is valid for a period of 1 year, allowing the issuer to make multiple tranches of debt issues under it."}, {"id": "S12-M3-Q044", "num": 44, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "What is the minimum subscription requirement for a public issue of debt securities under SEBI (NCS) Regulations?", "options": {"A": "50 percent of base issue", "B": "100 percent of base issue", "C": "90 percent of base issue", "D": "75 percent of base issue"}, "answer": "D", "explanation": "Public issues of debt securities must achieve at least 75% subscription of the base issue size (CBDT tax-free bonds exempt)."}, {"id": "S12-M3-Q045", "num": 45, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "Under SEBI rules, a rights issue of equity shares must be kept open for subscription for:", "options": {"A": "Minimum 7 days and maximum 30 days", "B": "Minimum 30 days and maximum 60 days", "C": "Minimum 15 days and maximum 45 days", "D": "Minimum 3 days and maximum 10 days"}, "answer": "A", "explanation": "A rights issue must remain open for subscription for a minimum of 7 days and a maximum of 30 days."}, {"id": "S12-M3-Q046", "num": 46, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "What is the Electronic Book Provider (EBP) platform threshold for mandatory electronic bidding of private debt placements?", "options": {"A": "Rs. 25 Crores and above", "B": "Rs. 50 Crores and above", "C": "Rs. 100 Crores and above", "D": "Rs. 250 Crores and above"}, "answer": "B", "explanation": "Use of the EBP platform is mandatory for private placements of debt equal to or exceeding Rs. 50 Crores (single or cumulative shelf)."}, {"id": "S12-M3-Q047", "num": 47, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "How are retail orders aggregated in RBI auctions of Government Securities on a non-competitive basis?", "options": {"A": "Primary dealers buy all bonds and retail buys on OTC desks later", "B": "The Ministry of Finance allocates bonds directly via post offices under prevailing SEBI mutual fund norms", "C": "Stock exchanges aggregate orders and submit a single consolidated bid", "D": "Each retail investor bids individually using SGL ledger accounts"}, "answer": "C", "explanation": "Brokers enter retail bids, stock exchanges aggregate them into a single consolidated bid to the RBI, and allocate bonds at the weighted average price."}, {"id": "S12-M3-Q048", "num": 48, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "In an IPO book building process, what is the 'cut-off price'?", "options": {"A": "The price at which shares open on listing day", "B": "The maximum cap price at which anchor investors bid under prevailing SEBI mutual fund norms", "C": "The lowest floor price specified in the price band", "D": "The price at which the entire issue gets fully subscribed"}, "answer": "D", "explanation": "The cut-off price is the final price discovered through bidding at which the issue is fully subscribed and allotted."}, {"id": "S12-M3-Q049", "num": 49, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "An IPO retail category is oversubscribed 2.0 times. An applicant applied for 40 shares. How many shares will be allotted?", "options": {"A": "20 shares", "B": "30 shares", "C": "10 shares under prevailing SEBI mutual fund norms", "D": "40 shares"}, "answer": "A", "explanation": "Allotment = Applied shares / Oversubscription ratio = 40 / 2.0 = 20 shares."}, {"id": "S12-M3-Q050", "num": 50, "mock_id": 3, "chapter": "Chapter 3: Primary Markets", "question": "What document must accompany every public issue application form under SEBI regulations?", "options": {"A": "Full Draft Red Herring Prospectus", "B": "Abridged Prospectus", "C": "Annual Director Report", "D": "Statement of Additional Information"}, "answer": "B", "explanation": "Every public issue application form must be accompanied by an Abridged Prospectus providing concise statutory disclosures."}, {"id": "S12-M3-Q051", "num": 51, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "What is the primary role of the secondary market for securities?", "options": {"A": "Regulating annual corporate governance audit standards", "B": "Providing debt capital to the Reserve Bank of India", "C": "Providing liquidity and price discovery for existing securities", "D": "Allocating foreign aid to domestic industrial enterprises under prevailing SEBI mutual fund norms"}, "answer": "C", "explanation": "The secondary market enables investors to trade already-issued securities among themselves, providing liquidity, marketability, and price discovery."}, {"id": "S12-M3-Q052", "num": 52, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "What type of order is placed with a specific price and executes only if that price or better is available in the market?", "options": {"A": "Iceberg order", "B": "Stop-loss market order", "C": "Market order", "D": "Limit order"}, "answer": "D", "explanation": "A limit order specifies a price, executing only at the limit price or better. If unmatched, it rests in the order book until market close."}, {"id": "S12-M3-Q053", "num": 53, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "Why are limit orders classified as 'passive orders' in the order matching system?", "options": {"A": "They rest in the order book and provide liquidity to other participants", "B": "They cannot be cancelled or modified once placed on terminal", "C": "They execute immediately against existing quotes in the book under prevailing SEBI mutual fund norms", "D": "They are executed exclusively during pre-open call auctions"}, "answer": "A", "explanation": "Limit orders placed away from market price rest in the order book, creating depth and supplying liquidity to incoming market orders."}, {"id": "S12-M3-Q054", "num": 54, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "On the National Stock Exchange (NSE), what is the regular trading session timing for the equity derivatives segment?", "options": {"A": "09:15 hrs to 16:15 hrs", "B": "09:15 hrs to 15:40 hrs", "C": "09:00 hrs to 15:30 hrs under prevailing SEBI mutual fund norms", "D": "09:00 hrs to 17:00 hrs"}, "answer": "B", "explanation": "Normal trading hours for equity derivatives on the NSE run from 09:15 hrs to 15:40 hrs (trade modification ends at 16:15 hrs)."}, {"id": "S12-M3-Q055", "num": 55, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "What is the minimum transaction order value to execute a trade in the block deal window?", "options": {"A": "Rs. 100 Crores", "B": "Rs. 50 Crores", "C": "Rs. 25 Crores", "D": "Rs. 5 Crores"}, "answer": "C", "explanation": "Under SEBI's block deal framework, the minimum order size is Rs. 25 Crores."}, {"id": "S12-M3-Q056", "num": 56, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "What are the timings for the two special block deal windows on Indian stock exchanges?", "options": {"A": "Morning: 09:00\u201309:15; Afternoon: 15:00\u201315:15 under prevailing SEBI mutual fund norms", "B": "Morning: 09:15\u201309:30; Afternoon: 14:30\u201314:45", "C": "Morning: 08:30\u201308:45; Afternoon: 13:45\u201314:00", "D": "Morning: 08:45\u201309:00; Afternoon: 14:05\u201314:20"}, "answer": "D", "explanation": "Block deals execute in two windows: morning (08:45 to 09:00 hrs) and afternoon (14:05 to 14:20 hrs)."}, {"id": "S12-M3-Q057", "num": 57, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "What is the duration of trading halt if a 15% market-wide circuit breaker is triggered before 1:00 PM?", "options": {"A": "1 hour 45 minutes halt", "B": "Halt for the rest of the day", "C": "45 minutes halt", "D": "2 hours halt"}, "answer": "A", "explanation": "A 15% index breach before 1:00 PM triggers a 1-hour 45-minute trading halt followed by a 15-minute pre-open call auction."}, {"id": "S12-M3-Q058", "num": 58, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "What is the mandatory Extreme Loss Margin (ELM) percentage charged on equity stocks?", "options": {"A": "10.0 percent", "B": "3.5 percent", "C": "5.0 percent", "D": "1.5 percent"}, "answer": "B", "explanation": "Under SEBI's margin framework, the Extreme Loss Margin (ELM) is fixed at 3.5% for all cash segment stocks."}, {"id": "S12-M3-Q059", "num": 59, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "Within how many hours of trade execution must a broker issue a valid contract note to a client?", "options": {"A": "Within 48 hours", "B": "Within 12 hours under prevailing SEBI mutual fund norms", "C": "Within 24 hours", "D": "Within 72 hours"}, "answer": "C", "explanation": "A trading member must issue a contract note (physical or password-protected ECN) within 24 hours of trade execution."}, {"id": "S12-M3-Q060", "num": 60, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "What is the rate of Securities Transaction Tax (STT) on the sale of an option in securities?", "options": {"A": "0.050 percent on trade price", "B": "0.025 percent on strike value", "C": "0.100 percent on intrinsic value", "D": "0.150 percent on option premium"}, "answer": "D", "explanation": "STT on the sale of an option contract is 0.150% payable by the seller on the option premium amount."}, {"id": "S12-M3-Q061", "num": 61, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "What is the Base Minimum Capital (BMC) requirement for trading members deploying Algorithmic Trading?", "options": {"A": "Rs. 50 Lacs", "B": "Rs. 15 Lacs", "C": "Rs. 25 Lacs under prevailing SEBI mutual fund norms", "D": "Rs. 1 Crore"}, "answer": "A", "explanation": "SEBI mandates a BMC deposit of Rs. 50 Lacs for trading members/brokers who deploy algorithmic trading (at least 50% in cash/cash equivalents)."}, {"id": "S12-M3-Q062", "num": 62, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "In a settlement cycle, an investor buys 100 shares of XYZ and sells 60 shares of XYZ. What is the net settlement delivery obligation?", "options": {"A": "Both transactions are cancelled due to internal netting conflict", "B": "Buyer pays for and receives net delivery of 40 shares", "C": "The exchange conducts an auction for all 160 shares", "D": "Buyer receives 100 shares and seller delivers 60 shares separately"}, "answer": "B", "explanation": "Indian clearing corporations follow net settlement. Net obligation = 100 bought - 60 sold = 40 shares delivery to buyer."}, {"id": "S12-M3-Q063", "num": 63, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "What is the settlement cycle for secondary market equity cash trades in India?", "options": {"A": "T+3 settlement cycle", "B": "T+2 settlement cycle", "C": "T+1 settlement cycle", "D": "T+0 settlement cycle under prevailing SEBI mutual fund norms"}, "answer": "C", "explanation": "All equity shares and ETFs in the cash market settle on a mandatory T+1 rolling settlement cycle (with optional T+0 for select scrips)."}, {"id": "S12-M3-Q064", "num": 64, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "Under SEBI regulations, within how many days must an entity resolve a complaint on the SCORES portal?", "options": {"A": "Within 15 days under prevailing SEBI mutual fund norms", "B": "Within 7 days", "C": "Within 30 days", "D": "Within 21 days"}, "answer": "D", "explanation": "Entities must resolve complaints and upload an Action Taken Report (ATR) on SCORES within 21 days of receiving intimation from SEBI."}, {"id": "S12-M3-Q065", "num": 65, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "What is the statutory timeline for appealing an arbitrator's award before the appellate panel?", "options": {"A": "Within 7 days of receiving award", "B": "Within 60 days of receiving award", "C": "Within 30 days of receiving award", "D": "Within 15 days of receiving award"}, "answer": "A", "explanation": "An appeal against an arbitrator's award must be filed with the appellate panel within 7 days of receiving the award."}, {"id": "S12-M3-Q066", "num": 66, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "For how long can an eligible investor claim restitution from disgorged amounts in IPEF?", "options": {"A": "Up to 10 years from notice", "B": "Up to 7 years from notice", "C": "Up to 5 years from notice", "D": "Up to 3 years from notice"}, "answer": "B", "explanation": "Under SEBI (IPEF) Regulations, an aggrieved investor can claim restitution from disgorged funds up to 7 years from SEBI invitation."}, {"id": "S12-M3-Q067", "num": 67, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "An order book shows Best Bid at Rs. 290 and Best Ask at Rs. 310. What is the impact cost of buying at Rs. 310?", "options": {"A": "6.67 percent", "B": "1.67 percent under prevailing SEBI mutual fund norms", "C": "3.33 percent", "D": "5.00 percent"}, "answer": "C", "explanation": "Ideal Price = (290 + 310) / 2 = Rs. 300. Buy Price = Rs. 310. Impact Cost = [(310 - 300) / 300] * 100 = 3.33%."}, {"id": "S12-M3-Q068", "num": 68, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "What is the base period and base value for the NSE Nifty 50 Index?", "options": {"A": "April 1, 1979 with base 100", "B": "March 31, 2010 with base 10,000 under prevailing SEBI mutual fund norms", "C": "January 1, 2000 with base 5,000", "D": "November 3, 1995 with base 1,000"}, "answer": "D", "explanation": "The base period for Nifty 50 is November 3, 1995, and its base value was set at 1,000."}, {"id": "S12-M3-Q069", "num": 69, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "What instruction mechanism replaced Power of Attorney (PoA) for debiting client demat accounts for settlements?", "options": {"A": "Demat Debit and Pledge Instruction (DDPI)", "B": "Uniform Risk Disclosure Document", "C": "Client Master Report Undertaking", "D": "Electronic Contract Note Declaration under prevailing SEBI mutual fund norms"}, "answer": "A", "explanation": "DDPI replaced PoA for debiting client accounts for securities pay-in and margin pledging, preventing broker misuse."}, {"id": "S12-M3-Q070", "num": 70, "mock_id": 3, "chapter": "Chapter 4: Secondary Markets", "question": "When a stock trading at Rs. 600 (Face Value Rs. 10) undergoes a 1:2 split to Face Value Rs. 5, the ex-split price is:", "options": {"A": "Rs. 1,200 per share", "B": "Rs. 300 per share", "C": "Rs. 200 per share", "D": "Rs. 600 per share"}, "answer": "B", "explanation": "In a 1:2 split (FV reduced from 10 to 5), the number of shares doubles and the market price halves (Rs. 600 / 2 = Rs. 300)."}, {"id": "S12-M3-Q071", "num": 71, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "Under SEBI scheme categorization, what is the mandatory asset allocation for a Multi Cap Fund?", "options": {"A": "Min 80% in large cap stocks with remainder in sovereign gilts under prevailing SEBI mutual fund norms", "B": "Min 65% in equity dynamically managed across market caps", "C": "Min 75% in equity with at least 25% each in Large, Mid, Small caps", "D": "Min 65% in small cap and mid cap stocks combined equally"}, "answer": "C", "explanation": "Multi Cap Funds must invest at least 75% in equity, with a minimum of 25% each in Large Cap, Mid Cap, and Small Cap companies."}, {"id": "S12-M3-Q072", "num": 72, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "What is the maximum temporary borrowing allowed for a mutual fund to meet redemption liquidity needs?", "options": {"A": "Up to 50% of net assets for up to 12 months", "B": "Mutual funds cannot borrow under any circumstances", "C": "Up to 10% of net assets for up to 3 months", "D": "Up to 20% of net assets for up to 6 months"}, "answer": "D", "explanation": "Mutual funds may borrow only to meet temporary liquidity requirements (redemptions/dividends) up to 20% of net assets for up to 6 months."}, {"id": "S12-M3-Q073", "num": 73, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "A fund scheme has net assets of Rs. 240 Crores and 10 Crore units. With a 1% exit load, what is the redemption price per unit?", "options": {"A": "Rs. 23.76", "B": "Rs. 24.00", "C": "Rs. 21.60 under prevailing SEBI mutual fund norms", "D": "Rs. 24.24"}, "answer": "A", "explanation": "NAV = Rs. 240 Cr / 10 Cr = Rs. 24.00. Exit load = 1% of 24 = Rs. 0.24. Redemption Price = 24.00 - 0.24 = Rs. 23.76."}, {"id": "S12-M3-Q074", "num": 74, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "Which of the following describes the asset allocation of a Balanced Hybrid Fund under SEBI regulations?", "options": {"A": "Minimum 65% in equity and derivatives arbitrage under prevailing SEBI mutual fund norms", "B": "40% to 60% in equity; 40% to 60% in debt (no arbitrage)", "C": "65% to 80% in equity; 20% to 35% in debt", "D": "75% to 90% in debt; 10% to 25% in equity"}, "answer": "B", "explanation": "A Balanced Hybrid Fund invests 40% to 60% in equity and 40% to 60% in debt (no arbitrage permitted). MFs can offer Balanced OR Aggressive Hybrid."}, {"id": "S12-M3-Q075", "num": 75, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "What is the mandatory statutory lock-in period for Equity Linked Savings Schemes (ELSS)?", "options": {"A": "One year from allotment", "B": "Five years from allotment", "C": "Three years from allotment", "D": "Eight years from allotment"}, "answer": "C", "explanation": "ELSS schemes have a statutory lock-in period of 3 years from the date of unit allotment to qualify for Section 80C tax deductions."}, {"id": "S12-M3-Q076", "num": 76, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "What is the minimum investment amount required for investors in Specialized Investment Funds (SIFs)?", "options": {"A": "Rs. 25 Lakhs under prevailing SEBI mutual fund norms", "B": "Rs. 1 Lakh", "C": "Rs. 5 Lakhs", "D": "Rs. 10 Lakhs"}, "answer": "D", "explanation": "Under SEBI MF Third Amendment Regulations 2024, Specialized Investment Funds (SIFs) mandate a minimum ticket size of Rs. 10 Lakhs."}, {"id": "S12-M3-Q077", "num": 77, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "Under SEBI regulations, within how many days must an AMC dispatch redemption proceeds to a unitholder?", "options": {"A": "Within 10 working days", "B": "Within 3 working days", "C": "Within 15 working days under prevailing SEBI mutual fund norms", "D": "Within 5 working days"}, "answer": "A", "explanation": "Redemption proceeds must be dispatched to unitholders within 10 working days of the redemption request."}, {"id": "S12-M3-Q078", "num": 78, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "What interest rate penalty must an AMC pay to unitholders for delays in dispatching dividend or redemption payments?", "options": {"A": "18 percent per annum", "B": "15 percent per annum", "C": "6 percent per annum", "D": "10 percent per annum under prevailing SEBI mutual fund norms"}, "answer": "B", "explanation": "AMCs must pay interest at 15% p.a. out of their own funds for any delay in dispatching dividend or redemption payments."}, {"id": "S12-M3-Q079", "num": 79, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "What is the tenure range for Life Cycle Funds introduced under the SEBI Master Circular 2026?", "options": {"A": "1 to 5 years in multiples of 1 year", "B": "10 to 40 years in multiples of 10 years", "C": "5 to 30 years in multiples of 5 years", "D": "Perpetual tenor with no target maturity"}, "answer": "C", "explanation": "Life Cycle Funds are open-ended target-maturity funds following a glide path with tenures from 5 to 30 years (in multiples of 5 years, max 6 schemes)."}, {"id": "S12-M3-Q080", "num": 80, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "How are Large Cap, Mid Cap, and Small Cap companies defined under SEBI mutual fund rules?", "options": {"A": "Large: Top 200; Mid: 201-500; Small: 501 onwards", "B": "Large: >50k cr; Mid: 10k-50k cr; Small: <10k cr", "C": "Large: Top 50; Mid: 51-150; Small: 151 onwards", "D": "Large: 1st-100th; Mid: 101st-250th; Small: 251st onwards"}, "answer": "D", "explanation": "SEBI categorizes Large Cap as 1st\u2013100th company in full market cap, Mid Cap as 101st\u2013250th, and Small Cap as 251st company onwards."}, {"id": "S12-M3-Q081", "num": 81, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "Under SEBI regulations, a Focused Fund can invest in a maximum of how many stocks?", "options": {"A": "Maximum 30 stocks", "B": "Maximum 75 stocks", "C": "Maximum 50 stocks", "D": "Maximum 20 stocks under prevailing SEBI mutual fund norms"}, "answer": "A", "explanation": "A Focused Fund is an equity scheme investing in a maximum of 30 stocks (minimum 80% in equity and equity-related instruments)."}, {"id": "S12-M3-Q082", "num": 82, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "What is the maturity mandate for debt securities held in a Liquid Mutual Fund scheme?", "options": {"A": "Securities with maturity of 1 day only", "B": "Securities with maturity up to 91 days only", "C": "Securities with duration between 3 and 6 months", "D": "Securities with maturity up to 1 year exclusively"}, "answer": "B", "explanation": "Liquid funds invest strictly in debt and money market securities with remaining maturities of up to 91 days only."}, {"id": "S12-M3-Q083", "num": 83, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "A Corporate Bond Fund is mandated by SEBI to invest at least 80% of its total assets in:", "options": {"A": "Commercial papers with 90-day maturity", "B": "Sovereign central government securities", "C": "Corporate bonds rated AA+ and above", "D": "Corporate debt rated AA and below"}, "answer": "C", "explanation": "Corporate Bond Funds must invest minimum 80% of total assets in corporate bonds rated AA+ and above."}, {"id": "S12-M3-Q084", "num": 84, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "Which facility enables an investor to periodically transfer a fixed sum from a liquid fund to an equity fund?", "options": {"A": "Portfolio Switch Reinvestment Scheme", "B": "Systematic Withdrawal Plan (SWP)", "C": "Systematic Investment Plan (SIP)", "D": "Systematic Transfer Plan (STP)"}, "answer": "D", "explanation": "A Systematic Transfer Plan (STP) automates regular transfers from a source fund (liquid) to a target fund (equity)."}, {"id": "S12-M3-Q085", "num": 85, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "Typically, each unit of a standard Gold Exchange Traded Fund (Gold ETF) represents:", "options": {"A": "1.0 gram of physical gold", "B": "0.1 gram of physical gold", "C": "5.0 grams of physical gold", "D": "10.0 grams of physical gold"}, "answer": "A", "explanation": "Typically, one Gold ETF unit represents 1 gram of physical gold held in custodian vaults."}, {"id": "S12-M3-Q086", "num": 86, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "What is the minimum asset allocation in target index constituent securities for Index Funds and ETFs?", "options": {"A": "Minimum 65 percent of total assets", "B": "Minimum 95 percent of total assets", "C": "Minimum 100 percent of total assets", "D": "Minimum 80 percent of total assets"}, "answer": "B", "explanation": "Index Funds and ETFs must invest at least 95% of total assets in securities of the replicated/tracked benchmark index."}, {"id": "S12-M3-Q087", "num": 87, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "Under SEBI guidelines, how many bank accounts can a mutual fund investor register in a single folio?", "options": {"A": "Up to 3 bank accounts", "B": "Up to 2 bank accounts", "C": "Up to 5 bank accounts", "D": "Unlimited bank accounts"}, "answer": "C", "explanation": "Investors can register up to 5 bank accounts in a single mutual fund folio, designating one as default."}, {"id": "S12-M3-Q088", "num": 88, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "What is the maximum duration for which a New Fund Offer (NFO), other than ELSS, can remain open?", "options": {"A": "Up to 7 days", "B": "Up to 30 days", "C": "Up to 10 days under prevailing SEBI mutual fund norms", "D": "Up to 15 days"}, "answer": "D", "explanation": "An NFO (except ELSS) can remain open for subscription for a maximum period of 15 days."}, {"id": "S12-M3-Q089", "num": 89, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "How frequently must the board of trustees of a mutual fund meet to review fund operations?", "options": {"A": "At least 6 times a year", "B": "At least 4 times a year", "C": "At least 12 times a year", "D": "At least 2 times a year"}, "answer": "A", "explanation": "Trustees of a mutual fund must meet at least 6 times a year to monitor and review fund operations and governance."}, {"id": "S12-M3-Q090", "num": 90, "mock_id": 3, "chapter": "Chapter 5: Mutual Funds", "question": "What is the primary investment strategy followed by an Arbitrage Mutual Fund scheme?", "options": {"A": "Investing exclusively in distressed corporate non-convertible debt", "B": "Exploiting price differentials between cash and futures markets", "C": "Taking unhedged long positions in high-beta momentum stocks", "D": "Purchasing overseas foreign equity funds and gold bullion"}, "answer": "B", "explanation": "Arbitrage funds buy in the cash market and simultaneously sell in futures to capture the spread, yielding low-risk returns."}, {"id": "S12-M3-Q091", "num": 91, "mock_id": 3, "chapter": "Chapter 6: Derivative Markets", "question": "Which derivative contract traded in India is mandated by SEBI to settle by physical delivery on expiry?", "options": {"A": "USDINR and EURINR currency options", "B": "Interest rate futures on G-Sec bonds", "C": "Single stock futures and stock options", "D": "Nifty 50 and Bank Nifty index futures under prevailing SEBI mutual fund norms"}, "answer": "C", "explanation": "Since October 2019, SEBI mandated physical settlement for all open positions in individual stock futures and options on expiry."}, {"id": "S12-M3-Q092", "num": 92, "mock_id": 3, "chapter": "Chapter 6: Derivative Markets", "question": "On the National Stock Exchange (NSE), monthly equity derivatives contracts expire on which day?", "options": {"A": "Last Monday of the calendar month", "B": "Last Friday of the calendar month", "C": "Last Thursday of the calendar month", "D": "Last Tuesday of the calendar month"}, "answer": "D", "explanation": "Per exchange rules and SEBI circulars, NSE monthly equity derivative contracts expire on the last Tuesday of the month (BSE on Thursday)."}, {"id": "S12-M3-Q093", "num": 93, "mock_id": 3, "chapter": "Chapter 6: Derivative Markets", "question": "What is the minimum value of a derivatives trading lot required at the time of introduction?", "options": {"A": "Not less than Rs. 5 Lakhs", "B": "Not less than Rs. 1 Lakh", "C": "Not less than Rs. 2 Lakhs", "D": "Not less than Rs. 10 Lakhs"}, "answer": "A", "explanation": "The trading lot for derivatives contracts is specified so that the lot value at introduction is not less than Rs. 5 Lakhs."}, {"id": "S12-M3-Q094", "num": 94, "mock_id": 3, "chapter": "Chapter 6: Derivative Markets", "question": "A trader buys a Nifty Call option (Strike Rs. 22,000) at premium Rs. 150. If Nifty closes at Rs. 22,400 at expiry, the option is:", "options": {"A": "At the Money (ATM) with zero settlement value", "B": "In the Money (ITM) with intrinsic value of Rs. 400", "C": "Out of the Money (OTM) with nil intrinsic value under prevailing SEBI mutual fund norms", "D": "Subject to mandatory corporate default penalty"}, "answer": "B", "explanation": "Call Intrinsic Value = Max(0, Spot - Strike) = 22,400 - 22,000 = Rs. 400. The option is In the Money (ITM)."}, {"id": "S12-M3-Q095", "num": 95, "mock_id": 3, "chapter": "Chapter 6: Derivative Markets", "question": "Why is a futures contract described in economics as a zero-sum game?", "options": {"A": "Both counterparties always suffer a capital loss on expiry", "B": "The underlying asset ceases to trade after the contract matures", "C": "Total gains of one party exactly equal total losses of the other", "D": "The clearing corporation collects zero margins on positions"}, "answer": "C", "explanation": "In futures, every rupee gained by one side is a rupee lost by the counterparty; the net economic gain across all positions is zero."}, {"id": "S12-M3-Q096", "num": 96, "mock_id": 3, "chapter": "Chapter 6: Derivative Markets", "question": "In equity options trading, which market participant is subject to paying Exposure Margin?", "options": {"A": "The option buyer (holder) only", "B": "Both buyer and seller equally", "C": "Neither buyer nor seller pays it", "D": "The option seller (writer) only"}, "answer": "D", "explanation": "Option buyers pay 100% premium upfront and face limited risk. Option writers face unlimited risk and must pay Exposure Margin."}, {"id": "S12-M3-Q097", "num": 97, "mock_id": 3, "chapter": "Chapter 6: Derivative Markets", "question": "How is the daily mark-to-market (MTM) settlement price for a futures contract determined?", "options": {"A": "The volume weighted average price of last 30 minutes of trading", "B": "The opening auction price of the morning pre-open session", "C": "The simple average of high and low prices of the trading day under prevailing SEBI mutual fund norms", "D": "The last traded tick price before market close"}, "answer": "A", "explanation": "The daily settlement price for MTM is the volume-weighted average price (VWAP) of the futures contract in the last 30 minutes of trading."}, {"id": "S12-M3-Q098", "num": 98, "mock_id": 3, "chapter": "Chapter 6: Derivative Markets", "question": "What is the tick size (minimum price step) for equity futures and options contracts in India?", "options": {"A": "25 Paise (Re. 0.25)", "B": "5 Paise (Re. 0.05)", "C": "1 Paisa (Re. 0.01)", "D": "10 Paise (Re. 0.10)"}, "answer": "B", "explanation": "The tick size (minimum price change) for equity derivatives contracts on Indian stock exchanges is Re. 0.05 (5 paise)."}, {"id": "S12-M3-Q099", "num": 99, "mock_id": 3, "chapter": "Chapter 6: Derivative Markets", "question": "What does an increase in Open Interest (OI) accompanied by rising prices typically indicate?", "options": {"A": "Imminent regulatory trading suspension", "B": "Long unwinding and distribution by sellers", "C": "Fresh buying interest and long buildup", "D": "Short covering by panicking bears"}, "answer": "C", "explanation": "Rising prices along with increasing Open Interest indicates fresh long positions being created (bullish long buildup)."}, {"id": "S12-M3-Q100", "num": 100, "mock_id": 3, "chapter": "Chapter 6: Derivative Markets", "question": "If there are 1,50,000 outstanding put options and 1,00,000 outstanding call options, what is the Put-Call Ratio (PCR)?", "options": {"A": "0.67", "B": "2.50", "C": "1.00", "D": "1.50"}, "answer": "D", "explanation": "Put-Call Ratio (PCR) = Total Put Open Interest / Total Call Open Interest = 1,50,000 / 1,00,000 = 1.50."}];
+let rawData = [];
+let currentIndex = 0;
+let userAnswers = {};
+let reviewStatus = {};
+let visited = {};
+let isSubmitted = false;
+let timeRemaining = 120 * 60;
+let timerInterval = null;
+
+function fisherYates(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+function buildActiveQuestionSet() {
+    const shuffleOpts = document.getElementById('chk-shuffle-opts').checked;
+    const shuffleQs = document.getElementById('chk-shuffle-qs').checked;
+    let list = baseQuestions.map(q => JSON.parse(JSON.stringify(q)));
+    if (shuffleQs) list = fisherYates(list);
+    rawData = list.map((q, idx) => {
+        if (!shuffleOpts) return { ...q, num: idx + 1 };
+        const correctText = q.options[q.answer];
+        const shuffledTexts = fisherYates(Object.values(q.options));
+        const letters = ['A', 'B', 'C', 'D'];
+        const newOptions = {};
+        let newAnswer = 'A';
+        letters.forEach((L, i) => {
+            newOptions[L] = shuffledTexts[i];
+            if (shuffledTexts[i] === correctText) newAnswer = L;
+        });
+        return { ...q, num: idx + 1, options: newOptions, answer: newAnswer };
+    });
+}
+
+function validateAndStart() {
+    buildActiveQuestionSet();
+    currentIndex = 0;
+    userAnswers = {};
+    reviewStatus = {};
+    visited = {};
+    isSubmitted = false;
+    timeRemaining = 120 * 60;
+    document.getElementById('start-page').classList.add('hidden');
+    document.getElementById('test-interface').classList.remove('hidden');
+    document.getElementById('scorecard').classList.add('hidden');
+    document.getElementById('submit-btn').classList.remove('hidden');
+    document.getElementById('clear-btn').classList.remove('hidden');
+    document.getElementById('review-btn').classList.remove('hidden');
+    initPalette();
+    loadQuestion(0);
+    startTimer();
+}
+
+function retakeWithFreshShuffle() {
+    clearInterval(timerInterval);
+    validateAndStart();
+}
+
+function initPalette() {
+    const grid = document.getElementById('q-grid');
+    grid.innerHTML = '';
+    for (let i = 0; i < rawData.length; i++) {
+        const btn = document.createElement('div');
+        btn.className = 'q-num';
+        btn.id = 'p-btn-' + i;
+        btn.innerText = (i + 1);
+        btn.onclick = () => loadQuestion(i);
+        grid.appendChild(btn);
+    }
+}
+
+function updatePalette() {
+    for (let i = 0; i < rawData.length; i++) {
+        const btn = document.getElementById('p-btn-' + i);
+        if (!btn) continue;
+        btn.className = 'q-num';
+        if (i === currentIndex) btn.classList.add('current');
+        if (isSubmitted) {
+            const chosen = userAnswers[i];
+            const correct = rawData[i].answer;
+            if (chosen === undefined) btn.classList.add('res-none');
+            else if (chosen === correct) btn.classList.add('res-correct');
+            else btn.classList.add('res-wrong');
+        } else {
+            if (reviewStatus[i]) btn.classList.add('marked');
+            else if (userAnswers[i] !== undefined) btn.classList.add('attempted');
+            else if (visited[i]) btn.classList.add('visited');
+        }
+    }
+    const attemptedCount = Object.keys(userAnswers).length;
+    document.getElementById('stat-attempted').innerText = attemptedCount;
+    document.getElementById('stat-left').innerText = rawData.length - attemptedCount;
+}
+
+function loadQuestion(index) {
+    if (index < 0 || index >= rawData.length) return;
+    visited[index] = true;
+    currentIndex = index;
+    const q = rawData[index];
+    document.getElementById('q-title').innerText = `Question ${index + 1} of ${rawData.length}`;
+    document.getElementById('q-category').innerText = q.chapter;
+    document.getElementById('q-text').innerText = `Q${index + 1}. ${q.question}`;
+    const container = document.getElementById('options-container');
+    container.innerHTML = '';
+    ['A', 'B', 'C', 'D'].forEach(letter => {
+        const optText = q.options[letter];
+        const item = document.createElement('div');
+        item.className = 'option-item';
+        if (userAnswers[index] === letter) item.classList.add('selected');
+        if (isSubmitted) {
+            if (letter === q.answer) item.classList.add('correct');
+            else if (userAnswers[index] === letter) item.classList.add('wrong');
+        } else {
+            item.onclick = () => selectOption(letter);
+        }
+        item.innerHTML = `<span class="opt-letter">${letter}</span><span>${optText}</span>`;
+        container.appendChild(item);
+    });
+    const resInfo = document.getElementById('result-info');
+    if (isSubmitted) {
+        resInfo.classList.remove('hidden');
+        document.getElementById('explanation-text').innerHTML = `<b>Correct Option: (${q.answer}) — ${q.options[q.answer]}</b><br>${q.explanation}`;
+    } else {
+        resInfo.classList.add('hidden');
+    }
+    const revBtn = document.getElementById('review-btn');
+    revBtn.innerText = reviewStatus[index] ? 'Unmark Review' : 'Mark for Review';
+    updatePalette();
+}
+
+function selectOption(letter) {
+    if (isSubmitted) return;
+    userAnswers[currentIndex] = letter;
+    loadQuestion(currentIndex);
+}
+
+function clearResponse() {
+    if (isSubmitted) return;
+    delete userAnswers[currentIndex];
+    loadQuestion(currentIndex);
+}
+
+function toggleReview() {
+    if (isSubmitted) return;
+    if (reviewStatus[currentIndex]) delete reviewStatus[currentIndex];
+    else reviewStatus[currentIndex] = true;
+    loadQuestion(currentIndex);
+}
+
+function prevQuestion() { if (currentIndex > 0) loadQuestion(currentIndex - 1); }
+function nextQuestion() { if (currentIndex < rawData.length - 1) loadQuestion(currentIndex + 1); }
+
+function startTimer() {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        if (timeRemaining <= 0) {
+            clearInterval(timerInterval);
+            endTest();
+            return;
+        }
+        timeRemaining--;
+        const m = Math.floor(timeRemaining / 60);
+        const s = timeRemaining % 60;
+        document.getElementById('timer').innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+    }, 1000);
+}
+
+function openSubmitModal() {
+    const attempted = Object.keys(userAnswers).length;
+    const unattempted = rawData.length - attempted;
+    document.getElementById('submit-modal-text').innerText =
+        `You have answered ${attempted} out of ${rawData.length} questions (${unattempted} unanswered). Are you ready to submit and view your diagnostic scorecard?`;
+    document.getElementById('submit-modal').classList.remove('hidden');
+}
+
+function closeSubmitModal() {
+    document.getElementById('submit-modal').classList.add('hidden');
+}
+
+function endTest() {
+    if (isSubmitted) return;
+    isSubmitted = true;
+    clearInterval(timerInterval);
+    let correct = 0, incorrect = 0;
+    for (let i = 0; i < rawData.length; i++) {
+        if (userAnswers[i] !== undefined) {
+            if (userAnswers[i] === rawData[i].answer) correct++;
+            else incorrect++;
+        }
+    }
+    const attempted = correct + incorrect;
+    const score = correct;
+    const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+    document.getElementById('res-attempted').innerText = attempted;
+    document.getElementById('res-correct').innerText = correct;
+    document.getElementById('res-incorrect').innerText = incorrect;
+    document.getElementById('res-accuracy').innerText = accuracy + '%';
+    document.getElementById('res-score').innerText = `${score} / ${rawData.length}`;
+    const statusBox = document.getElementById('res-status');
+    if (score >= 60) {
+        statusBox.innerText = `STATUS: PASSED (>= 60%)`;
+        statusBox.className = 'pass-status passed';
+    } else {
+        statusBox.innerText = `STATUS: NEEDS PRACTICE (< 60%)`;
+        statusBox.className = 'pass-status failed';
+    }
+    document.getElementById('scorecard').classList.remove('hidden');
+    document.getElementById('submit-btn').classList.add('hidden');
+    document.getElementById('clear-btn').classList.add('hidden');
+    document.getElementById('review-btn').classList.add('hidden');
+    loadQuestion(0);
+}
+</script>
+</body>
+</html>

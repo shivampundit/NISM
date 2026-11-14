@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NISM-Series-XII: Securities Markets Foundation — Comprehensive Master Study Notes · SHIVAM</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-dark: #172554;
+    --secondary: #0d9488;
+    --accent: #d97706;
+    --danger: #b91c1c;
+    --success: #15803d;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --gray-border: #cbd5e1;
+    --text-main: #1e293b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f1f5f9;
+    color: var(--text-main);
+    line-height: 1.68;
+    font-size: 15.5px;
+  }
+  .container { max-width: 1240px; margin: 28px auto 64px; padding: 0 20px; }
+  .cover-banner, .header-banner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #0d9488 100%);
+    color: #ffffff;
+    padding: 36px 34px;
+    border-radius: 16px;
+    margin-bottom: 26px;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.16);
+  }
+  .cover-kicker {
+    display: inline-block;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    color: #99f6e4;
+  }
+  .cover-banner h1, .header-banner h1 { color: #ffffff; font-size: 28px; font-weight: 800; margin: 0 0 10px 0; border: none; }
+  .cover-banner p, .header-banner p { color: #e0f2fe; font-size: 15px; margin: 0; }
+  .toc-box {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 16px;
+    padding: 22px 26px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  }
+  .toc-title { font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+  .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+  .toc-pill {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    text-decoration: none; background: #f8fafc; border: 1px solid #e2e8f0;
+    padding: 10px 14px; border-radius: 10px; color: #1e293b; font-size: 13.5px; font-weight: 600;
+    transition: all 0.16s ease;
+  }
+  .toc-pill:hover { background: #eff6ff; border-color: #93c5fd; color: #1d4ed8; transform: translateY(-1px); }
+  .toc-num { background: #1e3a8a; color: #fff; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px; }
+  .toc-cnt { background: #ccfbf1; color: #0f766e; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-left: auto; }
+  section {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #cbd5e1;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    scroll-margin-top: 72px;
+  }
+  h1 { color: var(--primary); font-size: 24px; font-weight: 800; margin-top: 0; }
+  h2 { color: var(--primary); font-size: 21px; font-weight: 800; border-bottom: 2.5px solid #bfdbfe; padding-bottom: 10px; margin-top: 0; margin-bottom: 16px; }
+  h3 { color: var(--dark); font-size: 17px; font-weight: 700; border-left: 4px solid var(--secondary); padding-left: 12px; margin-top: 22px; margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px; }
+  th, td { border: 1px solid #cbd5e1; padding: 11px 14px; text-align: left; vertical-align: top; }
+  th { background: #0f294a; color: #ffffff; font-weight: 700; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  .callout {
+    background: linear-gradient(to right, #f0fdf4, #ecfdf5);
+    border: 1px solid #bbf7d0;
+    border-left: 5px solid #16a34a;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+  }
+  .callout-title { font-weight: 800; color: #166534; margin-bottom: 6px; font-size: 15px; }
+  .math {
+    font-family: 'Cambria Math', 'Consolas', monospace;
+    background: #eff6ff;
+    color: #1e3a8a;
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-weight: 700;
+  }
+  figure { margin: 20px 0; text-align: center; }
+  figcaption { font-size: 13px; color: #475569; margin-top: 8px; font-weight: 600; }
+</style>
+</head>
+<body>
+<style>
+.fin-unified-nav { background: #0f172a; border-bottom: 2px solid #0284c7; padding: 10px 16px; position: sticky; top: 0; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.fin-unified-nav-inner { max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.fnav-btn { color: #cbd5e1; text-decoration: none; font-size: 12.5px; font-weight: 600; padding: 6px 11px; border-radius: 6px; background: #1e293b; border: 1px solid #334155; transition: all 0.15s ease; white-space: nowrap; cursor: pointer; }
+.fnav-btn:hover { background: #334155; color: #ffffff; border-color: #38bdf8; }
+.fnav-btn.active { background: #0284c7; color: #ffffff; border-color: #38bdf8; box-shadow: 0 0 0 2px rgba(56,189,248,0.3); }
+.fnav-home { background: #0f766e; border-color: #14b8a6; color: #f0fdfa; }
+.fnav-pdf { background: #b45309; border-color: #f59e0b; color: #fffbeb; }
+.fnav-mock { padding: 6px 9px; font-size: 12px; }
+</style><div class="fin-unified-nav"><div class="fin-unified-nav-inner"><a href="../index.html" class="fnav-btn fnav-home">🏠 All NISM Certifications</a><a href="NISM_Series_XII_Hub.html" class="fnav-btn">🏛️ Series XII Hub</a><a href="NISM_Series_XII_Comprehensive_Master_Study_Notes.html" class="fnav-btn active">📘 Detailed Notes (6 Ch)</a><a href="NISM_Series_XII_Master_Revision_and_Formula_Sheet.html" class="fnav-btn">⚡ Revision & Formula Sheet</a><a href="NISM_Series_XII_All_Chapters_Practice_Bank.html" class="fnav-btn">🎯 Practice Question Bank (500 Qs)</a><a href="NISM_Series_XII_Topic_Wise_Mocks.html" class="fnav-btn">🧩 Topic-Wise Mocks (6 Ch)</a><a href="NISM_Series_XII_Interactive_Mock_Test_1.html" class="fnav-btn fnav-mock">Mock 1</a><a href="NISM_Series_XII_Interactive_Mock_Test_2.html" class="fnav-btn fnav-mock">Mock 2</a><a href="NISM_Series_XII_Interactive_Mock_Test_3.html" class="fnav-btn fnav-mock">Mock 3</a><a href="NISM_Series_XII_Interactive_Mock_Test_4.html" class="fnav-btn fnav-mock">Mock 4</a><a href="NISM_Series_XII_Interactive_Mock_Test_5.html" class="fnav-btn fnav-mock">Mock 5</a><a href="https://drive.google.com/drive/folders/16gtrKvxBbRsz50bheAy-YHLWGvo73eMU" target="_blank" rel="noopener" class="fnav-btn fnav-pdf">📂 Drive Folder</a></div></div>
+<div class="container">
+  <section>
+<div style="background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%); color: white; padding: 40px 25px; text-align: center; border-radius: 8px; margin-bottom: 30px;">
+    <div style="display: inline-block; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); padding: 4px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">NISM SERIES XII &#183; MASTER STUDY COMPASS</div>
+    <h1 style="color: white; border: none; margin: 0 0 10px 0; font-size: 2.2rem;">Securities Markets Foundation (September 2026 Edition)</h1>
+    <p style="color: #bfdbfe; font-size: 1.1rem; margin: 0; font-weight: 500;">Comprehensive Master Study Notes Covering All 6 Chapters & Latest Regulatory Frameworks</p>
+</div>
+
+<h1>NISM-Series-XII: Securities Markets Foundation Certification Examination</h1>
+<h2>Master Comprehensive Study Notes (September 2026 Edition)</h2>
+<p><strong>Target Certification:</strong> NISM-Series-XII: Securities Markets Foundation Certification Examination<br>
+<strong>Assessment Structure:</strong> 100 Multiple Choice Questions (1 mark each), Duration: 2 Hours (120 minutes), Passing Score: 60%, Negative Marking: Nil.<br>
+<strong>Workbook Version:</strong> September 2026 (incorporating all latest regulatory updates, SCRR 2026 rules, CSCRF guidelines, T+1/T+0 settlements, and SIF frameworks).</p>
+
+<div class="highlight-box">
+<strong>Official Syllabus Weightage Breakdown:</strong>
+<ul>
+    <li><strong>Chapter 1:</strong> Understanding Securities Markets and Performance — <strong>10%</strong> (10 Questions)</li>
+    <li><strong>Chapter 2:</strong> Securities: Types, Features and Concepts of Asset Allocation and Investing — <strong>20%</strong> (20 Questions)</li>
+    <li><strong>Chapter 3:</strong> Primary Markets — <strong>20%</strong> (20 Questions)</li>
+    <li><strong>Chapter 4:</strong> Secondary Markets — <strong>20%</strong> (20 Questions)</li>
+    <li><strong>Chapter 5:</strong> Mutual Funds — <strong>20%</strong> (20 Questions)</li>
+    <li><strong>Chapter 6:</strong> Derivative Markets — <strong>10%</strong> (10 Questions)</li>
+    <li><strong>Total:</strong> 100 Marks (100 Questions)</li>
+</ul>
+</div>
+
+<hr>
+
+<h2>CHAPTER 1: UNDERSTANDING SECURITIES MARKETS AND PERFORMANCE (Weightage: 10%)</h2>
+
+<h3>1.1 Securities Markets Overview</h3>
+<p>The financial market consists of three key segments: <strong>Money Market</strong> (short-term borrowing/lending &lt; 1 year), <strong>Securities Market</strong> (equity and debt instruments for long-term and medium-term capital formation), and <strong>Currency Market</strong> (foreign exchange). The securities market provides a regulated institutional framework for channelizing savings from households and entities with surplus funds to businesses and governments requiring capital, thereby facilitating <strong>financial disintermediation</strong>.</p>
+
+<h3>1.2 Legal Definition of Securities</h3>
+<p>Under <strong>Section 2(h) of the Securities Contracts (Regulation) Act, 1956 (SCRA)</strong>, 'securities' include:</p>
+<ul>
+    <li>Shares, scrips, stocks, bonds, debentures, debenture stock, or other marketable securities of a like nature in or of any incorporated company or pooled investment vehicle.</li>
+    <li>Derivatives (derived from debt instruments, shares, loans, risk instruments, or index of prices, commodity derivatives).</li>
+    <li>Units or instruments issued by Collective Investment Schemes (CIS) and Mutual Funds (excluding ULIPs or policies issued by life insurance firms).</li>
+    <li>Security receipts as defined under Section 2(zg) of the SARFAESI Act, 2002.</li>
+    <li>Government securities (Central and State Government dated securities, Treasury bills).</li>
+    <li>Certificates or instruments issued by an SPV possessing debt or receivables (Securitized Debt Instruments).</li>
+    <li><strong>Electronic Gold Receipts (EGRs):</strong> Declared as securities vide Gazette notification dated Dec 24, 2021. EGRs represent physical gold in electronic form traded on the Gold Exchange segment.</li>
+    <li><strong>Zero Coupon Zero Principal (ZCZP) Instruments:</strong> Declared as securities vide Gazette notification dated July 16, 2022. Issued by Not-for-Profit Organisations (NPOs) registered on Social Stock Exchanges (SSE).</li>
+    <li>Onshore rupee bonds issued by multilateral institutions (e.g., Asian Development Bank, International Finance Corporation).</li>
+    <li>Rights or interest in securities.</li>
+</ul>
+
+<div class="amendment-box">
+<strong>What are NOT Securities?</strong><br>
+Bank fixed deposits, company fixed deposits, inter-corporate deposits, deposits with housing finance companies, chit funds, benefit funds, insurance policies, and provident/pension funds are bilateral financial arrangements or contracts, <em>not</em> transferable securities under SCRA.
+</div>
+
+<h3>1.3 Market Structure, Participants & Regulators</h3>
+<ul>
+    <li><strong>Market Segments:</strong>
+        <ul>
+            <li><strong>Primary Market (New Issue Market):</strong> Where issuers issue fresh securities to raise capital. Creates financial assets.</li>
+            <li><strong>Secondary Market (Stock Exchange):</strong> Where already-issued securities are traded between buyers and sellers. Provides liquidity and marketability. Does not alter the capital available to issuers.</li>
+        </ul>
+    </li>
+    <li><strong>Investors:</strong>
+        <ul>
+            <li><em>Retail Individual Investors (RII):</em> Individual investors applying for securities up to Rs. 2 Lakhs in a public issue.</li>
+            <li><em>Non-Institutional Buyers (NIBs / HNIs):</em> Individual investors and corporate bodies applying for more than Rs. 2 Lakhs.</li>
+            <li><em>Qualified Institutional Buyers (QIBs):</em> Institutional investors such as mutual funds, commercial banks, PFIs, insurance companies, and registered FPIs.</li>
+        </ul>
+    </li>
+    <li><strong>Issuers:</strong> Companies, Central and State Governments (debt securities only, never equity), Municipalities/Local bodies, Banks/NBFCs, Mutual Funds, and Investment Trusts (REITs/InvITs).</li>
+    <li><strong>Intermediaries (SEBI Intermediaries Regulations, 2008):</strong> Merchant Bankers, Underwriters, Stock Brokers, Authorized Persons (APs), Clearing Members, Trading Members, Bankers to the Issue, Registrars and Transfer Agents (RTAs), Depositories (NSDL, CDSL) and Depository Participants (DPs), Custodians, Debenture Trustees, Credit Rating Agencies (CRAs), Investment Advisers (IAs), KYC Registration Agencies (KRAs).</li>
+    <li><strong>Primary Dealers (PDs):</strong> Specialized financial institutions licensed and regulated by the <strong>Reserve Bank of India (RBI)</strong> to underwrite and participate in government securities auctions.</li>
+    <li><strong>Regulators of the Financial System:</strong>
+        <ul>
+            <li><strong>SEBI (Securities and Exchange Board of India):</strong> Established under SEBI Act, 1992 under Ministry of Finance. Chief regulator of securities and commodity derivatives markets, stock exchanges, and intermediaries. Administers SCRA, 1956 and SEBI ICDR/LODR/NCS regulations.</li>
+            <li><strong>RBI (Reserve Bank of India):</strong> Regulates the money market, foreign exchange (forex) market, banking system, and Government Securities (G-Sec) market. Issue manager for the government.</li>
+            <li><strong>MCA (Ministry of Corporate Affairs):</strong> Administers the Companies Act, 2013, regulating company incorporation, corporate governance, and disclosures.</li>
+            <li><strong>MoF (Ministry of Finance):</strong> Oversees capital markets through Department of Economic Affairs (DEA) and banking/insurance/pensions through Department of Financial Services (DFS).</li>
+            <li><strong>IRDAI:</strong> Regulates the insurance sector under the Insurance Regulatory and Development Authority Act, 1999.</li>
+            <li><strong>PFRDA:</strong> Regulates pension funds and the National Pension System (NPS) under PFRDA Act, 2013.</li>
+            <li><strong>IBBI:</strong> Regulates insolvency professionals and proceedings under the Insolvency and Bankruptcy Code (IBC), 2016.</li>
+            <li><strong>IFSCA:</strong> Unified regulatory authority established in 2020 at GIFT City, Gandhinagar for financial products and entities in IFSCs.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>1.4 Functions and Role of Securities Markets</h3>
+<ul>
+    <li><strong>Orderly Channel for Transfer of Funds:</strong> Mobilizes savings and promotes financial disintermediation.</li>
+    <li><strong>Productive Investments:</strong> Aggregates small retail savings to fund large infrastructure projects and business expansion.</li>
+    <li><strong>Liquidity:</strong> Enables investors to exit investments quickly, giving them confidence to commit long-term capital.</li>
+    <li><strong>Price Discovery:</strong> Free interaction of buyers and sellers establishes fair market prices based on publicly available information.</li>
+    <li><strong>Information Signaling:</strong> Price movements signal changing economic and corporate fundamentals.</li>
+</ul>
+
+<h3>1.5 Technological Advances & Cyber Security Framework (CSCRF)</h3>
+<ul>
+    <li><strong>Trading Systems:</strong> Automated screen-based trading: BSE's BOLT, NSE's NEAT, and MSEI's TWS.</li>
+    <li><strong>Algorithmic Trading & HFT:</strong> Algorithmic trading executes orders using pre-programmed rules. HFT uses sophisticated algorithms, millisecond holding periods, high order-to-trade ratios, and co-location to minimize latency.</li>
+    <li><strong>Co-location:</strong> Exchanges lease server rack space within their data centers to brokers to reduce data transmission time.</li>
+    <li><strong>Cyber Security and Cyber Resilience Framework (CSCRF):</strong>
+        <ul>
+            <li>Mandated by SEBI for Regulated Entities (REs) including Market Infrastructure Institutions (MIIs: Stock Exchanges, Depositories, Clearing Corporations, KRAs, QRTAs).</li>
+            <li><strong>5 Cyber Resiliency Goals:</strong> (1) Anticipate, (2) Withstand, (3) Contain, (4) Recover, (5) Evolve.</li>
+            <li><strong>6 Cyber Security Functions:</strong> Governance, Identify, Protect, Detect, Respond, Recover.</li>
+            <li>Mandatory annual cyber audits conducted by <strong>CERT-In empanelled</strong> auditors.</li>
+        </ul>
+    </li>
+    <li><strong>Innovation Sandbox vs. Regulatory Sandbox:</strong>
+        <ul>
+            <li><em>Innovation Sandbox:</em> Industry-wide offline testing environment for FinTech firms, start-ups, and unregulated entities to test solutions in isolation from live market using historical/dummy data.</li>
+            <li><em>Regulatory Sandbox:</em> Live testing of financial innovations by SEBI-regulated entities with a limited set of real customers for a limited time under direct regulatory supervision. No exemption is granted from KYC, AML, or investor protection rules.</li>
+        </ul>
+    </li>
+</ul>
+
+<hr>
+
+<h2>CHAPTER 2: SECURITIES: TYPES, FEATURES, ASSET ALLOCATION AND INVESTING (Weightage: 20%)</h2>
+
+<h3>2.1 Equity vs. Debt Financing for Issuers</h3>
+<table>
+    <tr><th>Feature</th><th>Equity Capital</th><th>Debt Capital</th></tr>
+    <tr><td>Nature</td><td>Ownership capital; perpetual; non-repayable during business life</td><td>Borrowed capital; fixed tenor; repayable at maturity</td></tr>
+    <tr><td>Return to Investor</td><td>Variable dividends from residual profits (not guaranteed)</td><td>Pre-determined fixed or floating interest (statutory obligation)</td></tr>
+    <tr><td>Claim Priority</td><td>Residual claim (last priority on liquidation)</td><td>Senior priority (paid before dividends and taxes)</td></tr>
+    <tr><td>Management Control</td><td>Voting rights; board representation; control dilution</td><td>No voting rights; restrictive loan covenants only</td></tr>
+    <tr><td>Collateral Requirement</td><td>No security/collateral required</td><td>Usually secured against company assets (charge/mortgage)</td></tr>
+    <tr><td>Suitability for Issuer</td><td>High-risk ventures, long gestation periods, low asset base</td><td>Stable cash-flow businesses able to service periodic interest</td></tr>
+</table>
+
+<h3>2.2 Types of Equity Capital</h3>
+<ul>
+    <li><strong>Ordinary Equity Shares:</strong> Standard voting rights (one share, one vote) and participate in profits after all obligations are met.</li>
+    <li><strong>Differential Voting Rights (DVR) Shares:</strong> Higher dividend rights in exchange for lower voting rights, enabling promoters to raise risk capital without losing control.</li>
+    <li><strong>Preference Shares:</strong> Hybrid characteristics. Fixed pre-determined dividend rate paid before ordinary equity dividends. No voting rights (unless dividends unpaid for prescribed years). Preferential claim over equity upon liquidation, but subordinate to debt holders.</li>
+    <li><strong>Cumulative Preference Shares:</strong> Arrears of unpaid dividends accumulate and must be paid in future profitable years before any equity dividend is declared.</li>
+</ul>
+
+<h3>2.3 Characteristics & Types of Debt Securities</h3>
+<ul>
+    <li><strong>Core Features:</strong> Principal (Face Value, par), Coupon (interest rate expressed as % of face value per annum), Tenor/Maturity Date.</li>
+    <li><strong>Plain Vanilla Bond:</strong> Fixed coupon paid periodically, principal redeemed at par upon maturity.</li>
+    <li><strong>Zero-Coupon Bond / Deep Discount Bond:</strong> Pays no periodic coupon. Issued at a discount to face value and redeemed at par. Return equals the difference between face value and issue price.</li>
+    <li><strong>Floating Rate Bond:</strong> Coupon rate is reset periodically based on a benchmark (e.g., MIBOR + spread).</li>
+    <li><strong>Callable Bond:</strong> Grants the <em>issuer</em> the option to redeem the bond before maturity (typically exercised when market interest rates decline, forcing investors to reinvest at lower rates).</li>
+    <li><strong>Puttable Bond:</strong> Grants the <em>investor</em> the right to demand early redemption from the issuer (exercised when market interest rates rise, allowing reinvestment at higher yields).</li>
+    <li><strong>Amortizing Bond:</strong> Principal is repaid in installments over the life of the bond along with interest (e.g., EMIs on home/auto loans) rather than a bullet repayment at maturity.</li>
+</ul>
+
+<h3>2.4 Money Market vs. Long-Term Debt Instruments</h3>
+<ul>
+    <li><strong>Treasury Bills (T-Bills):</strong> Issued only by the Central Government via RBI electronic auctions. Tenors: <strong>91 days, 182 days, 364 days</strong>. Zero-coupon, issued at discount, redeemed at par. Sovereign risk-free.</li>
+    <li><strong>Commercial Paper (CP):</strong> Unsecured short-term promissory notes issued by highly rated corporates/NBFCs to fund working capital. Tenors: 7 days to 364 days (most popular: 90 days). Credit rating mandatory.</li>
+    <li><strong>Certificates of Deposit (CDs):</strong> Short-term negotiable, transferable deposits issued by commercial banks. Tenors: 7 days to 1 year.</li>
+    <li><strong>Government Securities (G-Secs / Dated Securities):</strong> Long-term sovereign bonds with tenors ranging from <strong>1 year to 40 years</strong>. Semi-annual fixed coupon. Benchmark for corporate bond pricing.</li>
+    <li><strong>Corporate Bonds:</strong> Issued at a credit spread above the G-Sec yield curve. The spread compensates for credit/default risk.</li>
+    <li><strong>Special Bond Categories:</strong>
+        <ul>
+            <li><strong>Tax-Free PSU Bonds:</strong> Issued by infrastructure PSUs; interest income is exempt from income tax.</li>
+            <li><strong>Capital Gains Bonds (Section 54EC):</strong> Issued by NHAI, REC, PFC, NABARD; allows exemption from long-term capital gains tax on land/building sales.</li>
+            <li><strong>Masala Bonds:</strong> Rupee-denominated bonds issued outside India by Indian entities (e.g., listed on London Stock Exchange). Currency exchange risk is borne entirely by the <em>foreign investor</em>, not the Indian issuer. First issued by IFC.</li>
+            <li><strong>Green Debt Securities:</strong> Regulated by SEBI (NCS) Regulations, 2021. Proceeds earmarked for renewable energy, clean transport, and climate adaptation.</li>
+            <li><strong>Bharat Bond ETF:</strong> Target-maturity ETF investing exclusively in AAA-rated PSU bonds, tracking Nifty Bharat Bond Indices.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>2.5 Hybrid Instruments & Alternative Assets</h3>
+<ul>
+    <li><strong>Convertible Debentures:</strong> FCD (100% converted into equity), PCD (convertible portion becomes equity; non-convertible portion remains debt and earns coupon), OCD (investor has discretion to convert or redeem).</li>
+    <li><strong>Depository Receipts (DRs):</strong> Equity shares of a domestic company deposited with a domestic custodian; foreign depository bank issues DRs denominated in foreign currency (USD). ADRs in USA (NYSE/NASDAQ); GDRs outside USA; IDRs issued in India by foreign companies (resident Indians only, not FPIs). Two-way fungibility allows conversion between DRs and shares.</li>
+    <li><strong>Foreign Currency Convertible Bonds (FCCBs):</strong> Foreign currency denominated debt convertible into equity shares. Minimum maturity is <strong>5 years</strong>. Issue expenses capped at 4% for public issues and 2% for private placements. Regulated by RBI under FEMA.</li>
+    <li><strong>Warrants:</strong> Options issued by a company granting holders the right to subscribe to equity shares at a predetermined exercise price. Under SEBI rules, investors must pay <strong>25% consideration upfront</strong>. If not exercised, the upfront 25% is forfeited.</li>
+    <li><strong>Commodities:</strong> Real assets (Soft commodities, Bullion, Base metals, Energy). Acts as a natural hedge against inflation and has low correlation with traditional equity/debt.</li>
+</ul>
+
+<h3>2.6 Valuation Mathematics: Equity & Debt</h3>
+<div class="formula-box">
+1. Price to Earnings (PE) Ratio = Market Price per Share / Earnings per Share (EPS)<br>
+   * EPS = Profit After Tax (PAT) / Number of Outstanding Shares<br>
+   * Market PE &ge; 22x indicates overvalued zone; PE &le; 12x indicates undervalued zone.<br><br>
+2. Price to Book Value (PBV) = Market Price per Share / Book Value per Share<br>
+   * Book Value per Share = Net Worth (Paid-up Capital + Reserves) / Number of Shares<br><br>
+3. Dividend Yield (%) = (Dividend per Share / Market Price per Share) * 100<br>
+   * Inversely related to stock price. Dividend declared as % of Face Value (not market price).<br><br>
+4. Bond Current Yield (%) = (Annual Coupon Amount / Current Market Price) * 100<br><br>
+5. Bond Fair Value (PV) = &Sigma; [ Coupon_t / (1 + y)^t ] + [ Face Value / (1 + y)^n ]<br>
+   * Inverse relationship: If market yield (y) &gt; Coupon rate &rarr; Bond price &lt; Face Value (Discount).<br>
+   * If market yield (y) &lt; Coupon rate &rarr; Bond price &gt; Face Value (Premium).
+</div>
+
+<h3>2.7 Equity Analysis Approaches</h3>
+<ul>
+    <li><strong>Fundamental Analysis:</strong> Analyzes company financial statements, industry prospects, and macro trends to determine intrinsic value using the <strong>EIC (Economy-Industry-Company) framework</strong>.
+        <ul>
+            <li><em>Top-Down Approach:</em> Macroeconomic environment &rarr; Industry/Sector selection &rarr; Individual company stock selection.</li>
+            <li><em>Bottom-Up Approach:</em> Company fundamental business potential &rarr; Sector validation &rarr; Macro validation.</li>
+        </ul>
+    </li>
+    <li><strong>Technical Analysis:</strong> Studies historical price and volume trends, chart patterns, support/resistance levels, and mathematical indicators (moving averages, RSI) to forecast future price movements. Assumes current prices reflect all known information.</li>
+    <li><strong>Valuation Models:</strong> Discounted Cash Flow (DCF - intrinsic value based on future cash flows discounted at cost of capital) vs. Relative Valuation (peer multiples like PE, PBV, EV/EBITDA).</li>
+</ul>
+
+<hr>
+
+<h2>CHAPTER 3: PRIMARY MARKETS (Weightage: 20%)</h2>
+
+<h3>3.1 Primary Market Issuance Channels</h3>
+<ul>
+    <li><strong>Public Issue:</strong> Open to all eligible public investors. Includes Initial Public Offer (IPO - first public issuance) and Further Public Offer (FPO - subsequent issuance by already-listed company).
+        <ul>
+            <li><em>Fresh Issue:</em> New shares created; increases company's paid-up share capital; proceeds go to the company for business expansion. Dilutes existing percentage holdings.</li>
+            <li><em>Offer for Sale (OFS):</em> Existing shareholders (promoters, PE investors, government disinvestment) sell their holdings to public; paid-up capital remains unchanged; proceeds go to the selling shareholders.</li>
+        </ul>
+    </li>
+    <li><strong>Private Placement:</strong> Offer made to a select group of eligible investors (not exceeding <strong>50 persons</strong> under Section 42 of Companies Act, 2013). No public advertisements permitted. Payment strictly via banking channels.</li>
+    <li><strong>Preferential Allotment:</strong> Issue of shares or convertible securities to an identified group on preferential terms; requires special shareholder resolution and lock-in norms.</li>
+    <li><strong>Qualified Institutions Placement (QIP):</strong> Private placement of eligible securities by an already-listed company to Qualified Institutional Buyers (QIBs). Company must be listed for at least 1 year. Minimum <strong>10%</strong> reserved for mutual funds. Allottees cannot sell on stock exchange for 1 year except on recognized exchange.</li>
+    <li><strong>Rights Issue:</strong> Pre-emptive offer of fresh shares to existing shareholders in proportion to their holding (e.g., 1:2) to prevent dilution. Rights Entitlements (REs) are credited to demat accounts and can be traded on exchanges or renounced. Issue open for <strong>7 to 30 days</strong>. Mandatory ASBA.</li>
+</ul>
+
+<h3>3.2 SEBI Eligibility Norms for Public Issues (SEBI ICDR Regulations, 2018)</h3>
+<table>
+    <tr><th>Route / Criterion</th><th>Profitability Route (Normal Entry)</th><th>Alternative Route (QIB Book-Building)</th></tr>
+    <tr><td>Net Tangible Assets</td><td>At least Rs. 3 Crores in each of preceding 3 full years (&le; 50% in monetary assets)</td><td>Exempt from net tangible asset requirements</td></tr>
+    <tr><td>Operating Profit</td><td>Average operating profit &ge; Rs. 15 Crores across preceding 3 years (operating profit in each year)</td><td>Exempt from profitability track record</td></tr>
+    <tr><td>Net Worth</td><td>At least Rs. 1 Crore in each of preceding 3 full years</td><td>Exempt from net worth track record</td></tr>
+    <tr><td>Name Change Rule</td><td>If name changed in last 1 year, &ge; 50% revenue in preceding 1 year from activity indicated by new name</td><td>If not met, must use QIB Book-Building Route</td></tr>
+    <tr><td>Mandatory Allotment Condition</td><td>Standard allocation (RII &ge; 35%, NIB &ge; 15%, QIB &le; 50%)</td><td>Must allot at least <strong>75% of net offer to QIBs</strong>; full refund if failed</td></tr>
+</table>
+
+<h3>3.3 Promoters' Contribution and Lock-in Rules</h3>
+<ul>
+    <li><strong>Minimum Promoters' Contribution:</strong> Minimum <strong>20% of post-issue capital</strong>. Shortfall can be contributed by AIFs, FVCIs, scheduled commercial banks, insurance companies, or non-promoter 5%+ shareholders up to a maximum of 10% without being classified as promoters (May 2024 amendment).</li>
+    <li><strong>Lock-in Periods:</strong>
+        <ul>
+            <li>Minimum Promoters' Contribution (20%): Locked in for <strong>18 months</strong> from date of allotment (or <strong>3 years</strong> if majority issue proceeds fund capex).</li>
+            <li>Promoters' holding in excess of 20%: Locked in for <strong>6 months</strong> from allotment (or <strong>1 year</strong> if majority proceeds fund capex).</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>3.4 Minimum Public Offer Rules (SCRR 1957 / 2026 Amendments)</h3>
+<div class="amendment-box">
+<strong>Minimum Dilution Thresholds:</strong>
+<ul>
+    <li>Post-issue capital &le; Rs. 1,600 Crores &rarr; Minimum <strong>25%</strong> of each class of shares.</li>
+    <li>Post-issue capital &gt; Rs. 1,600 Crores but &le; Rs. 4,000 Crores &rarr; Percentage equivalent to <strong>Rs. 400 Crores</strong>.</li>
+    <li>Post-issue capital &gt; Rs. 4,000 Crores but &le; Rs. 50,000 Crores &rarr; Minimum <strong>10%</strong> of each class of shares.</li>
+    <li>Companies issuing under the 400 cr / 10% rule must increase public shareholding to at least 25% within <strong>3 years</strong> from listing.</li>
+</ul>
+</div>
+
+<h3>3.5 Book Building & Retail Bidding Mechanics</h3>
+<ul>
+    <li><strong>Subscription Period:</strong> Minimum <strong>3 working days</strong>, maximum <strong>10 working days</strong>. In case of price band revision, extended by minimum 3 working days (within 10-day cap). Force majeure allows 1 working day extension.</li>
+    <li><strong>Price Band Announcement:</strong> Must be announced at least <strong>2 working days</strong> before issue opens. Spread between floor price and cap price cannot exceed 20%.</li>
+    <li><strong>Retail Application Limit:</strong> Retail Individual Investors (RII) bid up to <strong>Rs. 2 Lakhs</strong>. Minimum application size prescribed between <strong>Rs. 10,000 and Rs. 15,000</strong>. Retail investors can bid at 'Cut-off Price'.</li>
+    <li><strong>Payment Mechanisms:</strong> 100% <strong>ASBA (Application Supported by Blocked Amount)</strong> mandatory. UPI block mechanism permitted for retail individual applications up to <strong>Rs. 5 Lakhs</strong>.</li>
+    <li><strong>Allocation Pattern in Book-Built Issues:</strong>
+        <ul>
+            <li><em>Under Profitability Norms:</em> Retail (RII) &ge; 35%, Non-Institutional (NII) &ge; 15%, QIB &le; 50% (5% of QIB reserved for mutual funds).</li>
+            <li><em>Under Alternative QIB Norms:</em> Retail (RII) &le; 10%, NII &le; 15%, QIB &ge; 75% (5% of QIB reserved for mutual funds).</li>
+            <li><em>NII Category Sub-allocation:</em> 1/3rd reserved for applications between Rs. 2 Lakhs and Rs. 10 Lakhs; 2/3rds reserved for applications &gt; Rs. 10 Lakhs.</li>
+        </ul>
+    </li>
+    <li><strong>Green Shoe Option (GSO):</strong> Price stabilization mechanism allowing issuer to allot up to <strong>15% additional shares</strong>. Stabilizing agent (BRLM) intervenes in secondary market for up to <strong>30 days</strong> from listing if price drops below issue price.</li>
+    <li><strong>Underwriting:</strong> Minimum subscription required is <strong>90% of net offer</strong>. If under-subscribed, entire application money must be unblocked/refunded within <strong>4 days</strong> of issue close. Book-built issues require mandatory underwriting by lead managers/syndicate, but the QIB portion cannot be underwritten.</li>
+</ul>
+
+<h3>3.6 Public Issue of Debt Securities (SEBI NCS Regulations, 2021)</h3>
+<ul>
+    <li>Issuer must obtain credit rating from at least one registered CRA and disclose all ratings in offer document.</li>
+    <li>Appointment of independent SEBI-registered Debenture Trustee is mandatory before issue opening.</li>
+    <li>Creation of Debenture Redemption Reserve (DRR) out of company profits.</li>
+    <li>Minimum subscription for debt public issue is <strong>75% of base issue size</strong> (CBDT tax-free bonds exempt).</li>
+    <li><strong>Shelf Prospectus:</strong> Eligible financial institutions/banks/NBFCs can issue multiple tranches under a single shelf prospectus valid for 1 year.</li>
+    <li><strong>Electronic Book Provider (EBP) Platform:</strong> Mandatory for private placement of debt &ge; Rs. 50 Crores, issuers existing &lt; 3 years, and bank/NBFC regulatory capital instruments.</li>
+</ul>
+
+<hr>
+
+<h2>CHAPTER 4: SECONDARY MARKETS (Weightage: 20%)</h2>
+
+<h3>4.1 Market Structure & Intermediaries</h3>
+<ul>
+    <li><strong>Stock Exchanges:</strong> Recognized MIIs: NSE, BSE, MSEI. Automated order matching, anonymity, and price-time priority.</li>
+    <li><strong>Clearing Corporations:</strong> Independent subsidiaries acting as Central Counterparty (CCP) for trades: NSE Clearing Ltd, Indian Clearing Corporation Ltd (ICCL), Metropolitan Clearing Corporation of India (MCCIL). Provide novation and settlement guarantee.</li>
+    <li><strong>Interoperability of Clearing Corporations:</strong> Allows trading members to clear trades executed across multiple exchanges through a single clearing corporation of their choice. Reduces margin fragmentation and capital costs. Covers cash, equity derivatives, currency derivatives, and debt (excludes commodity derivatives).</li>
+    <li><strong>Depositories & DPs:</strong> NSDL and CDSL hold dematerialized securities. Investors interface via Depository Participants (DPs - banks/brokers).</li>
+    <li><strong>Account Types:</strong> 3-in-1 account integrates savings bank, trading account, and demat account.</li>
+    <li><strong>DDPI (Demat Debit and Pledge Instruction):</strong> Replaced Power of Attorney (PoA) for debiting client demat accounts for securities pay-in and margin pledges, preventing broker misuse. Client can revoke anytime.</li>
+</ul>
+
+<h3>4.2 Order Types & Trading Operations</h3>
+<ul>
+    <li><strong>Order Classifications:</strong>
+        <ul>
+            <li><em>Market Order:</em> Executes immediately at prevailing best market price. Reactive order; drains liquidity.</li>
+            <li><em>Limit Order:</em> Executes only at specified price or better. Passive order; adds depth and liquidity to order book. Unexecuted orders cancel at end of day.</li>
+            <li><em>Immediate or Cancel (IOC):</em> Immediately fills all or whatever quantity is available; remainder cancels instantly.</li>
+            <li><em>Stop-Loss Order:</em> Activated when market reaches trigger price. Protects intraday positions against sharp adverse movements.</li>
+            <li><em>Disclosed Quantity (DQ):</em> Only a disclosed fraction is displayed on the screen; remaining quantity remains hidden in the broker's system until the disclosed lot is filled.</li>
+            <li><em>Day Order:</em> Valid for the current trading day only. Good-till-Cancelled (GTC) orders are NOT permitted on Indian exchanges.</li>
+        </ul>
+    </li>
+    <li><strong>Trading Hours (NSE):</strong>
+        <ul>
+            <li><em>Pre-open Session (Equity):</em> 09:00 to 09:15 hrs. Order entry & modification: 09:00 to 09:10 hrs (random closure in last 2 mins); Order matching: 09:10 to 09:12 hrs; Buffer: 09:12 to 09:15 hrs. Discovers opening price.</li>
+            <li><em>Regular Trading (Equity):</em> 09:15 to 15:30 hrs.</li>
+            <li><em>Equity Derivatives Segment:</em> 09:15 to 15:40 hrs. Trade modification ends at 16:15 hrs.</li>
+            <li><em>Debt Segment:</em> 09:00 to 17:00 hrs.</li>
+        </ul>
+    </li>
+    <li><strong>Block Deals vs. Bulk Deals:</strong>
+        <table>
+            <tr><th>Attribute</th><th>Bulk Deal</th><th>Block Deal</th></tr>
+            <tr><td>Threshold</td><td>Total quantity &gt; 0.50% of listed equity shares</td><td>Minimum single order value &ge; Rs. 25 Crores</td></tr>
+            <tr><td>Trading Window</td><td>Normal trading window during regular hours</td><td>Two dedicated special windows: Morning (08:45–09:00 hrs) and Afternoon (14:05–14:20 hrs)</td></tr>
+            <tr><td>Price Band</td><td>Within normal daily circuit limit</td><td>Within &plusmn; 3% of reference price (prev day close for morning; 1:45–2:00 pm VWAP for afternoon)</td></tr>
+            <tr><td>Settlement</td><td>Normal delivery or intraday netting</td><td>Mandatory 100% delivery settlement (no square-off)</td></tr>
+            <tr><td>Visibility</td><td>Visible to market on real-time screen</td><td>Confidential window; disclosed after market hours</td></tr>
+        </table>
+    </li>
+    <li><strong>Circuit Breakers:</strong>
+        <ul>
+            <li><em>Individual Stock Circuit Filters:</em> 2%, 5%, 10%, or 20% price bands. F&O stocks do not have fixed price bands (operating ranges only).</li>
+            <li><em>Market-Wide Circuit Breakers:</em> Triggered on BSE Sensex or Nifty 50 movement:
+                <ul>
+                    <li>10% breach: Before 1:00 pm (45 min halt + 15 min pre-open); 1:00 pm to 2:30 pm (15 min halt + 15 min pre-open); At or after 2:30 pm (No halt).</li>
+                    <li>15% breach: Before 1:00 pm (1 hr 45 min halt + 15 min pre-open); 1:00 pm to 2:00 pm (45 min halt + 15 min pre-open); On or after 2:00 pm (Halt for rest of day).</li>
+                    <li>20% breach: Any time during trading hours (Halt for remainder of the day).</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<h3>4.3 Settlement Cycle & Margining System</h3>
+<ul>
+    <li><strong>Settlement Cycle:</strong> Standard <strong>T+1 rolling settlement</strong> for equity shares, debt, and ETFs. Optional <strong>T+0 rolling settlement</strong> introduced for select liquid scrips.</li>
+    <li><strong>Contract Note:</strong> Legal confirmation of trade issued within <strong>24 hours</strong> of trade execution. Must display UCC, PAN, trade details, brokerage, STT, GST (18% on brokerage), and arbitration clause.</li>
+    <li><strong>Statutory Levies:</strong>
+        <ul>
+            <li><em>Securities Transaction Tax (STT):</em> Equity Delivery Purchase: 0.10%; Equity Delivery Sale: 0.10%; Equity Intraday Sale: 0.025%; Mutual fund equity delivery sale: 0.001%; Futures sale: 0.05%; Options sale: 0.15% on premium; Options exercise: 0.15% on intrinsic value.</li>
+            <li><em>SEBI Turnover Fees:</em> Non-debt securities: 0.0001% (Rs. 10/crore); Debt securities: 0.000025% (Rs. 2.5/crore).</li>
+        </ul>
+    </li>
+    <li><strong>Comprehensive Risk Margins:</strong> Total Margin = VaR Margin + Extreme Loss Margin (ELM = 3.5%) + Mark to Market (MTM) Margin.
+        <ul>
+            <li><em>VaR Margin:</em> Statistical maximum loss at 99% confidence level over 1-day horizon based on volatility. Updated at least 5 times daily.</li>
+            <li><em>Cross-Margining:</em> 25% spread margin charged on offsetting cash and futures positions; 30% for offsetting correlated index positions.</li>
+            <li><em>Base Minimum Capital (BMC):</em> Proprietary without algo: Rs. 10 Lacs; Client only without algo: Rs. 15 Lacs; Prop + Client without algo: Rs. 25 Lacs; Members with Algo: Rs. 50 Lacs (50% must be cash/cash equivalents).</li>
+        </ul>
+    </li>
+    <li><strong>Securities Lending and Borrowing Mechanism (SLBM):</strong> Exchange-traded platform for short sellers to borrow shares for a fee. Tenors: monthly and yearly contracts up to 12 months. Settlement guaranteed by Clearing Corporation.</li>
+    <li><strong>Investor Grievance Redressal:</strong>
+        <ul>
+            <li><em>SCORES:</em> Online SEBI portal; entities must resolve and upload Action Taken Report (ATR) within <strong>21 days</strong>.</li>
+            <li><em>Arbitration:</em> Quasi-judicial panel; award issued within <strong>30 days</strong> (extendable by 30 days). Appeal to appellate panel within <strong>7 days</strong>.</li>
+            <li><em>IPEF (Investor Protection and Education Fund):</em> Restitution claims from disgorged funds permitted up to <strong>7 years</strong> from SEBI invitation date.</li>
+        </ul>
+    </li>
+</ul>
+
+<hr>
+
+<h2>CHAPTER 5: MUTUAL FUNDS (Weightage: 20%)</h2>
+
+<h3>5.1 Legal Structure & Core Principles</h3>
+<ul>
+    <li><strong>Three-Tier Structure:</strong> Sponsor (sets up fund) &rarr; Board of Trustees (fiduciary custodian, meets at least 6 times a year) &rarr; Asset Management Company (AMC, investment manager registered under SEBI MF Regulations, 1996).</li>
+    <li><strong>Key Constituents:</strong> Custodian (safekeeps securities independently; AMC cannot hold custody), RTA (investor recordkeeping, folios), Auditor, Distributors (earn trail commission; upfront commission banned except for SIPs).</li>
+    <li><strong>Pass-Through Status:</strong> Mutual funds are pass-through entities under the Income Tax Act; fund earnings are tax-exempt at the fund level and taxed only in the hands of unitholders.</li>
+    <li><strong>Borrowing Restriction:</strong> MFs cannot borrow to invest in portfolios. Borrowing is permitted only to meet temporary liquidity requirements (redemptions/dividends) up to a maximum of <strong>20% of net assets for up to 6 months</strong>.</li>
+</ul>
+
+<h3>5.2 NAV Computation & Transaction Pricing</h3>
+<div class="formula-box">
+Net Asset Value (NAV) = [ (Market Value of Portfolio + Accrued Income) - (Accrued Expenses + Liabilities) ] / Total Outstanding Units<br><br>
+Redemption Value per Unit = Applicable NAV * (1 - Exit Load %)<br>
+Example: NAV = Rs. 24, Exit Load = 1% &rarr; Repurchase Price = 24 * (1 - 0.01) = Rs. 23.76
+</div>
+<ul>
+    <li>Units are always bought and sold at NAV-linked prices to ensure mathematical parity between existing, incoming, and exiting investors.</li>
+    <li><strong>Total Expense Ratio (TER):</strong> Daily running expenses deducted from the fund's gross assets before calculating NAV.</li>
+    <li><strong>Options:</strong> Growth Option (capital gains retained in fund; NAV rises) vs. IDCW Option (Income Distribution cum Capital Withdrawal - paid out or reinvested).</li>
+</ul>
+
+<h3>5.3 Scheme Categorization & Portfolio Mandates (SEBI Master Circular)</h3>
+<table>
+    <tr><th>Category</th><th>Sub-Category</th><th>Portfolio Asset Allocation Mandate</th></tr>
+    <tr><td rowspan="8"><strong>Equity Schemes</strong></td><td>Multi Cap Fund</td><td>Minimum 75% in equity: At least 25% each in Large, Mid, and Small Cap stocks</td></tr>
+    <tr><td>Large Cap Fund</td><td>Minimum 80% in Large Cap stocks (Top 100 by market cap)</td></tr>
+    <tr><td>Large & Mid Cap Fund</td><td>Minimum 35% in Large Cap and minimum 35% in Mid Cap stocks</td></tr>
+    <tr><td>Mid Cap Fund</td><td>Minimum 65% in Mid Cap stocks (101st to 250th company by market cap)</td></tr>
+    <tr><td>Small Cap Fund</td><td>Minimum 65% in Small Cap stocks (251st company onwards)</td></tr>
+    <tr><td>Flexi Cap Fund</td><td>Minimum 65% in equity dynamically allocated across market caps without fixed sub-caps</td></tr>
+    <tr><td>Sectoral / Thematic</td><td>Minimum 80% in defined sector/theme; max 50% overlap with other schemes</td></tr>
+    <tr><td>ELSS (Tax Saver)</td><td>Minimum 80% in equity; mandatory <strong>3-year lock-in</strong>; Sec 80C deduction (old tax regime)</td></tr>
+    <tr><td rowspan="6"><strong>Debt Schemes</strong></td><td>Overnight / Liquid</td><td>Overnight: 1-day maturity; Liquid: debt/money market &le; 91 days maturity</td></tr>
+    <tr><td>Ultra Short / Low Dur.</td><td>Ultra Short: Macaulay duration 3–6 months; Low Duration: 6–12 months</td></tr>
+    <tr><td>Corporate Bond Fund</td><td>Minimum 80% in AA+ and above rated corporate bonds</td></tr>
+    <tr><td>Credit Risk Fund</td><td>Minimum 65% in AA and below rated corporate bonds (excludes AA+)</td></tr>
+    <tr><td>Gilt / 10-Yr Constant Gilt</td><td>Gilt: Min 80% in G-Secs; 10-Yr Constant: Min 80% with portfolio Macaulay duration = 10 yrs</td></tr>
+    <tr><td>Sectoral Debt Fund</td><td>Minimum 80% in debt of a single sector (AA+ and above rated corporate bonds) <span class="badge">2026 Circular</span></td></tr>
+    <tr><td rowspan="5"><strong>Hybrid Schemes</strong></td><td>Conservative Hybrid</td><td>75% to 90% in debt instruments; 10% to 25% in equity instruments</td></tr>
+    <tr><td>Balanced Hybrid</td><td>40% to 60% in equity; 40% to 60% in debt; No arbitrage permitted</td></tr>
+    <tr><td>Aggressive Hybrid</td><td>65% to 80% in equity; 20% to 35% in debt (Fund house can offer Balanced OR Aggressive, not both)</td></tr>
+    <tr><td>Dynamic Asset / BAF</td><td>Investment in equity/debt managed dynamically (0–100%) based on market indicators</td></tr>
+    <tr><td>Arbitrage Fund</td><td>Minimum 65% in equity/equity derivatives; debt portion in G-Secs/repos &le; 1 year</td></tr>
+    <tr><td rowspan="3"><strong>Special Schemes</strong></td><td>Life Cycle Funds</td><td>Open-ended target-maturity funds with a glide path; tenors 5 to 30 yrs (multiples of 5); max 6 schemes per AMC <span class="badge">2026 Circular</span></td></tr>
+    <tr><td>Specialized Investment Fund</td><td>Sophisticated mutual fund product line; minimum ticket size <strong>Rs. 10 Lakhs</strong> <span class="badge">Dec 2024</span></td></tr>
+    <tr><td>Index Funds & ETFs</td><td>Minimum 95% in securities of the replicated/tracked benchmark index</td></tr>
+</table>
+
+<h3>5.4 Operations, Service Standards & Disclosures</h3>
+<ul>
+    <li><strong>NFO Timelines:</strong> New Fund Offers (except ELSS) remain open for maximum <strong>15 days</strong>. Unit allotment completed within <strong>5 business days</strong> of NFO close.</li>
+    <li><strong>Statutory Timelines:</strong> Dividends dispatched within <strong>15 days</strong> of declaration. Redemptions dispatched within <strong>10 working days</strong>. AMC must pay <strong>15% p.a. interest</strong> out of its own funds for any delay.</li>
+    <li><strong>Mandatory Scheme Documents:</strong> SID (Scheme Information Document - investment objective, asset allocation), SAI (Statement of Additional Information - AMC and trustee statutory information), and KIM (Key Information Memorandum - summary attached to every application form).</li>
+    <li><strong>Riskometer Levels:</strong> 6 levels: Low, Low to Moderate, Moderate, Moderately High, High, Very High.</li>
+    <li><strong>Systematic Facilities:</strong> SIP (Systematic Investment Plan - rupee cost averaging), SWP (Systematic Withdrawal Plan - regular cash flow), STP (Systematic Transfer Plan - SWP from source fund + SIP into destination fund), Switch (one-time redemption and purchase rolled into one).</li>
+</ul>
+
+<hr>
+
+<h2>CHAPTER 6: DERIVATIVES MARKETS (Weightage: 10%)</h2>
+
+<h3>6.1 Core Derivatives Concepts</h3>
+<ul>
+    <li>A derivative is a financial contract whose value is derived from an underlying asset (equity, index, debt, currency, commodity).</li>
+    <li><strong>Zero-Sum Game:</strong> Total gains of long positions exactly equal total losses of short positions. No new wealth or asset is created.</li>
+    <li><strong>Forwards vs. Futures:</strong>
+        <table>
+            <tr><th>Attribute</th><th>Forward Contract</th><th>Futures Contract</th></tr>
+            <tr><td>Trading Venue</td><td>Over the Counter (OTC), bilaterally negotiated</td><td>Standardized contracts traded on organized stock exchanges</td></tr>
+            <tr><td>Counterparty Risk</td><td>High default/credit risk between counterparties</td><td>Eliminated by Clearing Corporation acting as CCP</td></tr>
+            <tr><td>Settlement</td><td>Settled on expiry date (bilaterally)</td><td>Marked-to-market (MTM) daily on T+1 basis</td></tr>
+            <tr><td>Liquidity</td><td>Low; non-transferable custom terms</td><td>High; standardized lots, tick sizes, expiries</td></tr>
+        </table>
+    </li>
+    <li><strong>Settlement Mandate:</strong> SEBI mandates <strong>physical settlement</strong> (delivery of underlying shares) for all individual stock futures and stock options open on expiry date. Index futures and index options are settled in <strong>cash</strong>.</li>
+</ul>
+
+<h3>6.2 Options Terminology & Payoff Mechanics</h3>
+<ul>
+    <li><strong>Call Option (CE):</strong> Gives the buyer the right, but not the obligation, to buy the underlying asset at the strike price on or before expiry.
+        <ul>
+            <li>Buyer is bullish (unlimited upside, loss limited to premium paid).</li>
+            <li>Writer/Seller is bearish/neutral (profit capped at premium, unlimited risk).</li>
+        </ul>
+    </li>
+    <li><strong>Put Option (PE):</strong> Gives the buyer the right, but not the obligation, to sell the underlying asset at the strike price on or before expiry.
+        <ul>
+            <li>Buyer is bearish (profit potential up to strike price, loss limited to premium).</li>
+            <li>Writer/Seller is bullish/neutral (profit capped at premium, substantial downside risk).</li>
+        </ul>
+    </li>
+    <li><strong>Moneyness of Options:</strong>
+        <table>
+            <tr><th>Moneyness</th><th>Call Option (CE)</th><th>Put Option (PE)</th></tr>
+            <tr><td>In the Money (ITM)</td><td>Spot Price &gt; Strike Price</td><td>Spot Price &lt; Strike Price</td></tr>
+            <tr><td>At the Money (ATM)</td><td>Spot Price = Strike Price</td><td>Spot Price = Strike Price</td></tr>
+            <tr><td>Out of the Money (OTM)</td><td>Spot Price &lt; Strike Price</td><td>Spot Price &gt; Strike Price</td></tr>
+        </table>
+    </li>
+    <li><strong>Option Style:</strong> European options (exercisable only on expiry date) vs. American options (exercisable any time up to expiry). Indian exchanges trade <strong>European options only</strong>.</li>
+</ul>
+
+<h3>6.3 Contract Specifications & Market Indicators</h3>
+<ul>
+    <li><strong>Contract Value & Expiry:</strong> Value of trading lot at introduction &ge; <strong>Rs. 5 Lakhs</strong>. Tick size is <strong>Re. 0.05</strong>. Monthly equity derivative contracts expire uniformly on the <strong>last Tuesday (NSE)</strong> or <strong>last Thursday (BSE)</strong> of each calendar month. At any time, 3 contracts trade: Near month, Next month, and Far month.</li>
+    <li><strong>Daily Settlement Price:</strong> Volume-weighted average price (VWAP) of the last 30 minutes of trading.</li>
+    <li><strong>Derivatives Margining:</strong>
+        <ul>
+            <li><em>Futures:</em> Initial Margin (SPAN based, covering 2-day horizon risk) + Exposure Margin.</li>
+            <li><em>Options:</em> Initial margin on premium; Exposure margin levied on notional underlying value for <strong>short option positions only</strong> (option sellers). Buyers pay 100% option premium upfront.</li>
+        </ul>
+    </li>
+    <li><strong>Market Indicators:</strong>
+        <ul>
+            <li><em>Open Interest (OI):</em> Total number of unsettled/open contracts held by market participants (counted on one side only). Increasing OI alongside rising price indicates strong bullish sentiment (long buildup).</li>
+            <li><em>Put-Call Ratio (PCR):</em> PCR = Total Put Open Interest / Total Call Open Interest. High PCR &gt; 1 indicates heavy put writing (often interpreted as bullish contrarian support).</li>
+        </ul>
+    </li>
+</ul>
+
+</section>
+</div>
+</body>
+</html>
